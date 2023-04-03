@@ -1,0 +1,606 @@
+﻿@using FINCORE.WEB.Helpers
+@model FINCORE.Models.Models.Vertel.VertelModels
+@using static FINCORE.Services.Helpers.Response.Collection
+@inject IHttpContextAccessor HttpContextAccessor
+
+@addTagHelper *, Microsoft.AspNetCore.MVC.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@{
+    ViewData["TitlePaging"] = "Add Verifikasi Konsumen";
+    ViewData["Title"] = "Add Verification Customer";
+}
+
+<!-- Content -->
+<form id="contactform" asp-action="Save" asp-controller="Vertel" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="content">
+
+        <!-- open sidebar menu -->
+        <a class="btn btn-primary btn-customized open-menu" href="#" role="button">
+            <i class="fas fa-align-left"></i> <span>Menu</span>
+        </a>
+
+        <!--/ Verifikasi Konsumen Input -->
+        <section id="contact" class="feature-wrapper">
+            <div class="containers" style="margin-top: -5%;">
+                <!-- Verifikasi Konsumen -->
+                <div class="container">
+					<button id="Verifikasi_more" class="Verifikasi_more" type="button" style="width: 100%;">Hasil Verifikasi Konsumen by Phone</button>
+                    <div class="data-input">
+                        <btnVerifikasi><h4><div class="bgc-menu">Hasil Verifikasi Konsumen by Phone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnVerifikasi>
+                        <div class="Verifikasi" id="Verifikasi">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="tile">
+                                    <div class="form-group row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%;">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>Credit ID</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" asp-for="Cmno" id="InputCMNo" placeholder="" required="required" style="width:90%">
+                                                <span asp-validation-for="Cmno" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <a class="btn-input" id="btnLoadModal" data-toggle="tab" style="margin-left: -200%;">Pilih Credit ID</a>
+												</div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>Nama Konsumen</p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <input class="form-control" id="InputCustomerName" placeholder="" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>Alamat Konsumen</p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <input class="form-control" id="InputAddress" placeholder="" disabled>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>No Tlp Konsumen</p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <input class="form-control" id="InputPhone" name="Phone" placeholder="" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>Status Konsumen</p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <select class="form-control" id="SelectStatusKonsumen" asp-for="OptBisaDiHubungi" onchange="change_tbl(this.value)" required="required">
+                                                    <option value="">Pilih Status Konsumen</option>
+                                                    <option value="0">Tidak Bisa Dihubungi</option>
+                                                    <option value="1">Bisa Dihubungi</option>
+                                                    <option value="2">Data Alamat Tidak Sesuai</option>
+                                                    <option value="3">Data CM Tidak Sesuai</option>
+                                                    <option value="4">Konsumen Tidak Mengangkat Telepon</option>
+                                                </select>
+                                                <span asp-validation-for="OptBisaDiHubungi" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>Nama STNK</p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <input class="form-control" asp-for="NamaStnk" id="InputNamaSTNK" placeholder="" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>Nama Pasangan</p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <input class="form-control" id="InputNamaPasangan" asp-for="NamaPasanganStnk" placeholder="" disabled>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>Tgl Terima Tagihan</p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <input class="form-control" id="dtTglTerimaTagihan" name="strTglTerimaTagihan" asp-for="TglTerimaTagihan" type="text" placeholder="Select Date">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>Tanggal Konfirmasi</p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <input class="form-control" type="text" value="@DateTime.Now.ToShortDateString()" disabled>
+                                                <input class="form-control" id="dtTanggalKonfirmasi" type="text" name="strTglKonfirmasi" asp-for="TglKonfirmasi" value="@DateTime.Now.ToShortDateString()" hidden>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <p>Jam Konfirmasi</p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <input class="form-control" value="@DateTime.Now.ToString("HH:mm")" disabled>
+                                                <input type="hidden" class="form-control" id="InputJamKonfirmasi" value="@DateTime.Now.ToString("HH:mm")" asp-for="JamKonfirmasi">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Verifikasi Konsumen -->
+                <!-- Kesesuaian Tagihan / Kontrak -->
+                <div class="container">
+                    <button id="Kesesuaian_more" class="Kesesuaian_more" type="button" style="width: 100%;">Sesuai Tagihan, Kontrak / Tidak</button>
+                    <div class="data-input">
+                        <btnKesesuaian><h4><div class="bgc-menu">Sesuai Tagihan, Kontrak / Tidak <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnKesesuaian>
+                        <div class="Kesesuaian" id="Kesesuaian">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="tile">
+                                    <div class="form-group row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <h5><div class="bgc-small">Verifikasi</div></h5>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <h5><div class="bgc-small">Tercatat</div></h5>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                                <h5><div class="bgc-small">Sesuai</div></h5>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <h5><div class="bgc-small">Tidak Sesuai</div></h5>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <h5><div class="bgc-small">Sebenarnya</div></h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%;">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Tgl Terima Pinjaman</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" id="dtTglTerimaPinjaman" placeholder="">
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                                    <input class="form-check-input" type="radio" asp-for="OptTglTerimaMotor" value="true" id="rbOptTglSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <input class="form-check-input" type="radio" asp-for="OptTglTerimaMotor" value="false" id="rbOptTglTidakSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" type="text" asp-for="strTglTerimaMotorSebenarnya" id="dtTglTerimaSebenarnya" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Tipe Kendaraan</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" id="InputTipeKendaraan" placeholder="">
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                                    <input class="form-check-input" type="radio" asp-for="OptTipeMotor" value="true" id="rbOptTipeKendaraanSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <input class="form-check-input" type="radio" asp-for="OptTipeMotor" value="false" id="rbOptTipeKendaraanTidakSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" asp-for="OptTipeMotorSebenarnya" id="InputTipeKendaraanSebenarnya" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Angsuran</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" id="InputAngsuran" placeholder="Rp" type="number">
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                                    <input class="form-check-input" type="radio" asp-for="OptAngsuran" value="true" id="rbOptAngsuranSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <input class="form-check-input" type="radio" asp-for="OptAngsuran" value="false" id="rbOptAngsuranTidakSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" asp-for="OptAngsuranSebenarnya" id="InputAngsuranSebenarnya" placeholder="Rp" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Tenor</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" id="InputTenor" placeholder="" type="number">
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                                    <input class="form-check-input" type="radio" asp-for="OptTenor" value="true" id="rbOptTenorSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <input class="form-check-input" type="radio" asp-for="OptTenor" value="false" id="rbOptTenorTidakSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" asp-for="OptTenorSebenarnya" id="InputTenorSebenarnya" placeholder="" type="number">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Pembayaran Konsumen (DP Setor)</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" id="InputDP" placeholder="Rp" type="number">
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                                    <input class="form-check-input" type="radio" asp-for="OptDpsetor" value="true" id="rbOptDPSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <input class="form-check-input" type="radio" asp-for="OptDpsetor" value="false" id="rbOptDPTidakSesuai">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" asp-for="OptDpsetorSebenarnya" id="InputDPSebenarnya" placeholder="Rp" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%;">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Nama Penerima Motor</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" asp-for="NamaPenerimaMotor" id="InputPenerimaMotor" placeholder="" required="required">
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Hubungan Penerima Motor</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" asp-for="HubunganPenerimaMotor" id="InputHubunganPenerimaMotor" placeholder="" required="required">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Jatuh Tempo</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" asp-for="PermintaanJt" id="dtJatuhTempo" type="text" placeholder="Select Date">
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Catatan Lain</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <input class="form-control" asp-for="CatatanLain" id="InputCatatanLain" placeholder="" required="required">
+                                                <span asp-validation-for="CatatanLain" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p>Biaya Admin Lainnya</p>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <select class="form-control" id="SelectBiayaAdmin" asp-for="OptBiayaAdmin" onchange="change_option_biaya(this)" required="required">
+                                                    <option value="0">Tidak</option>
+                                                    <option value="1">Ya</option>
+                                                </select>
+                                                <span asp-validation-for="OptBiayaAdmin" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                <p id="titleBiaya"></p> 
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="showBiayaText">
+                                            </div>
+                                        </div>
+
+                                        <div class="container">
+                                            <div class="title text-right">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <a class="btn-input" id="myBtn" data-toggle="tab" style="margin-left: 35%;">View Data Price Awal</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container">
+					@{
+						var statevalue = ViewBag.state;
+						var messagevalue = ViewBag.message;
+						<input type="hidden" id="state" value="@statevalue" />
+						<input type="hidden" id="mesage" value="@messagevalue" />
+					}
+
+					<div class="form-group row" id="docIn">
+					</div>
+                </div>
+                <!-- END Kesesuaian Tagihan / Kontrak -->
+                <!-- BUTTON CANCEL SAVE -->
+                <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
+                    <div class="title text-center">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button class="btn-submit" id="btnSave" value="D" name="SaveType" style="width: 100%;">Save</button>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button class="btn-submit" id="btnRFA" value="0" name="SaveType" style="width: 100%;">RFA</button>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <a href="@Url.Action("List","Vertel")" class="btn-submit" id="btnCancel" style="width: 100%;background-color: #ff971f;">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END BUTTON CANCEL SAVE -->
+
+            </div>
+        </section>
+        <!-- END Verifikasi Konsumen Input -->
+    </div>
+</form>
+
+
+@*LOOKUP CM*@
+<div id="exampleModalLong" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4>Pilih Credit ID</h4>
+                <div class="tile">
+                    <div class="modal-body" id="ModalBody"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*END LOOKUP CM*@
+
+@*LOOKUP Price Awal*@
+<div id="PriceAwalModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4>Price Awal</h4>
+                <div class="tile">
+                    <div class="modal-body" id="ModalBody"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*END LOOKUP Price Awal*@
+
+<!-- End content -->
+<script src="~/Scripts/Vertel/vertel.js"></script>
+<script src="~/Scripts/Vertel/vertellookup.js"></script>
+<script>
+	$("#myBtn").click(function () {
+        let creditId = $('#InputCMNo').val();
+		$.ajax({
+			url: "/Vertel/PriceAwal",
+			data: {creditId: creditId},
+			type: "POST",
+			success: function (data) {
+				$('#PriceAwalModal').find('.modal-body').html(data);
+				$('#PriceAwalModal').modal({
+					backdrop: false
+				});
+			},
+			error: function (err) {
+			}
+		})
+	})
+
+    function change_tbl(dhi) {
+        let CMNo = $('#InputCMNo').val();
+        let statusKonsumen = $('#SelectStatusKonsumen').val();
+
+		if (CMNo == null || CMNo == "") {
+			Common.Alert.Warning("Silahkan pilih Credit ID Terlebih Dahulu!");
+			$('#SelectStatusKonsumen').val("");
+			return;
+		}
+
+        if (statusKonsumen != '' || statusKonsumen != null) {
+            $.ajax({
+                url: "/Vertel/GetDocField",
+                data: {CMNo: CMNo},
+                type: "POST",
+				success: function (data) {
+					if (statusKonsumen == "0" || statusKonsumen == "4" || statusKonsumen == "") {
+						$('#InputPenerimaMotor').prop("disabled", true);
+						$('#InputHubunganPenerimaMotor').prop("disabled", true);
+						$('#dtTglTerimaTagihan').prop("disabled", true);
+                        $('#dtTglTerimaTagihan').val(null);
+
+						$('#docIn').html(data);
+						$('#docIn').hide();
+					}
+					else {
+						$('#InputPenerimaMotor').prop("disabled", false);
+						$('#InputHubunganPenerimaMotor').prop("disabled", false);
+						$('#dtTglTerimaTagihan').prop("disabled", false);
+                        $('#dtTglTerimaTagihan').val(null);
+
+						$('#docIn').show();
+						$('#docIn').html(data);
+						for (let i = 0; i < 100; i++) {
+							$('.form-check-input').click(function () {
+								if ($('#rbDocFieldTrue' + i).is(':checked') == true) {
+									$('#' + i).prop('required', true);
+								}
+							});
+
+							$('.form-check-input').click(function () {
+								if ($('#rbDocFieldFalse' + i).is(':checked') == true) {
+									$('#' + i).removeAttr('required');
+								}
+							});
+							$('#myBtn').show();
+						}
+					}
+				},
+                error: function (err) {
+
+                }
+            })
+            return;
+        }
+    }
+
+    function change_option_biaya(opt)
+    {
+        var value = opt.value;
+        let statusBiaya = $('#SelectBiayaAdmin').val();
+        if (statusBiaya == null || statusBiaya == "") {
+			Common.Alert.Warning("Silahkan pilih biaya admin lainnya!");
+            $('#SelectBiayaAdmin').val("");
+			return;
+		}
+        if (value.toString() == "1")
+        {
+            $('#SelectBiayaAdmin').val(1);
+            $("#titleBiaya").append('<div id="Text">Jumlah Nominal Admin </div>');
+            $("#showBiayaText").append("<div id='fieldJumlah'><input class='form-control' name='BiayaAdmin' id='InputBiayaAdmin' type='number'></div>");
+            return;
+        }
+        else (value.toString() == "0")
+        {
+            $('#SelectBiayaAdmin').val(0);
+            $("#Text").remove();
+            $("#fieldJumlah").remove();
+            return;
+        }
+    }
+
+    function changeFile(row) {
+		$('#' + row).remove();
+		$("#choose" + row).append("<input type='file' name='DokumenIn' src='~/assets/ico/edit.png'> ");
+	}
+
+	$('input[type=file]').on('change', function () {
+		if (this.files[0].size / 1024 > 500.112109375) {
+			Common.Alert.Warning("Please upload file with a size under 500 KB!");
+		}
+	});
+
+    $(document).ready(function(){
+        $('#dtTglTerimaTagihan').val(null);
+        $('#myBtn').hide();
+
+        // [START Enabled/Disabled Form Sebenenarnya]
+        $('#dtTglTerimaSebenarnya').prop('disabled', true);
+        $('#InputTipeKendaraanSebenarnya').prop('disabled', true);
+        $('#InputAngsuranSebenarnya').prop('disabled', true);
+        $('#InputTenorSebenarnya').prop('disabled', true);
+        $('#InputDPSebenarnya').prop('disabled', true);
+
+        $('#rbOptTglSesuai').prop("checked", true);
+        $('#rbOptTipeKendaraanSesuai').prop("checked", true);
+        $('#rbOptAngsuranSesuai').prop("checked", true);
+        $('#rbOptTenorSesuai').prop("checked", true);
+        $('#rbOptDPSesuai').prop("checked", true);
+
+		$('#InputPenerimaMotor').prop("disabled", true);
+		$('#InputHubunganPenerimaMotor').prop("disabled", true);
+		$('#dtTglTerimaTagihan').prop("disabled", true);
+
+        $('input[type=radio]').click(function(){
+            if ($('#rbOptTglTidakSesuai').is(':checked')) {
+                $('#dtTglTerimaSebenarnya').prop('disabled', false);
+            }else{
+                $('#dtTglTerimaSebenarnya').prop('disabled', true);
+            }
+
+            if ($('#rbOptTipeKendaraanTidakSesuai').is(':checked')) {
+				$('#InputTipeKendaraanSebenarnya').prop('disabled', false);
+			} else {
+				$('#InputTipeKendaraanSebenarnya').prop('disabled', true);
+			}
+
+            if ($('#rbOptAngsuranTidakSesuai').is(':checked')) {
+				$('#InputAngsuranSebenarnya').prop('disabled', false);
+			} else {
+                $('#InputAngsuranSebenarnya').prop('disabled', true);
+			}
+
+            if ($('#rbOptTenorTidakSesuai').is(':checked')) {
+				$('#InputTenorSebenarnya').prop('disabled', false);
+			} else {
+				$('#InputTenorSebenarnya').prop('disabled', true);
+			}
+
+            if ($('#rbOptDPTidakSesuai').is(':checked')) {
+				$('#InputDPSebenarnya').prop('disabled', false);
+			} else {
+				$('#InputDPSebenarnya').prop('disabled', true);
+			}
+        });
+        // [END Enabled/Disabled Form Sebenenarnya]
+    });
+</script>
+<script>
+	$(document).ready(function () {
+
+		$("btnVerifikasi").click(function () {
+			$("#Verifikasi").toggle();
+		});
+
+		$("btnKesesuaian").click(function () {
+			$("#Kesesuaian").toggle();
+		});
+
+		$("btnDokumenVertel").click(function () {
+			$("#DokumenVertel").toggle();
+		});
+
+		document.getElementById("Verifikasi_more").addEventListener('click', changeClass);
+
+		function changeClass() {
+			var content = document.getElementById("Verifikasi");
+
+			var identitas = document.getElementById("Verifikasi_more");
+			content.classList.toggle('show');
+
+			if (content.classList.contains("Show")) {
+				console.log('show');
+				identitas.innerHTML = "Hasil Verifikasi Konsumen by Phone";
+			} else {
+				console.log('hide');
+				identitas.innerHTML = "Hasil Verifikasi Konsumen by Phone";
+			}
+		}
+
+	});
+</script>

@@ -1,0 +1,900 @@
+@model FINCORE.Models.Models.Acquisition.CM.CMModels
+@using FINCORE.Models.Models.Acquisition.CM
+@using FINCORE.Services.Helpers.Response;
+@{
+    ViewData["Title"] = "AKUISISI MOTOR DATA NASABAH - CM";
+}
+<br />
+
+<form id="contactform" asp-action="SaveCMMotor" asp-controller="CM" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" id="txhiddenFlag" value="@Context.Session.GetString("Flag")" />
+    <input type="hidden" id="txhiddenCompanyId" name="company_id" value="@Context.Session.GetString("CompanyId")" />
+    <input type="hidden" id="txhiddenBranchId" name="branch_id" value="@Context.Session.GetString("BranchId")" />
+
+    <!--/ INPUT CM -->  
+    <section class="feature-wrapper">
+        <div class="containers" style="margin-top: -5%;">
+
+            <!-- DATA ASSET -->
+            <div class="container">
+                <button id="Asset_more" class="Asset_more" type="button" style="width: 100%;">Data Asset</button>
+                <btnAsset><h4><div class="bgc-menu">Data Asset <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnAsset>
+                <Asset class="Asset" id="Asset">
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <!-- KOLOM 1 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+                                <p>Credit ID</p> 
+                                @if (Context.Session.GetString("Flag") == "Add")
+                                {
+                                    <textarea class="form-control" readonly name="credit_id" id="txcredit_id" placeholder="Credit ID" required>@Context.Session.GetString("credit_id")</textarea>
+                                }
+                                else
+                                {
+                                    var CMModels = ViewBag.CMModels;
+                                    for (int i = 0; i < @CMModels.Count; i++)
+                                    {
+                                        <textarea class="form-control" readonly name="credit_id" id="txcredit_id" placeholder="Credit ID" required>@CMModels[i].credit_id</textarea>
+
+                                        <input type="hidden" id="txhiddenis_item_new" value="@CMModels[i].is_item_new" />
+                                        <input type="hidden" id="txhiddenapplication_type_id" value="@CMModels[i].application_type_id" />
+                                        <input type="hidden" id="txhiddenapplication_type_name" value="@CMModels[i].application_type_name" />
+                                        <input type="hidden" id="txhiddenproduct_finance_id" value="@CMModels[i].product_finance_id" />
+                                        <input type="hidden" id="txhiddenproduct_finance_name" value="@CMModels[i].product_finance_name" />
+                                        <input type="hidden" id="txhiddenitem_brand_id" value="@CMModels[i].item_brand_id" />
+                                        <input type="hidden" id="txhiddenitem_brand" value="@CMModels[i].item_brand" />
+                                        <input type="hidden" id="txhiddenasset_kind_id" value="@CMModels[i].asset_kind_id" />
+                                        <input type="hidden" id="txhiddenasset_kind_class_id" value="@CMModels[i].asset_kind_class_id" />
+                                        <input type="hidden" id="txhiddenasset_kind_class_name" value="@CMModels[i].asset_kind_class_name" />
+                                        <input type="hidden" id="txhiddenyear" value="@CMModels[i].year" />
+                                        <input type="hidden" id="txhiddenproduct_id" name="product_id" value="@CMModels[i].product_id" />
+                                        <input type="hidden" id="txhiddenproduct_name" value="@CMModels[i].product_name" />
+                                        <input type="hidden" id="txhiddenproduct_marketing_id" value="@CMModels[i].product_marketing_id" />
+                                        <input type="hidden" id="txhiddenproduct_marketing_name" value="@CMModels[i].product_marketing_name" />
+                                        <input type="hidden" id="txhiddenSTNK_name_id" value="@CMModels[i].STNK_name_id" />
+                                        <input type="hidden" id="txhiddenSTNK_name_description" value="@CMModels[i].STNK_name_description" />
+                                        <input type="hidden" id="txhiddenprovenance_PO_id" name="provenance_PO_id" value="@CMModels[i].provenance_PO_id" />
+                                        <input type="hidden" id="txhiddenprovenance_PO_description" value="@CMModels[i].provenance_PO_description" />
+                                        <input type="hidden" id="txhiddenusage_type_id" value="@CMModels[i].usage_type_id" />
+                                        <input type="hidden" id="txhiddenusage_type_name" value="@CMModels[i].usage_type_name" />
+                                        <input type="hidden" id="txhiddenitem_brand_type_id" value="@CMModels[i].item_brand_type_id" />
+                                        <input type="hidden" id="txhiddenitem_type_name" value="@CMModels[i].item_type_name" />
+                                        <input type="hidden" id="txhiddendealer_code" value="@CMModels[i].dealer_code" />
+                                        <input type="hidden" id="txhiddendealer_name" value="@CMModels[i].dealer_name" />
+                                        <input type="hidden" id="txhiddensurveyor_id" value="@CMModels[i].surveyor_id" />
+                                        <input type="hidden" id="txhiddensurveyor_name" value="@CMModels[i].surveyor_name" />
+                                        <input type="hidden" id="txhiddenmarketinghead_id" value="@CMModels[i].marketinghead_id" />
+                                        <input type="hidden" id="txhiddenmarketinghead_name" value="@CMModels[i].marketinghead_name" />
+                                        <input type="hidden" id="txhiddenCC" value="@CMModels[i].CC" />
+                                        <input type="hidden" id="txhiddenar" value="@CMModels[i].ar" />
+                                        <input type="hidden" id="txhiddentipe_cover" name="tipe_cover" value="@CMModels[i].tipe_cover" />
+                                        <input type="hidden" id="txhiddeninsurance_type_id" name="insurance_type_id" value="@CMModels[i].insurance_type_id" />
+                                        <input type="hidden" id="txhiddeninterest_rate_type_id" value="@CMModels[i].interest_rate_type_id" />
+                                        <input type="hidden" id="txhiddeninstallment_id" value="@CMModels[i].installment_id" />
+                                        <input type="hidden" id="txhiddentenor" value="@CMModels[i].tenor" />
+                                        <input type="hidden" id="txhiddenasset_cost" value="@CMModels[i].asset_cost" />
+                                        <input type="hidden" id="txhiddengross_down_payment" value="@CMModels[i].gross_down_payment" />
+                                        <input type="hidden" id="txhiddenadmin_fee" value="@CMModels[i].admin_fee" />
+                                        <input type="hidden" id="txhiddenbiaya_provisi" value="@CMModels[i].biaya_provisi" />
+                                        <input type="hidden" id="txhiddeninsurance_fee" value="@CMModels[i].insurance_fee" />
+                                        <input type="hidden" id="txhiddenuang_muka_murni_kons" value="@CMModels[i].uang_muka_murni_kons" />
+                                        <input type="hidden" id="txhiddenjml_pembiayaan" value="@CMModels[i].jml_pembiayaan" />
+                                        <input type="hidden" id="txhiddenamount_installment" value="@CMModels[i].amount_installment" />
+                                        <input type="hidden" id="txhiddeneffective_rate" value="@CMModels[i].effective_rate" />
+                                        <input type="hidden" id="txhiddenflat_rate" value="@CMModels[i].flat_rate" />
+                                        <input type="hidden" id="txhiddendisc_deposit" value="@CMModels[i].disc_deposit" />
+                                        <input type="hidden" id="txhiddenoverdue_rate" value="@CMModels[i].overdue_rate" />
+                                        <input type="hidden" id="txhiddenCGSCabangNo" value="@CMModels[i].CGSCabangNo" />
+                                        <input type="hidden" id="txhiddendisc_type" value="@CMModels[i].disc_type" />
+                                        <input type="hidden" id="txhiddenTAC_max" value="@CMModels[i].TAC_max" />
+                                        <input type="hidden" id="txhiddenkomper_max" value="@CMModels[i].komper_max" />
+                                        <input type="hidden" id="txhiddendeposit_installment" value="@CMModels[i].deposit_installment" />
+                                        <input type="hidden" id="txhiddenis_topup_ms" value="@CMModels[i].is_topup_ms" />
+                                        <input type="hidden" id="txhiddenold_npp" value="@CMModels[i].old_npp" />
+                                        <input type="hidden" id="txhiddenskema_id" value="@CMModels[i].skema_id" />
+                                        <input type="hidden" id="txhiddenperantara_type_id" value="@CMModels[i].perantara_type_id" />
+                                        <input type="hidden" id="txhiddenagent_id" value="@CMModels[i].agent_id" />
+                                        <input type="hidden" id="txhiddenagent_name" value="@CMModels[i].agent_name" />
+                                        <input type="hidden" id="txhiddenownership_account_type_id" value="@CMModels[i].ownership_account_type_id" />
+                                        <input type="hidden" id="txhiddenbank_account_id_umc" value="@CMModels[i].bank_account_id_umc" />
+                                        <input type="hidden" id="txhiddenbank_id_umc" value="@CMModels[i].bank_id_umc" />
+                                        <input type="hidden" id="txhiddenbank_name_umc" value="@CMModels[i].bank_name_umc" />
+                                        <input type="hidden" id="txhiddenaccount_no_umc" value="@CMModels[i].account_no_umc" />
+                                        <input type="hidden" id="txhiddenaccount_name_umc" value="@CMModels[i].account_name_umc" />                                        
+                                        <input type="hidden" id="hdnIsMegaProteksiGold" value="@CMModels[i].is_package_product" name="is_package_product">
+                                        <input type="hidden" id="hdnMegaProteksiGoldAmount" value="@CMModels[i].package_product_amount" name="package_product_amount">
+                                        <input type="hidden" id="hdnchasis_no" value="@CMModels[i].chasis_no">
+                                        <input type="hidden" id="hdnmachine_no" value="@CMModels[i].machine_no">
+                                        <input type="hidden" id="hdnprefix_plat" value="@CMModels[i].prefix_plat">
+                                        <input type="hidden" id="hdnplat_no" value="@CMModels[i].plat_no">
+                                        <input type="hidden" id="hdnplat_code" value="@CMModels[i].plat_code">
+                                        <input type="hidden" id="hdnchasis_code" value="@CMModels[i].chasis_code">
+                                        <input type="hidden" id="hdnFPK1" value="@CMModels[i].FPK1">
+                                        <input type="hidden" id="hdnFPK2" value="@CMModels[i].FPK2">
+                                        <input type="hidden" id="hdnCustomerName" value="@CMModels[i].customer_name">
+                                        <input type="hidden" id="hdnCustomerSpouseName" value="@CMModels[i].customer_reference_1">
+                                        <input type="hidden" id="hdndestination_bank_id_umc" value="@CMModels[i].destination_bank_id_umc">
+                                        <input type="hidden" id="hdndestination_bank_account_id_umc" value="@CMModels[i].destination_bank_account_id_umc">
+                                        <input type="hidden" id="hdndestination_account_no_umc" value="@CMModels[i].destination_account_no_umc">
+                                        <input type="hidden" id="hdndestination_account_name_umc" value="@CMModels[i].destination_account_name_umc">
+                                        <input type="hidden" id="hdnSTNK_status_id" value="@CMModels[i].STNK_status_id">
+                                        <input type="hidden" id="hdnBPKB_invoice" value="@CMModels[i].BPKB_invoice">
+                                        <input type="hidden" id="hdnmarket_price" value="@CMModels[i].market_price">
+                                        <input type="hidden" id="hdnmax_plafon_pencairan" value="@CMModels[i].max_plafon_pencairan">
+
+                                        i++;
+                                    }
+                                }
+
+                                <p>Tipe Aplikasi</p>
+                                <select class="form-control" name="application_type_id" id="ms_application_type" required>
+                                    <option value="">Pilih Tipe Aplikasi</option>
+                                    @{
+                                        var ms_application_type = ViewBag.ms_application_type;
+                                        for (int i = 0; i < @ms_application_type.Count; i++)
+                                        {
+                                            <option value="@ms_application_type[i].application_type_id">@ms_application_type[i].application_type_name</option>
+                                        }
+                                    }
+                                </select>
+
+                                <p>Tipe Finance</p>
+                                <select class="form-control" name="product_finance_id" id="ms_product_finance" required>
+                                    <option value="">Pilih Tipe Finance</option>
+                                    @{
+                                        var ms_product_finance = ViewBag.ms_product_finance;
+
+                                        for (int i = 0; i < @ms_product_finance.Count; i++)
+                                        {
+                                                        <option value="@ms_product_finance[i].product_finance_id">@ms_product_finance[i].product_finance_name</option>
+                                        }
+                                    }
+                                </select>
+
+                                <p>Baru / Bekas</p>
+                                <select class="form-control" id="is_item_new" required>
+                                    <option value="" selected>Pilih Baru / Bekas</option>
+                                    <option value="1">Baru</option>
+                                    <option value="0">Bekas</option>
+                                </select>
+                                 <input type="hidden" id="hdis_item_newSelecytedValue" name="is_item_new" />
+
+                                <p>Item</p>
+                                <select class="form-control" id="asset_kind_id" name="asset_kind_id" required>
+                                    <option value="">Pilih Item</option>
+                                    @{
+                                        var ms_asset_kind = ViewBag.ms_asset_kind;
+
+                                        for (int i = 0; i < @ms_asset_kind.Count; i++)
+                                        {
+                                            <option value="@ms_asset_kind[i].asset_kind_id">@ms_asset_kind[i].asset_kind_description</option>
+                                        }
+                                    }
+                                </select>
+
+                                <p>Merk Item</p>
+                                <select class="form-control" name="item_brand_id" id="ms_item_brand" required>
+                                    <option value="">Pilih Merk Item</option>
+                                </select>
+
+                                <p style="margin-top: 2%;">Model Item</p>
+                                <select class="form-control" name="asset_kind_class_id" id="ms_asset_kind_class" required>
+                                    <option value="">Pilih Model Item</option>
+                                </select>
+
+                                <p>Pilih Tipe Item</p>
+                                <div class="row">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                        <input type="hidden" id="txitem_brand_type_id" name="item_brand_type_id" />
+                                        <textarea class="form-control" readonly id="txItemname" name="item_type_name" placeholder="Pilih Tipe Item" required></textarea>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <button id="btnshow_Item" class="btn-input" type="button" onclick="cm_lookup.LookupType('Item', this.id)" style="width: 100%; margin-bottom: 5%;"><i id="ibtnshow_Item" class="fa fa-sign-in fa-lg fa-fw"></i>Pilih Tipe Item</button>
+
+                                        <div id="mdlitem" class="modal">
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4>Pilih Tipe Item</h4>
+                                                        <div class="tile">
+                                                            <div class="modal-body" id="containerItem"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+
+                                <p>CC</p>
+                                <input type="text" name="CC" id="CC" class="form-control" placeholder="CC" readonly>
+
+                                <p>Tahun Kendaraan</p>
+                                <select class="form-control" name="year" id="year" required>
+                                    <option value="">Pilih Tahun Kendaraan</option>
+                                </select>
+
+                                <p>Produk</p>
+                                <select class="form-control" id="product_id" required>
+                                    <option>Pilih Produk</option>
+                                </select>
+
+                                <p>Pilih Dealer</p>
+                                <div class="row">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                        <input type="hidden" name="dealer_code" id="txdealercode" />
+                                        <textarea class="form-control" readonly name="dealer_name" id="txdealername" placeholder="Pilih Dealer" required></textarea>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <button id="btnshow_Dealer" class="btn-input" type="button" onclick="cm_lookup.LookupType('Dealer', this.id)" style="width: 100%; margin-bottom: 5%;"><i id="ibtnshow_Dealer" class="fa fa-sign-in fa-lg fa-fw"></i>Pilih Dealer</button>
+
+                                        <div id="mdldealer" class="modal">
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4>Pilih Dealer</h4>
+                                                        <div class="tile">
+                                                            <div class="modal-body" id="containerDealer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+
+                            </div>
+
+                            <!-- KOLOM 2 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <p>Pilih Surveyor</p>
+                                <div class="row">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                        <input type="hidden" name="surveyor_id" id="txSurveyorid" />
+                                        <textarea class="form-control" readonly name="surveyor_name" id="txSurveyorname" placeholder="Pilih Surveyor" required></textarea>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <button id="btnshow_Surveyor" class="btn-input" type="button" onclick="cm_lookup.LookupType('Surveyor', this.id)" style="width: 100%; margin-bottom: 5%;"><i id="ibtnshow_Surveyor" class="fa fa-sign-in fa-lg fa-fw"></i>Pilih Surveyor</button>
+
+                                        <div id="mdlsurveyor" class="modal">
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4>Pilih Surveyor</h4>
+                                                        <div class="tile">
+                                                            <div class="modal-body" id="containerSurveyor"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p>Pilih Marketing Head</p>
+                                <div class="row">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                        <input type="hidden" name="marketinghead_id" id="txMarketingHeadid" />
+                                        <textarea class="form-control" readonly name="marketinghead_name" id="txMarketingHeadname" placeholder="Pilih Marketing Head" required></textarea>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <button id="btnshow_MarketingHead" class="btn-input" type="button" onclick="cm_lookup.LookupType('MarketingHead', this.id)" style="width: 100%; margin-bottom: 5%;"><i id="ibtnshow_MarketingHead" class="fa fa-sign-in fa-lg fa-fw"></i> Marketing Head</button>
+
+                                        <div id="mdlmarketinghead" class="modal">
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4>Pilih Marketing Head</h4>
+                                                        <div class="tile">
+                                                            <div class="modal-body" id="containerMarketingHead"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p>Pilih CGS No</p>
+                                <div class="row">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                        <textarea class="form-control" readonly id="txCGSNo" placeholder="Pilih CGS No" name="CGSCabangNo" required></textarea>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <button id="btnshow_CGSNo" class="btn-input" type="button" onclick="cm_lookup.LookupType('CGSNo', this.id)" style="width: 100%; margin-bottom: 5%;"><i id="ibtnshow_CGSNo" class="fa fa-sign-in fa-lg fa-fw"></i>Pilih CGS No</button>
+
+                                        <div id="mdlCGSNo" class="modal">
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4>Pilih CGS No</h4>
+                                                        <div class="tile">
+                                                            <div class="modal-body" id="containerCGSNo"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="divUMC">
+                                    <p>Tipe Kerjasama</p>
+                                    <select class="form-control" id="tipekerjasama" name="skema_id" required>
+                                        <option value="" selected>Pilih Tipe Kerjasama</option>
+                                        <option value="1">Skema I</option>
+                                        <option value="3">Skema III</option>
+                                    </select>
+
+                                    <p>Tipe Perantara</p>
+                                    <select class="form-control" id="tipeperantara" name="perantara_type_id" required>
+                                        <option value="">Pilih Tipe Perantara</option>
+                                        @{
+                                            var TipePerantara = ViewBag.TipePerantara;
+
+                                            for (int i = 0; i < @TipePerantara.Count; i++)
+                                            {
+                                                            <option value="@TipePerantara[i].KdPerantara">@TipePerantara[i].Nama_Perantara</option>
+                                            }
+                                        }
+                                    </select>
+
+                                    <p>Pilih Perantara</p>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                            <input type="hidden" name="agent_id" id="txPerantaraId" />
+                                            <textarea class="form-control" readonly id="txPerantara" placeholder="Pilih Perantara" name="agent_name" required></textarea>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <button id="btnshow_Perantara" class="btn-input" type="button" onclick="cm_lookup.LookupType('Perantara', this.id)" style="width: 100%; margin-bottom: 5%;"><i id="ibtnshow_Perantara" class="fa fa-sign-in fa-lg fa-fw"></i>Pilih Perantara</button>
+
+                                            <div id="mdlPerantara" class="modal">
+                                                <!-- Modal content -->
+                                                <div class="modal-content">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            <h4>Pilih Perantara</h4>
+                                                            <div class="tile">
+                                                                <div class="modal-body" id="containerPerantara"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>Pemilik Rekening</p>
+                                    <select class="form-control" id="pemilikrekening" name="ownership_account_type_id" required>
+                                        <option value="">Pilih Pemilik Rekening</option>                                        
+                                        @{
+                                            var AccountOwner = ViewBag.AccountOwner;
+
+                                            for (int i = 0; i < @AccountOwner.Count; i++)
+                                            {
+                                                <option value="@AccountOwner[i].account_owner_id">@AccountOwner[i].account_owner_desc</option>
+                                            }
+                                        }
+                                    </select>
+
+                                    <p>Nama Bank</p>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                            <input type="hidden" name="bank_account_id_umc" id="hdBankAccountID" />
+                                            <input type="hidden" name="bank_id_umc" id="txBankNameId" />
+                                            <textarea class="form-control" id="txBankName" placeholder="Pilih Nama Bank" name="bank_name_umc" required></textarea>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <button id="btnshow_BankName" class="btn-input" type="button" onclick="cm_lookup.LookupType('BankName', this.id)" style="width: 100%; margin-bottom: 5%;"><i id="ibtnshow_BankName" class="fa fa-sign-in fa-lg fa-fw"></i>Pilih Nama Bank</button>
+
+                                            <div id="mdlBankName" class="modal">
+                                                <!-- Modal content -->
+                                                <div class="modal-content">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            <h4>Pilih Nama Bank</h4>
+                                                            <div class="tile">
+                                                                <div class="modal-body" id="containerBankName"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>No Rekening</p>
+                                    <input class="form-control" id="NoRekening" placeholder="Input No Rekening" name="account_no_umc">
+
+                                    <p>Rekening Atas Nama</p>
+                                    <input class="form-control" id="rekeningAtasNama" placeholder="Input Rekening Atas Nama" name="account_name_umc">
+
+
+
+
+
+
+
+
+
+                                    <p>Pemilik Rekening (Tujuan)</p>
+                                    <select class="form-control" id="destination_bank_account_id_umc" name="destination_bank_account_id_umc" required>
+                                        <option value="">Pilih Pemilik Rekening</option>                                        
+                                        @{
+                                            var AccountOwner2 = ViewBag.AccountOwner;
+
+                                            for (int i = 0; i < @AccountOwner2.Count; i++)
+                                            {
+
+                                                //<option value="@AccountOwner2[i].account_owner_id">@AccountOwner2[i].account_owner_desc</option>
+
+                                                if (@AccountOwner2[i].is_destination)
+                                                {                                                    
+                                                    <option value="@AccountOwner2[i].account_owner_id">@AccountOwner2[i].account_owner_desc</option>
+                                                }
+
+                                            }
+                                        }
+                                    </select>
+
+                                    <p>Nama Bank (Tujuan)</p>
+                                    <select class="form-control" id="destination_bank_id_umc" name="destination_bank_id_umc" required>
+                                        <option value="">Pilih Nama Bank</option>                                        
+                                    </select>
+                                   
+                                    <p>No Rekening (Tujuan)</p>
+                                    <input class="form-control" id="destination_account_no_umc" placeholder="Input No Rekening" name="destination_account_no_umc" required>
+
+                                    <p>Rekening Atas Nama (Tujuan)</p>
+                                    <input class="form-control" id="destination_account_name_umc" placeholder="Input Rekening Atas Nama" name="destination_account_name_umc" required>
+
+
+
+
+                                    <p>No Rangka</p>
+                                    <input class="form-control" id="txtNoRangka" placeholder="Input No Rangka" name="chasis_no" maxlength="17">
+
+                                    <p>No Mesin</p>
+                                    <input class="form-control" id="txtNoMesin" placeholder="Input No Mesin" name="machine_no">
+
+                                    <p>No Plat</p>
+                                    <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                                        <select class="form-control" id="ddlPlatPrefix" name="prefix_plat">
+                                        <option value="">Pilih Prefix</option>                                        
+                                        @{
+                                            var PlatPrefix = ViewBag.PlatPrefix;
+
+                                            for (int i = 0; i < @PlatPrefix.Count; i++)
+                                            {
+                                                <option value="@PlatPrefix[i].prefix_plat">@PlatPrefix[i].prefix_plat</option>
+                                            }
+                                        }
+                                    </select>
+                                    </div>
+                                    <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                                        <input class="form-control" id="txtNoPlat" name="plat_no">
+                                    </div>
+                                    <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                                        <input class="form-control" id="txtPlatCode" name="plat_code">
+                                    </div>                                    
+                                    
+                                    <input type="hidden" id="hdnNoPlat" name="car_no_UMC">
+
+                                     <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <p>&nbsp;</p>
+                                            <p>Faktur BPKB</p>
+                                            <select class="form-control" id="BPKB_invoice" name="BPKB_invoice" required>
+                                                <option value="">Pilih Faktur BPKB</option> 
+                                                <option value="0">Tidak</option> 
+                                                <option value="1">Ya</option>                                     
+                                            </select>
+                                        </div>                                    
+                                    </div>                                    
+
+                                    <p>Status STNK</p>
+                                    <select class="form-control" id="STNK_status_id" name="STNK_status_id" required>
+                                        <option value="">Pilih Status STNK</option>                                        
+                                        @{
+                                            var STNK_status = ViewBag.STNK_status;
+
+                                            for (int i = 0; i < @STNK_status.Count; i++)
+                                            {
+                                                <option value="@STNK_status[i].STNK_status_id">@STNK_status[i].STNK_status_description</option>
+                                            }
+                                        }
+                                    </select> 
+
+                                </div>  
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p>&nbsp;</p>
+                                        <p>Produk Marketing</p>
+                                        <select class="form-control" id="product_marketing_id" name="product_marketing_id" required>
+                                            <option>Pilih Produk Marketing</option>
+                                        </select>
+                                    </div>                                    
+                                </div>                                
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Deposit Angsuran</p>
+                                        <select class="form-control" id="DepositAngsuran" name="DepositAngsuran" required>
+                                            <option selected value="">Pilih Deposit Angsuran</option>
+                                            <option value="0">Tidak</option>
+                                            <option value="1">Ya</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="divPengaliDeposit" style="display:none">
+                                        <p>Deposit</p>
+                                        <select class="form-control" id="Deposit" name="deposit_installment" required>
+                                            <option selected value="">Pilih Deposit</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                
+
+                                <div class="row" style="margin-top: 6%;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p>Nama STNK</p>
+                                        <select class="form-control" id="STNKName" name="STNK_name_id" required>
+                                            <option>Pilih Nama STNK</option>
+                                        </select>
+                                    </div>                                    
+                                </div>        
+
+                                <p><input type="text" id="lblNamaSTNK2" value="Nama STNK" style="border-style:none; width:100%"  /></p>
+                                <input type="text" name="STNK_name_description" id="PartnerSTNKName" class="form-control" placeholder="Nama STNK" required>
+
+                                <p>Asal PO</p>
+                                <select class="form-control" id="provenance_PO_id" required>
+                                    <option>Pilih Asal PO</option>
+                                </select>
+
+                                <div class="row" style='margin-top:3%'>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p>FPK Tampak Halaman Depan</p>
+                                        <p>
+                                            <a id="DownloadFPK1" class='btn-input ladda-button' target='_blank' href='DownloadFile?photo_type_id=17&photo_id=1&is_new_zoom=1'>Download</a>                                        
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style='margin-top:3%'>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p>Tempat Usaha tampak Depan</p>
+                                        <p>
+                                            <a id="DownloadFPK2" class='btn-input ladda-button' target='_blank' href='DownloadFile?photo_type_id=2&photo_id=4&is_new_zoom=1'>Download</a>                                        
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </Asset>
+            </div>
+            <!-- END DATA ASSET -->
+            <!-- DATA PRICE -->
+            <div class="container">
+                <button id="Price_more" class="Price_more" type="button" style="width: 100%;">Data Price</button>
+                <btnPrice><h4><div class="bgc-menu">Data Price <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnPrice>
+                <Price class="Price" id="Price">
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <!-- DATA PRICE KOLOM 1 -->
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+
+                                @*<p>Paket Pembiayaan</p>
+                                <select class="form-control" id="Select">
+                                <option>Pilih Paket Pembiayaan</option>
+                                </select>*@
+
+                                <p style="margin-top: 8%;">AR</p>
+                                <select class="form-control" id="AR_id" name="ar" required>
+                                    <option value="">Pilih AR</option>
+                                </select>
+
+                                <p style="margin-top: 8%;">Tipe Cover Asuransi</p>
+                                <select class="form-control" id="insurance_cover_type_id" required>
+                                    <option value="">Pilih Tipe Cover Asuransi</option>
+                                </select>
+
+                                <p style="margin-top: 8%;">Tipe Asuransi</p>
+                                <select class="form-control" id="insurance_type_id" required>
+                                    <option value="">Pilih Tipe Asuransi</option>
+                                </select>
+
+                                @*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">*@
+                                    <p>Angsuran</p>
+                                    <select class="form-control" id="KodeAngsuran" required>
+                                        <option value="">Pilih Angsuran</option>
+                                        @{
+                                            var Installment = ViewBag.Installment;
+                                            for (int i = 0; i < @Installment.Count; i++)
+                                            {
+                                                            <option value="@Installment[i].KodeAngsuran">@Installment[i].NamaTipeAngsuran</option>
+                                            }
+                                        }
+                                    </select>
+                                @*</div>*@
+
+                                <p style="margin-top: 8%;">Interest Rate Type</p>
+                                <select class="form-control" id="interest_rate_type_id" name="interest_rate_type_id" required>
+                                    <option>Pilih Interest Rate Type</option>
+                                </select>
+
+                                <p style="margin-top: 8%;">Top Up Mega Solusi</p>
+                                <select class="form-control" id="topupmegasolusi" name="is_topup_ms" required>
+                                    <option value="" selected>Pilih Top Up Mega Solusi</option>                                    
+                                    <option value="0">Tidak</option>
+                                    <option value="1">Ya</option>
+                                </select> 
+                                
+                                <div id="divOldNPP">
+                                    <p>Pilih NPP Lama</p>
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <textarea class="form-control" readonly id="txOldNPP" placeholder="Pilih NPP Lama" name="old_npp"></textarea>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                            <button id="btnshow_OldNPP" class="btn-input" type="button" onclick="cm_lookup.LookupType('OldNPP', this.id)" style="width: 100%; margin-bottom: 5%;"><i id="ibtnshow_OldNPP" class="fa fa-sign-in fa-lg fa-fw"></i>NPP Lama</button>
+
+                                            <div id="mdlOldNPP" class="modal">
+                                                <!-- Modal content -->
+                                                <div class="modal-content">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            <h4>Pilih NPP Lama</h4>
+                                                            <div class="tile">
+                                                                <div class="modal-body" id="containerOldNPP"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <p style="margin-top: 8%;"><input id="cbxMegaProteksiGold" type="checkbox" style="margin-right: 2%;">Mega Proteksi Gold</p>
+                                <input class="form-control" id="MegaProteksiGold" name="MegaProteksiGold" placeholder="Mega Proteksi Gold" readonly>
+                                <input type="hidden" id="hdnOldTenor">
+                                
+                            </div>
+                            <!-- END DATA PRICE KOLOM 1 -->
+                            <!-- DATA PRICE KOLOM 2 -->
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+
+                                <p>Lama Angsuran / Tenor ( Bulan )</p>
+                                <input class="form-control" id="txtenor" name="tenor" placeholder="Input Lama Angsuran / Tenor ( Bulan )" required type="number">
+
+                                <div id="divMarketPrice" class="row" style="margin-top: 7%">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Market Price</p>
+                                        <input class="form-control" id="MarketPrice" placeholder="Market Price" readonly>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Maksimal Pencairan</p>
+                                        <input class="form-control" id="MaxPencairan" placeholder="Maksimal Pencairan" readonly>
+                                    </div>
+                                    <input class="form-control" id="WarningMarketPrice" style="color:red; border-style:none; font-size:8pt" value="Market Price tidak ditemukan. Silakan menghubungi Dept AMU">
+                                </div>
+                                <div class="row" style="margin-top: 7%;">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Harga OTR</p>
+                                        <input class="form-control" id="OTR" name="asset_cost" placeholder="Input Harga OTR" required>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Uang Muka Gross</p>
+                                        <input class="form-control" id="DPGross" name="gross_down_payment" placeholder="Input Uang Muka Gross" required>
+                                    </div>
+                                </div>
+
+                                <p style="margin-top: 6%;">Nominal Pencairan Dealer</p>
+                                <input class="form-control" id="NominalPencairanDealer" placeholder="Nominal Pencairan Dealer" readonly required>                             
+
+                                <div class="row" style="margin-top: 6%;">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Biaya Administrasi</p>
+                                        <input class="form-control" id="AdminFee" name="admin_fee" placeholder="Input Biaya Administrasi" required>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Biaya Provisi</p>
+                                        <input class="form-control" id="BiayaProvisi" name="biaya_provisi" placeholder="Input Biaya Provisi" required> 
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 6%;">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Biaya Asuransi</p>
+                                        <input class="form-control" id="InsuranceFee" name="insurance_fee" placeholder="Input Biaya Asuransi" required readonly>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Uang Muka Murni</p>
+                                        <input class="form-control" id="UangMukaMurni" name="uang_muka_murni_kons" placeholder="Input Uang Muka Murni" required>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- END DATA PRICE KOLOM 2 -->
+                            <!-- DATA PRICE KOLOM 3 -->
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+                                <div class="row" style="margin-top: 6%;">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Jumlah Pembiayaan</p>
+                                        <input class="form-control" id="JlhPembiayaan" name="jml_pembiayaan" placeholder="Jumlah Pembiayaan" required readonly>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Nominal Angsuran</p>
+                                        <input class="form-control" id="AmtInstallment" name="amount_installment" placeholder="Input Nominal Angsuran" required>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 6%;">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Bunga Efektif ( % )</p>
+                                        <input class="form-control" id="BungaEfektif" name="effective_rate" placeholder="Bunga Efektif ( % )" required readonly>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Bunga Flat ( % )</p>
+                                        <input class="form-control" id="BungaFlat" name="flat_rate" placeholder="Bunga Flat ( % )" required readonly>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 6%;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p>Biaya Administrasi Dealer</p>
+                                        <input class="form-control" id="BiayaAdminDealer" name="disc_deposit" placeholder="Biaya Admin Dealer" required>
+                                    </div>                                    
+                                </div>
+
+                                <div class="row">
+                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <select class="form-control" id="disc_type" name="disc_type">
+                                            <option value="1" selected>Dimuka</option>
+                                            <option value="0">Dibelakang</option>
+                                        </select>                                        
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>&nbsp;</p>
+                                        <input type="hidden" id="TAC_max" name="TAC_max" />
+                                        <input type="text" id="TAC_maxPersentase" readonly style="border-style:none">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 6%;">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>Max Komisi Perantara</p>
+                                        <input class="form-control" id="komper_max" name="komper_max" placeholder="Max Komisi Perantara" required>                                        
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>&nbsp;</p>                                        
+                                        <input type="text" id="TAC_maxKomperPersentase" readonly style="border-style:none">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 6%;">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>TAC max ( %)</p>
+                                        @{
+                                            var TACMax = ViewBag.TACMax;
+                                            for (int i = 0; i < @TACMax.Count; i++)
+                                            {
+                                                <input class="form-control" id="tac_maxDesc" placeholder="TAC max" required readonly value="@TACMax[i].value">
+                                            }
+                                        } 
+                                    </div>
+                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <p>OD Rate ( % )</p>
+                                        @{
+                                            var ODRate = ViewBag.ODRate;
+                                            for (int i = 0; i < @ODRate.Count; i++)
+                                            {
+                                                <input class="form-control" id="overdue_rate" name="overdue_rate" placeholder="OD Rate ( % )" required readonly value="@ODRate[i].value">
+                                            }
+                                        } 
+                                    </div>  
+
+                                </div>
+                            </div>
+                            <!-- END DATA PRICE KOLOM 3 -->
+
+                        </div>
+                    </div>
+                </Price>
+            </div>
+            <!-- END DATA PRICE -->
+            <!-- ASSET ICON NEXT -->
+            <div class="container">
+                <div class="title text-right" style="margin-right: 2%;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                        
+                        <button type="submit" id="btnPrev" asp-controller="CM" asp-action="BackToCASMotor" style="border-style:none; background-color:transparent"><img src="~/assets/ico/back.png"></button>
+                        <button type="submit" id="btnNext" asp-controller="CM" asp-action="NextToCMUpload" style="border-style:none; background-color:transparent"><img src="~/assets/ico/next.png"></button>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- END ASSET ICON NEXT -->
+            <!-- BUTTON CANCEL SAVE -->
+            <div class="container" style="margin-top: 5%; margin-bottom: 5%; margin-left: -1%;">
+                <div class="title text-center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <a href="#" class="btn-submit" id="myBtn" data-toggle="tab" style="width: 100%;">Cancel</a>
+                        </div>*@
+                        <center>
+                            @if (Context.Session.GetString("Flag") == "Add" || Context.Session.GetString("Flag") == "Edit"|| Context.Session.GetString("Flag") == "Correction")
+                            {
+                                <button type="submit" class="btn-submit" id="btn-save" style="width: 30%;">Save Draft</button>
+                            } 
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <!-- END BUTTON CANCEL SAVE -->
+
+            
+
+        </div>    
+    </section>
+    <!-- END INPUT CM -->
+</form>
+
+@*<form method="post" name="Postform">    
+    <input type="hidden" name="creditId" value="2022111125665">
+    <input type="hidden" name="isEdit" value="true">
+    <input type="hidden" name="item" value="001">
+</form>*@
+
+<script src="~/Scripts/Acquisition/CM/CMMotorCycle.js"></script>
+
+<script type="text/javascript">
+    var state = "@((string)ViewBag.StateCM)";
+    var msg = "@((string)ViewBag.MessageCM)";
+    if (state == "@(Collection.Status.SUCCESS)") {
+        Common.Alert.Success(msg);
+    }
+    else if (state == "@(Collection.Status.FAILED)") {
+        Common.Alert.Error(msg);
+    }
+</script>

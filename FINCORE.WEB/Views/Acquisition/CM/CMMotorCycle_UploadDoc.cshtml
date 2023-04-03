@@ -1,0 +1,302 @@
+@model FINCORE.Models.Models.Acquisition.CM.CMPhotoTypeModels
+@using FINCORE.Models.Models.Acquisition.CM
+@using FINCORE.Services.Helpers.Response
+@using FINCORE.WEB.Helpers
+@using static FINCORE.Services.Helpers.Response.Collection
+@{
+    ViewData["Title"] = "AKUISISI MOTOR DATA NASABAH - UPLOAD DOKUMEN";
+}
+<br />
+
+<form id="contactform" method="post">
+    <input type="hidden" id="txhiddenCreditId" name="credit_id" value="@Context.Session.GetString("credit_id")" />
+    <input type="hidden" id="txhiddenFlag" value="@Context.Session.GetString("Flag")" />
+    <input type="hidden" id="txhiddenCompanyId" value="@Context.Session.GetString("CompanyId")" />
+    <input type="hidden" id="txhiddenBranchId" value="@Context.Session.GetString("BranchId")" /> 
+    
+    <input type="hidden" id="txhiddenResult" name="Result" />
+    <input type="hidden" id="txhiddenResultMessage" name="ResultMessage" />
+
+    @{
+        var CMModels = ViewBag.CMModels;
+        for (int i = 0; i < @CMModels.Count; i++)
+        {
+            <input type="hidden" id="txhiddenStatusApproval" value="@CMModels[i].StatusApproval" />
+            <input type="hidden" id="txhiddenIsApprover" value="@CMModels[i].IsApprover" />
+            <input type="hidden" id="txhiddenIsLastApprover" value="@CMModels[i].IsLastApprover" />
+            <input type="hidden" id="txhiddenIsCreditAnalyst" value="@CMModels[i].IsCreditAnalyst" />
+            <input type="hidden" id="txhiddenJumlah_Pembiayaan" value="@CMModels[i].jml_pembiayaan" />
+            <input type="hidden" id="txhiddenNPWP" value="@CMModels[i].NPWP_no" />
+
+            i++;
+        }
+    }        
+
+<section id="contact" class="feature-wrapper">
+    <div class="containers" style="margin-top: -5%;">
+       
+        <!-- DATA FOTO ID -->
+        <div class="container">
+            <button id="FotoID_more" class="FotoID_more" type="button" style="width: 100%;">Data FotoID</button>
+            <btnFotoID><h4><div class="bgc-menu">Data FotoID <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnFotoID>
+            <FotoID class="FotoID" id="FotoID">
+                <div class="tile">
+                    <div class="form-group row">
+                        @{
+                            var ms_photo_type = ViewBag.ms_photo_type;
+                            if (@ms_photo_type.Count > 0)
+                            {
+                                <input type="hidden" id="txCountFile" value="@ms_photo_type.Count" />
+
+                                <div id="divData" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </FotoID>
+        </div>
+        <!-- END FOTO ID -->
+
+        <!-- ANALISA & KESIMPULAN (AO) -->
+        <div class="container" id="divAO">
+            <button id="Analisa_more" class="Analisa_more" type="button" style="width: 100%;">Analisa & Kesimpulan (AO) </button>
+            <div class="data-input">
+                <btnAnalisa><h4><div class="bgc-menu">Analisa & Kesimpulan (AO) <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnAnalisa>
+                <Analisa class="Analisa" id="Analisa">
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <!-- KOLOM 1 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+                                <p>Analisa</p>
+                                <textarea class="form-control" id="txtanalisa_bike" name="analysis" placeholder="Input Analisa" style="margin-top: 1px"></textarea>
+                            </div>
+                            <!-- END KOLOM 1 -->
+                            <!-- KOLOM 2 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <p>Kesimpulan</p>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <select class="form-control" id="Kesimpulan" name="conclusion">
+                                        <option value="">Pilih Kesimpulan</option>
+                                        <option value="Y">Layak</option>
+                                        <option value="N">Tidak Layak</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- END KOLOM 2 -->
+
+                        </div>
+                    </div>
+                </Analisa>
+            </div>
+        </div>
+        <!-- END ANALISA & KESIMPULAN (AO) -->
+            
+        <!-- SKALA KEMUNGKINAN RESIKO -->
+        <div class="container" id="divSkalaResiko">
+            <button id="SkalaResiko_more" class="SkalaResiko_more" type="button" style="width: 100%;">Rekap Skala Kemungkinan Resiko</button>
+            <btnSkalaResiko><h4><div class="bgc-menu">Rekap Skala Kemungkinan Resiko <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnSkalaResiko>
+            <SkalaResiko class="SkalaResiko" id="SkalaResiko">
+                <div class="tile">
+                    <div class="form-group row">
+                        @{
+                            var SkalaResiko = ViewBag.SkalaResiko; 
+                            <input type="hidden" id="txCountSkalaResiko" value="@SkalaResiko.Count" />
+
+                            var SkalaResikoValue = ViewBag.SkalaResikoValue;                           
+
+                            for (int i = 0; i < @SkalaResiko.Count; i++)
+                            {
+                                <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                                    <input type="hidden" id="@SkalaResiko[i].risk_scale_id_txt" value="@SkalaResiko[i].risk_scale_id" />
+                                    <p>@SkalaResiko[i].risk_scale_desc</p>
+
+                                    @if (Context.Session.GetString("Flag") == "Approval")
+                                    {
+                                        <select class="form-control" required id="@SkalaResiko[i].risk_scale_id_ddl">
+                                        <option value="">Pilih Skala Resiko</option>
+                                        @{
+                                            for (int j = 0; j < @SkalaResikoValue.Count; j++)
+                                            {
+                                                <option value="@SkalaResikoValue[j].scale_id">@SkalaResikoValue[j].scale_value</option>
+                                            }
+                                        }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select class="form-control" id="@SkalaResiko[i].risk_scale_id_ddl">
+                                            <option value="">Pilih Skala Resiko</option>
+                                            @{
+                                                for (int j = 0; j < @SkalaResikoValue.Count; j++)
+                                                {
+                                                    <option value="@SkalaResikoValue[j].scale_id">@SkalaResikoValue[j].scale_value</option>
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                    
+                                </div>
+                                                               
+                            }
+                            
+                        }
+                    </div>
+                </div>
+            </SkalaResiko>          
+        </div>
+        <!-- END SKALA KEMUNGKINAN RESIKO -->        
+
+        @if (Context.Session.GetString("Flag") == "Approval")
+        {
+            <div class="container" id="divKeputusan">
+                <button id="Keputusan_more" class="Keputusan_more" type="button" style="width: 100%;">Keputusan </button>
+                <btnKeputusan><h4><div class="bgc-menu">Keputusan<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnKeputusan>
+                <Keputusan class="Keputusan" id="Keputusan">
+                    <div class="tile">
+                        <div class="form-group row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p>Keputusan</p>
+                                <select class="form-control" name="reason_id" id="ddlKeputusan" required>
+                                    <option value="">Pilih Keputusan</option>
+                                    @{
+                                        var ApprReason = ViewBag.ApprReason;
+
+                                        for (int i = 0; i < @ApprReason.Count; i++)
+                                        {
+                                            <option value="@ApprReason[i].reason_id">@ApprReason[i].reason_description</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p>Alasan</p>
+                                <input class="form-control" id="Alasan" name="reason" placeholder="Input Alasan" required>
+                            </div>
+                        </div>
+                    </div>
+                </Keputusan>
+            </div>    
+        }
+
+        @{
+            var CMModels2 = ViewBag.CMModels;
+            for (int i = 0; i < @CMModels2.Count; i++)
+            {
+                if (@CMModels2[i].StatusApproval != "D")
+                {
+                    <div class="form-group row">
+                        <table class="table table-striped table-bordered" style="width:100%; font-size: 11px;" id="tblpage">
+                            <thead>
+                                <tr style="background-color: #ffd951; color: #000;">
+                                    <th>No</th>
+                                    <th>NIK</th>
+                                    <th>Nama</th>
+                                    <th>Keputusan</th>
+                                    <th>Tanggal</th>
+                                    <th>Alasan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var HistoryApproval = ViewBag.HistoryApproval;
+                                    for (int j = 0; j < @HistoryApproval.Count; j++)
+                                    {
+                                        <tr>
+                                            <td>@HistoryApproval[j].No</td>
+                                            <td>@HistoryApproval[j].NIK</td>
+                                            <td>@HistoryApproval[j].Nama</td>
+                                            <td>@HistoryApproval[j].Keputusan</td>
+                                            <td>@HistoryApproval[j].Tanggal</td>
+                                            <td>@HistoryApproval[j].Alasan</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+
+            }
+        } 
+
+        <!-- ASSET ICON NEXT -->
+        <div class="container">
+            <div class="title text-right" style="margin-right: 2%;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <a target="_self" href="../CM/BackToCMMotor"><img src="~/assets/ico/back.png"></a>
+                </div>
+            </div>
+        </div>
+        <!-- END ASSET ICON NEXT -->
+
+        <!-- BUTTON CANCEL SAVE -->
+        <div class="container" style="margin-top: 5%; margin-bottom: 5%; margin-left: -1%;">
+            <div class="title text-center">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @if (Context.Session.GetString("Flag") == "Add" || Context.Session.GetString("Flag") == "Edit" || Context.Session.GetString("Flag") == "Correction")
+                    {
+                        <center>
+                            @{
+                                var CMModels3 = ViewBag.CMModels;
+                                for (int i = 0; i < @CMModels3.Count; i++)
+                                {
+                                    if (@CMModels3[i].StatusApproval == "D")
+                                    {
+                                        <button class="btn-submit" id="btnViewScore" style="width: 30%;">View Score</button>
+                                    }
+                                }
+                            }
+
+                            <button type="submit" class="btn-submit" id="btnSave" style="width: 30%;" asp-action="SaveCMMotor_UploadDoc" asp-controller="CM">Save Draft</button>
+                            <button type="submit" class="btn-submit" id="btnRFA" style="width: 30%;" asp-action="RFACM" asp-controller="CM">RFA</button>
+                        </center>
+                    }
+
+                    <center>
+                        @if (Context.Session.GetString("Flag") == "Approval")
+                        {
+                            <button class="btn-submit" id="btnApprove" type="button" style="width: 30%;display:none;">Approve</button>
+                            <button class="btn-submit" id="btnVerify" type="button" style="width: 30%;display:none;">Verify</button>
+                            <button class="btn-submit" id="btnReview" type="button" style="width: 30%;display:none;">Review</button>
+                            <button class="btn-submit" id="btnReject" style="width: 30%;display:none;" asp-action="Reject" asp-controller="CM">Reject</button>
+                        }
+                    </center>
+
+                </div>
+            </div>
+        </div>
+        <!-- END BUTTON CANCEL SAVE -->
+
+    </div>
+</section>
+</form>
+
+<script src="~/Scripts/Acquisition/CM/CMMotorCycle_PhotoDetail.js"></script>
+
+@{
+    var creditid = ViewBag.CreditId;
+    var userid = ViewBag.User;
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var state = "@((string)ViewBag.StateCM)";
+        var msg = "@((string)ViewBag.MessageCM)";
+        if (state == "@(Collection.Status.SUCCESS)") {
+            Common.Alert.Success(msg);
+        } else if (state == "@(Collection.Status.FAILED)") {
+            Common.Alert.Error(msg);
+        }
+
+        $("#btnViewScore").click(function () {
+            myWindow = window.open(
+                '@Html.Raw(@Url.Action("ViewScore", "CM", new { creditid = creditid, userid = userid }))',
+                "myWindow",
+                "channelmode=yes,width=1200,height=1200,scrollbars=yes");
+        });
+    });
+
+</script>

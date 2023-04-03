@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" id="ReportItemSchemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PrintConsumentStatementLetter" nillable="true" type="PrintConsumentStatementLetter" />
+  <xs:complexType name="PrintConsumentStatementLetter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AgreementDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Occupation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerAdress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateDayMonth" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateYear" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintMemorandumOfUnderstanding" nillable="true" type="PrintMemorandumOfUnderstanding" />
+  <xs:complexType name="PrintMemorandumOfUnderstanding">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AgreementDay" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AgreementDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="NumberOfUnits" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BrandType" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ChasisNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MachineNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemYearColor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BpkbName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BpkpNo" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PurchasePrice" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PurchasePriceFormated" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DownPayment" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DownPaymentFormated" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PrincipalFinancing" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PrincipalFinancingFormated" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="InterestAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InterestAmountFormated" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="InterestRate" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DebtAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DebtAmountFormated" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tenor" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MonthlyPayment" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MonthlyPaymentFormated" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FirstPayment" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LastPayment" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PaymentDueDate" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="AdminFee" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AdminFeeFormated" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ProvisionFee" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ProvisionFeeFormated" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="InsuranceFee" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InsuranceFeeFormated" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SurveyFee" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SurveyFeeFormatted" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DebtAmountInWords" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AssetType" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="BrandNew" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateDayMonth" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateYear" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReferenceName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CrediturName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BrandNewMotorcycleMark" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UsedMotorcycleMark" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BrandNewCarMark" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UsedCarMark" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintImportantNotice" nillable="true" type="PrintImportantNotice" />
+  <xs:complexType name="PrintImportantNotice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerAdress" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MonthlyInstallment" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FormatedMonthlyInstallment" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MonthlyInstallmentInWords" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintNameChangeStatementLetter" nillable="true" type="PrintNameChangeStatementLetter" />
+  <xs:complexType name="PrintNameChangeStatementLetter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AgreementDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Occupation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IdentityNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerAdress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateDayMonth" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateYear" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintNameChangeReceipt" nillable="true" type="PrintNameChangeReceipt" />
+  <xs:complexType name="PrintNameChangeReceipt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ReceiptNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PayerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PaymentAmountInWord" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PaymentPurpose" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PaymentDateDayMonth" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PaymentDateYear" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PaymentAmount" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PaymentAmountFormatted" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintPowerOfAttorney" nillable="true" type="PrintPowerOfAttorney" />
+  <xs:complexType name="PrintPowerOfAttorney">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AgreementDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Occupation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IdentityNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OnBehalfOf" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PowerAttorneyName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PowerAttorneyPosition" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PowerAttorneyAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchAddressMAF" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="NumberOfUnit" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NumberOfUnitInWord" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BrandName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AssetKind" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemColor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemYear" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ChasisNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MachineNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PoliceNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BpkpNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateDayMonth" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateYear" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintPowerOfAttorneyFidusia" nillable="true" type="PrintPowerOfAttorneyFidusia" />
+  <xs:complexType name="PrintPowerOfAttorneyFidusia">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AgreementDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Occupation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IdentityNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OnBehalfOf" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PowerAttorneyName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PowerAttorneyPosition" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PowerAttorneyAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MCFHOAdress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MAFHOAdress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MCFBranchAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MAFBranchAddress" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DebtAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DebtAmountFormatted" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateDayMonth" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateYear" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintSecondStatementLetter" nillable="true" type="PrintSecondStatementLetter" />
+  <xs:complexType name="PrintSecondStatementLetter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Occupation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IdentityNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ApproveDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PurchasePrice" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DownPayment" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PrincipalFinancing" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InterestAmount" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="InterestRate" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DebtAmount" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AdminFee" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ProvisionFee" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InsuranceFee" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SurveyFee" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateDayMonth" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateYear" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintStatementLetter" nillable="true" type="PrintStatementLetter" />
+  <xs:complexType name="PrintStatementLetter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="credit_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="customer_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="pekerjaan" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="customer_address" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="identity_number" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="approve_date" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="letter_date_day_month" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="letter_date_year" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintApprovalLetter" nillable="true" type="PrintApprovalLetter" />
+  <xs:complexType name="PrintApprovalLetter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReferenceName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReferenceOccupation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReferenceIdentityNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReferenceAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="HomePhone" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MobileNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OfficeNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerOccupation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerIdentityNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ApproveDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateDayMonth" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LetterDateYear" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

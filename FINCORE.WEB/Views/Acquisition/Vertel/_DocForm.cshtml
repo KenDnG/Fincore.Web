@@ -1,0 +1,93 @@
+﻿@using FINCORE.WEB.Helpers
+@model FINCORE.Models.Models.Vertel.VertelModels
+
+<table class="table table-bordered" style="width:95%; font-size: 9px; margin:auto">
+	<thead class="text-center">
+		@{
+			var DocField = ViewBag.DocField;
+			//<tr style="background-color: #ff971f; color: #FFF; text-align: center;">
+			//	<th colspan="4">Dokumen  Aplikasi IN</th>
+			//</tr>
+		}
+		<tr style="background-color: #ffd951; color: #000;  text-align: center;">
+			<th>Nama Dokumen</th>
+			<th>Ada</th>
+			<th>Tidak Ada</th>
+			<th>Upload Document</th>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			if (DocField.Count >= 0)
+			{
+				var i = 0;
+				foreach (var item in DocField)
+				{
+					var idrb1 = $"rbDocFieldTrue{i}";
+					var idrb2 = $"rbDocFieldFalse{i}";
+					var idPath = $"path{i}";
+					var pathValue = $"{item.Path}";
+					var chooseId = $"choose{i}";
+
+					<tr>
+						<input type="hidden" asp-for="DocFieldModels[i].FieldId" value="@item.FieldId" />
+						<td><input type="hidden" asp-for="DocFieldModels[i].FieldName" value="@item.FieldName" /> @item.FieldName</td>
+						<td>
+							@if (item.Path == null)
+							{
+								<div class="text-center">
+									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+										<input class="form-check-input" asp-for="DocFieldModels[i].isAvailable" type="radio" value="true" id="@idrb1">
+									</div>
+								</div>
+							}
+							else
+							{
+								<div class="text-center">
+									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+										<input class="form-check-input" asp-for="DocFieldModels[i].isAvailable" type="radio" value="true" id="@idrb1" checked>
+									</div>
+								</div>
+							}
+						</td>
+						<td>
+							<div class="text-center">
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+									<input class="form-check-input" asp-for="DocFieldModels[i].isAvailable" type="radio" value="false" id="@idrb2" disabled>
+								</div>
+							</div>
+
+						</td>
+						<td style="text-align:center;" id="@chooseId">
+							<div id="@i">
+								@if (item.Path != null)
+								{
+									<a id="downloadFile" class="btn" style="background-color:#ff941c;" onclick="location.href='@Url.Action("DownloadFile", "Vertel", new {path = @item.Path + @item.FileName, FileName = @item.FileName, IsNewZoom = @item.IsNewZoom})'" download>Download File</a>
+									<button id="btnChangeFile" type="button" onclick="changeFile(@i)" class="btn btn-danger"><i class="fa fa-minus-circle"></i> Ganti File</button>
+									<input type="hidden" asp-for="DocFieldModels[i].Path" value="@item.Path">
+									<input type="hidden" asp-for="DocFieldModels[i].FileName" value="@item.FileName">
+									<input type="hidden" asp-for="DocFieldModels[i].CreditId" value="@item.CreditId">
+									<input type="hidden" asp-for="DocFieldModels[i].IsNewZoom" value="@item.IsNewZoom">
+									<input type="hidden" asp-for="DocFieldModels[i].FieldId" value="@item.FieldId">
+									<input type="hidden" asp-for="DocFieldModels[i].PhotoId" value="@item.PhotoId">
+									<input type="hidden" asp-for="DocFieldModels[i].PhotoTypeId" value="@item.PhotoTypeId">
+								}
+								else
+								{
+									<input type="file" asp-for="DokumenIn" src="~/assets/ico/edit.png" id="@idPath" value="@pathValue">
+								}
+							</div>
+						</td>
+					</tr>
+					i++;
+				}
+			}
+			else
+			{
+				<tr>
+					<td colspan="100%"><div class="text-center">Data Not Available</div></td>
+				</tr>
+			}
+		}
+
+</table>

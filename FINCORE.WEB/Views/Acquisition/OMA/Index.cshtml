@@ -1,0 +1,335 @@
+﻿@model FINCORE.Services.Helpers.Models.ViewModels.ViewModelOMA
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!-- EDIT OMA -->
+<form id="contactform" asp-action="Update" asp-controller="OMA" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+
+        <div class="data-input">
+            <btnPanel1><h4><div class="bgc-menu">EDIT DATA <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnPanel1>
+            <Panel1 class="Panel1" id="Panel1">
+                <div class="tile">
+                    <div class="form-group row">
+
+                        <!-- KOLOM 1 -->
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+
+                            <p>No Order</p>
+                            <input type="text" id="OrderId" readonly asp-for="OMAModel.order_id" class="form-control" placeholder="">
+
+                            <p>Tgl Order</p>
+                            <input type="text" id="OrderDate" readonly asp-for="OMAModel.order_date" class="form-control" placeholder="">
+
+                            <p>Surveyor</p>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" id="SurCode" readonly asp-for="OMAModel.NIK_surveyor_code" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                    <input type="text" id="CustomerName" readonly asp-for="OMAModel.Nama" class="form-control" placeholder="">
+                                </div>
+                            </div>
+
+                            <p>Foto KTP Pemohon</p>
+                            <div class="row">
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <textarea class="form-control" rows="" id="FotoKTPPemohon" asp-for="OMAModel.photo_KTP_pemohon" readonly placeholder=""></textarea>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <a class="btn-input" id="btnFotoKTPPemohon" href="@Url.Action("GetFoto", "OMA", new { Path = Model.OMAModel.photo_KTP_pemohon })">Open</a>
+                                    @*<button class="btn-input" id="btnFotoKTPPemohon" style="width: 100%; margin-bottom: 5%;">Open</button>*@
+                                    <!-- The Modal -->
+
+                                </div>
+                            </div>
+
+                            <p>Foto KTP Pasangan</p>
+                            <div class="row">
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <textarea class="form-control" rows="" id="FotoKTPPasangan" asp-for="OMAModel.photo_KTP_pasangan" readonly placeholder=""></textarea>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <a class="btn-input" id="btnFotoKTPPasangan" href="@Url.Action("GetFoto", "OMA", new { Path = Model.OMAModel.photo_KTP_pasangan })">Open</a>
+
+                                </div>
+                            </div>
+
+                            <p>Foto NPWP</p>
+                            <div class="row">
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <textarea class="form-control" rows="" id="FotoNPWP" asp-for="OMAModel.photo_NPWP" readonly placeholder=""></textarea>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <a class="btn-input" id="btnFotoNPWP" href="@Url.Action("GetFoto", "OMA", new { Path = Model.OMAModel.photo_NPWP })">Open</a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- END KOLOM 1 -->
+                        <!-- KOLOM 2 -->
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                            <p>PT</p>
+                            <select class="form-control" id="SelectCompany" asp-for="OMAModel.company_id">
+                                <option value="">Pilih PT</option>
+                                <option value="1">MAF</option>
+                                <option value="2">MCF</option>
+                            </select>
+
+                            <p>Hasil Check SLIK Pemohon</p>
+                            <select class="form-control" id="SelectPemohon" asp-for="OMAModel.SLIK_result_pemohon">
+                                <option value="">Pilih Hasil Check SLIK Pemohon</option>
+                                <option value="Data Tidak Ditemukan">Data Tidak Ditemukan</option>
+                                <option value="Kol 1 - Lancar">Kol 1 - Lancar</option>
+                                <option value="Kol 2 - Perhatian Khusus">Kol 2 - Perhatian Khusus</option>
+                                <option value="Kol 3 - Tidak Lancar">Kol 3 - Tidak Lancar</option>
+                                <option value="Kol 4 - Sangat Diragukan">Kol 4 - Sangat Diragukan</option>
+                                <option value="Kol 5 - Macet">Kol 5 - Macet</option>
+                            </select>
+
+                            <p>Upload Hasil SLIK Pemohon</p>
+                            <div class="row">
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+
+                                    <input id="UploadSlikNamaPemohon" asp-for="slikpemohon" class="form-control" type="file">
+                                    <input hidden id="hdnslikpemohon" asp-for="OMAModel.SLIK_file_name_pemohon"></input>
+                                    <span asp-validation-for="OMAModel.SLIK_file_name_pemohon" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    @if (Model.OMAModel.SLIK_file_name_pemohon != "" && Model.OMAModel.SLIK_file_name_pemohon != null)
+                                    {
+                                        <a class="btn-input" id="btnSlikPemohon" href="@Url.Action("GetPDF", "OMA", new {  Path =Model.OMAModel.SLIK_file_path_pemohon, FileName = Model.OMAModel.SLIK_file_name_pemohon })">Open</a>
+                                    }
+
+
+                                </div>
+                            </div>
+
+                            <p>Hasil Check SLIK Pasangan</p>
+                            <select class="form-control" id="SelectPasangan" asp-for="OMAModel.SLIK_result_pasangan">
+                                <option value="">Pilih Hasil Check SLIK Pemohon</option>
+                                <option value="Data Tidak Ditemukan">Data Tidak Ditemukan</option>
+                                <option value="Kol 1 - Lancar">Kol 1 - Lancar</option>
+                                <option value="Kol 2 - Perhatian Khusus">Kol 2 - Perhatian Khusus</option>
+                                <option value="Kol 3 - Tidak Lancar">Kol 3 - Tidak Lancar</option>
+                                <option value="Kol 4 - Sangat Diragukan">Kol 4 - Sangat Diragukan</option>
+                                <option value="Kol 5 - Macet">Kol 5 - Macet</option>
+                            </select>
+
+                            <p>Upload Hasil SLIK Pasangan</p>
+                            <div class="row">
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <input id="UploadSlikNamaPasangan" asp-for="slikpasangan" class="form-control" type="file">
+                                    <input hidden id="hdnslikpasangan" asp-for="OMAModel.SLIK_file_name_pasangan"></input>
+                                    <span asp-validation-for="OMAModel.SLIK_file_name_pasangan" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    @if (Model.OMAModel.SLIK_file_name_pasangan != "" && Model.OMAModel.SLIK_file_name_pasangan != null)
+                                    {
+                                        <a class="btn-input" id="btnSlikPasangan" href="@Url.Action("GetPDF", "OMA", new { Path =Model.OMAModel.SLIK_file_path_pasangan,FileName = Model.OMAModel.SLIK_file_path_pasangan })">Open</a>
+                                    }
+
+
+                                </div>
+                            </div>
+
+                            <p>Upload Hasil APPI</p>
+                            <div class="row">
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                    <input id="UploadAPPI" asp-for="appifile" class="form-control" type="file">
+                                    <input hidden id="hdnappifilename" asp-for="OMAModel.APPI_file_name"></input>
+                                    <span asp-validation-for="OMAModel.APPI_file_name" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    @if (Model.OMAModel.APPI_file_name != "" && Model.OMAModel.APPI_file_name != null)
+                                    {
+                                        <a class="btn-input" id="btnAppiFile" href="@Url.Action("GetPDF", "OMA", new { data =Model.OMAModel.APPI_file_path ,FileName =  Model.OMAModel.APPI_file_name })">Open</a>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- END KOLOM 2 -->
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 5%;">
+                            <p>Keterangan</p>
+                            <textarea class="form-control" id="Desc" asp-for="OMAModel.description" rows="" placeholder=""></textarea>
+                        </div>
+
+                    </div>
+                </div>
+            </Panel1>
+        </div>
+
+    </div>
+    <!-- END EDIT OMA -->
+    @if (ViewBag.View == "True")
+    {
+        <!-- DATA KENDARAAN VIEW ONLY-->
+        <div class="container">
+            <div class="data-input">
+                <btnPanel2>
+                    <h4>
+                        <div class="bgc-menu">
+                            DATA KENDARAAN <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </div>
+                    </h4>
+                </btnPanel2>
+                <Panel2 class="Panel2" id="Panel2">
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <!-- KOLOM 1 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                                <p>Tipe Motor</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.asset_type_description" readonly class="form-control" placeholder="">
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <p>Lama Angsuran / Tenor</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.tenor" readonly class="form-control" placeholder="">
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <p>Uang Muka</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.gross_down_payment" readonly class="form-control" placeholder="">
+                            </div>
+
+                        </div>
+                    </div>
+                </Panel2>
+            </div>
+        </div>
+        <!-- END DATA KENDARAAN -->
+        <!-- DATA NASABAH -- VIEW ONLY-->
+        <div class="container">
+            <div class="data-input">
+                <btnPanel3><h4><div class="bgc-menu">DATA NASABAH <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnPanel3>
+                <Panel3 class="Panel3" id="Panel3">
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <!-- KOLOM 1 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+                                <p>Nama Nasabah</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.customer_name" readonly class="form-control" placeholder="">
+
+                                <p>No KTP</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.identity_number" readonly class="form-control" placeholder="">
+
+                                <p>Provinsi Survey</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.province_name" readonly class="form-control" placeholder="">
+
+                                <p>Kabupaten Survey</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.regency_name" readonly class="form-control" placeholder="">
+
+                                <p>Kecamatan Survey</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.district_name" readonly class="form-control" placeholder="">
+
+                                <p>Kelurahan Survey</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.village_name" readonly class="form-control" placeholder="">
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <p>Alamat Survey</p>
+                                <textarea class="form-control" name="comments" asp-for="OMAModel.survey_address" rows="" id="disabledInput" readonly placeholder=""></textarea>
+
+                                <p>Penjelasan Alamat Survey</p>
+                                <textarea class="form-control" name="comments" asp-for="OMAModel.survey_address_desc" rows="" id="disabledInput" readonly placeholder=""></textarea>
+
+                                <p>Janji Survey</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.survey_appointment" readonly class="form-control" placeholder="">
+
+                                <p>Jam Survey</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.survey_time" readonly class="form-control" placeholder="">
+
+                                <p>Telepon/HP 1</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.phone1" readonly class="form-control" placeholder="">
+
+                                <p>Telepon/HP 2</p>
+                                <input type="text" id="disabledInput" asp-for="OMAModel.phone2" readonly class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </Panel3>
+            </div>
+
+        </div>
+        <!-- END DATA NASABAH -->
+    }
+
+
+
+
+
+    <!-- BUTTON CANCEL SAVE -->
+    <div class="container" style="margin-top: 5%;">
+        <div class="title text-center">
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <button class="ladda-button" style="width: 100%;" data-style="expand-left" id="btnsave" asp-route-Status="S" asp-controller="OMA" asp-action="Update">Save</button>
+                <span class="ladda-spinner"></span>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <button class="ladda-button" style="width: 100%;" data-style="expand-left" id="btnapprove1" asp-route-Status="D">Approve</button>
+                <span class="ladda-spinner"></span>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <button class="ladda-button" style="width: 100%;" data-style="expand-left" id="btnapprove2" asp-route-Status="D">Approve - No Data</button>
+                <span class="ladda-spinner"></span>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <button class="ladda-button" style="width: 100%;" data-style="expand-left" id="btnreject" asp-route-Status="X">Reject</button>
+                <span class="ladda-spinner"></span>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <button class="ladda-button" style="width: 100%;" data-style="expand-left" id="btncancel" asp-action="Cancel" asp-controller="OMA">Cancel</button>
+                <span class="ladda-spinner"></span>
+            </div>
+
+        </div>
+    </div>
+    <!-- END BUTTON CANCEL SAVE -->
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var slikfilepemohon = document.getElementById('UploadSlikNamaPemohon');
+        var slikfilepasangan = document.getElementById('UploadSlikNamaPasangan');
+        var appifile = document.getElementById('UploadAPPI');
+        slikfilepemohon.onchange = function (e) {
+            document.getElementById("hdnslikpemohon").value = slikfilepemohon.value;
+        }
+        slikfilepasangan.onchange = function (e) {
+            document.getElementById("hdnslikpasangan").value = slikfilepasangan.value;
+        }
+        appifile.onchange = function (e) {
+            document.getElementById("hdnappifilename").value = appifile.value;
+        }
+        if ('@ViewBag.View' == "True") {
+            //disable edit controls
+            $('input').prop('disabled', true);
+            $('div').prop('disabled', true);
+            $("#btnsave").attr("disabled", "disabled");
+            $("#btnapprove1").attr("disabled", "disabled");
+            $("#btnapprove2").attr("disabled", "disabled");
+            $("#btnreject").attr("disabled", "disabled");
+            $('select').prop('disabled', true);
+            //disable all button except cancel
+        }
+
+
+
+    })
+</script>
+<script src="~/Scripts/Acquisition/OMA.js"></script>

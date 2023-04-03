@@ -1,0 +1,474 @@
+﻿@model FINCORE.Models.Models.Acquisition.CM.NeoScoreModels
+
+@{
+    Layout = null;
+}
+
+@Html.Raw(Model.html_neo)
+
+@{    
+    //var neoscore = ViewBag.neoscore;
+    //for (int i = 0; i < @neoscore.Count; i++)
+    //{
+    //    @neoscore[i].html_neo
+    //}
+
+
+
+}
+
+@*<!DOCTYPE html>
+<html>
+<head>
+    <title>Score Boards</title>
+
+    <style>
+        body {
+            font-family: Open Sans, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr:nth-child(even) {
+            background-color: #E0E0E0;
+        }
+
+        td {
+            border-bottom: 2px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 8pt;
+        }
+
+        .tdh {
+            background-color: #f4ab53;
+            font-weight: bold;
+        }
+
+        div.a {
+            font-size: 10px;
+        }
+
+        .center {
+            margin: auto;
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        img.score-green {
+            height: 13px;
+            width: 13px;
+            background-color: #00cd00;
+            border-color: #00cd00;
+        }
+
+        img.score-orange {
+            height: 13px;
+            width: 13px;
+            background-color: #ff8000;
+            border-color: #ff8000;
+        }
+
+        img.score-red {
+            height: 13px;
+            width: 13px;
+            background-color: #FF0000;
+            border-color: #FF0000;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+
+        .ml-5 {
+            margin-left: 10px;
+        }
+
+        .mr-5 {
+            margin-right: 10px;
+        }
+
+        .column {
+            float: left;
+            width: 48%;
+        }
+
+        .column0 {
+            float: left;
+            width: 30%;
+        }
+
+        .column1 {
+            float: left;
+            width: 60%;
+        }
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div class="mb-10" style="display: flex; align-items: flex-end;">
+            <img src="http://neokarya.com/img/logo.png" height="30" style="padding-bottom: 5px; padding-right: 10px;">
+            <h1 style="color: #f4ab53; padding: 0; margin: 0">Score Board</h1>
+        </div>
+        <div class="row">
+            <div class="column0 mr-5">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td colspan="2" class="tdh">
+                                Credit Score
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdh" width="20%">Total Score</td>
+                            <td class="tdh">622</td>
+                        </tr>
+                        <tr>
+                            <td class="tdh">Rekomendasi</td>
+                            <td class="tdh">Manual Approval / CA</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="mt-20">
+                    <thead>
+                        <tr>
+                            <td class="tdh" colspan="4">Detail Score</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="65%">Profesi</td>
+                            <td width="35%">
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Status Tempat Tinggal</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tipe Industri</td>
+                            <td style="vertical-align: middle;">
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ada Penjamin</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tipe Kendaraan</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Tanggungan</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Provinsi</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Penghasilan Per Bulan</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jenis Kelamin</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Penghasilan Tambahan</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Usia</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tenor</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Status Pernikahan</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Uang Muka</td>
+                            <td>
+
+                                valid
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="column1 ml-5">
+                <table>
+                    <thead>
+                        <tr>
+                            <td colspan="2" class="tdh">
+                                Customer Profiling
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div class="row mt-20">
+                    <div class="column mr-5">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td colspan="2" class="tdh">
+                                        Detail Fintech
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="65%">Jumlah Pengajuan Fintech Menggunakan KTP 0-30hari</td>
+                                    <td width="35%">
+                                        3
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jumlah Pengajuan Fintech Menggunakan KTP > 30hari</td>
+                                    <td>
+                                        11
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jumlah Pengajuan Fintech Menggunakan No HP 0-30hari</td>
+                                    <td>
+                                        4
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jumlah Pengajuan Fintech Menggunakan No HP >30hari</td>
+                                    <td>
+                                        14
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="mt-20">
+                            <thead>
+                                <tr>
+                                    <td colspan="4" class="tdh">
+                                        Detail BPJS
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="65%">Status BPJS</td>
+                                    <td width="35%">
+                                        Non Aktif di Akhir Bulan
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Lama Keikutsertaan BPJS (Tahun)</td>
+                                    <td>
+                                        -
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Kelas BPJS</td>
+                                    <td>
+                                        Kelas 2
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Terdaftar BPJS atau Tidak</td>
+                                    <td>
+                                        Ya
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jumlah Anggota dalam satu BPJS</td>
+                                    <td>
+                                        1 anggota
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Kode Jenis Kepesertaan</td>
+                                    <td>
+                                        Pegawai Pemerintah dengan Perjanjian Kerja
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column ml-5">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td colspan="4" class="tdh">
+                                        Detail Telepon
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="65%">No tlp lainnya</td>
+                                    <td width="35%">
+
+                                        <br>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Score (berdasarkan penggunaan No. telp)</td>
+                                    <td>
+                                        45
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Umur No tlp</td>
+                                    <td>
+                                        12month+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Verifikasi no tlp vs no ktp</td>
+                                    <td>
+                                        MATCH
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="mt-20">
+                            <thead>
+                                <tr>
+                                    <td colspan="4" class="tdh">
+                                        Detail Topup
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="35%">Berapa kali Top up 0-60</td>
+                                    <td width="15%">
+                                        -
+                                    </td>
+                                    <td width="35%">Rata-rata Top up 0-60</td>
+                                    <td width="15%">
+                                        -
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Minimal Top up 0-60</td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>Maximal Top up 0-60</td>
+                                    <td>
+                                        -
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Berapa kali Top up 0-360</td>
+                                    <td>
+                                        18x
+                                    </td>
+                                    <td>Rata-rata Top up 0-360</td>
+                                    <td>
+                                        62k
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Minimal Top up 0-360</td>
+                                    <td>
+                                        25k
+                                    </td>
+                                    <td>Maximal Top up 0-360</td>
+                                    <td>
+                                        100k
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>*@
+
+
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        var popup = window.open("", "", "channelmode=yes,width=1200,height=1200,scrollbars=yes");
+        var html = '<%=htmlresponse%>';
+        popup.document.write(html);
+    });
+</script>*@

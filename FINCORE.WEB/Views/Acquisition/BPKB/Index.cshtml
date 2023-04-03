@@ -1,0 +1,527 @@
+﻿@model FINCORE.Services.Helpers.Models.ViewModels.ViewModelBPKB
+@using FINCORE.Services.Helpers.Response;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@{
+    ViewData["Title"] = "BPKB";
+}
+
+<!-- Add Data BPKB -->
+<form id="contactform" asp-action="Save" asp-controller="BPKB" method="post" enctype="multipart/form-data" onsubmit="var sel=document.getElementById('SelectLocation');document.getElementById('location_name').value=sel.options[sel.selectedIndex].text;var sel2=document.getElementById('SelectReason');document.getElementById('reason_name').value=sel2.options[sel2.selectedIndex].text;">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <button id="AddDataBPKB_more" class="AddDataBPKB_more" asp-action="" asp-controller="" type="button" style="width: 100%;">Add Data BPKB</button>
+        <div class="data-input">
+            <btnAddDataBPKB>
+                <h4>
+                    <div class="bgc-menu">
+                        Add Data BPKB <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                    </div>
+                </h4>
+            </btnAddDataBPKB>
+            <AddDataBPKB class="AddDataBPKB" id="AddDataBPKB">
+
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+                                <p>Branch</p>
+                                <input class="form-control" id="InputBranchId" asp-for="BPKB.BranchId" placeholder="Input Branch" readonly>
+
+                                <p>Credit ID</p>
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                        <input class="form-control" id="InputAgreementNumber" asp-for="BPKB.CreditId" placeholder="Pilih Credit ID" readonly>
+                                    </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-left: -2%;">
+                                    <a class="btn btn-submit btn-block" id="btnLoadModal"><i id="ibtnLoadModal" class="fa fa-sign-in fa-lg fa-fw"></i>Pilih Credit</a>
+                                    </div>
+                                </div>
+
+                                <p style="margin-top: 2%;">Nama Konsumen</p>
+                                <input class="form-control" id="InputCustomerName" asp-for="CustomerName" placeholder="Input Nama Konsumen" readonly>
+
+                                <p>Nama BPKB</p>
+                                <input class="form-control" id="InputNamaBPKB" asp-for="QQName" placeholder="Input Nama BPKB" readonly>
+
+                                <p>Tanggal BPKB</p>
+                                <input class="form-control" id="InputSBPKB" asp-for="sBPKB" type="text" placeholder="Pilih Tanggal BPKB" readonly>
+
+                                <p>Dealer</p>
+                                <input class="form-control" id="InputDealer" asp-for="DealerCode" placeholder="Input Dealer" readonly>
+
+                            <input type="hidden" asp-for="ItemYear" id="InputItemYear" />
+
+                            </div>
+                            <!-- END KOLOM 1 -->
+                            <!-- KOLOM 2 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <p>No Rangka</p>
+                                <input class="form-control" id="InputChasisNo" asp-for="ChasisNo" placeholder="Input No Rangka" readonly>
+
+                                <p>No Mesin</p>
+                                <input class="form-control" id="InputMachineNo" asp-for="MachineNo" placeholder="Input No Mesin" readonly>
+
+                                 <p>Brand</p>
+                                <input class="form-control" id="InputBrand" asp-for="ItemMerk" placeholder="Input No Mesin" readonly>
+
+                                <p>Tipe Kendaraan</p>
+                                <input class="form-control" id="InputTipeKendaraan" asp-for="ItemTypeName" placeholder="Input Tipe Kendaraan" readonly>
+
+                                <p>Warna</p>
+                                <input class="form-control" id="InputWarna" asp-for="ItemColor" placeholder="Input Warna" readonly>
+
+                                <p>Status Agreement</p>
+                                <input class="form-control" id="InputStatusAgreement" asp-for="StatusNPP" placeholder="Input Status Agreement" readonly>
+
+                                <p>Status Lunas</p>
+                                <input class="form-control" id="InputStatusLunas" asp-for="StatusLunasNPP" placeholder="Input Status Lunas Agreement" readonly>
+
+                                <p>Status BPKB</p>
+                                <input class="form-control" id="InputStatusBPKB" asp-for="STATUSBPKB" placeholder="Input Status BPKB" readonly>
+
+                            </div>
+                        </div>
+                    </div>
+
+            </AddDataBPKB>
+        </div>
+    </div>
+    <!-- END Add Data BPKB -->
+    
+    <!-- BPKB In -->
+    <div class="container" id = "BPKBInContainer">
+        <button id="BPKBIn_more" class="BPKBIn_more" type="button" style="width: 100%;">BPKB In</button>
+        <div class="data-input">
+            <btnBPKBIn>
+                <h4>
+                    <div class="bgc-menu">
+                        BPKB In <i class="fa fa-chevron-circle-down" aria-hidden="true">
+
+                        </i>
+                    </div>
+                </h4>
+            </btnBPKBIn>
+            <BPKBIn class="BPKBIn" id="BPKBIn">
+
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <!-- KOLOM 1 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+
+                                <p>No. BPKB</p>
+                                <input class="form-control" id="" asp-for="BPKB.BpkbNo" placeholder="Input No. BPKB">
+                                <span asp-validation-for="BPKB.BpkbNo" class="text-danger"></span>
+
+                                <p>Tanggal BPKB In</p>
+                                <input class="form-control" id="dateBPKBin" asp-for="BPKB.BpkbIn"  type="date" readonly>
+
+                                <p>Tanggal BPKB</p>
+                                <input class="form-control" id="dateBPKB" autocomplete="off" asp-for="BPKB.BpkbDate" type="date" >
+                                <span asp-validation-for="BPKB.BpkbDate" class="text-danger"></span>
+
+                                <p>No. Faktur</p>
+                                <input class="form-control" id="" asp-for="BPKB.InvoiceNo" placeholder="Input No. Faktur">
+
+                            </div>
+                            <!-- END KOLOM 1 -->
+                            <!-- KOLOM 2 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                                <p>Tanggal Faktur</p>
+                                <input class="form-control" id="fakturdate" asp-for="BPKB.InvoiceDate" type="date">
+
+
+                                <p>Nomor Polisi</p>
+                                <input class="form-control" id="" asp-for="BPKB.CarNo" placeholder="Input Nomor Polisi">
+                                <span asp-validation-for="BPKB.CarNo" class="text-danger"></span>
+
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <p>Lokasi Penyimpanan</p>
+                                        <select class="form-control" id="SelectLocation" asp-for="BPKB.LocationCode" asp-items="@ViewBag.LocationList">
+                                            <option value = "">Pilih Lokasi Penyimpanan</option>
+                                        </select>
+                                        <span asp-validation-for="BPKB.LocationCode" class="text-danger"></span>
+                                        <input type="hidden" name="location_name" id="location_name" />
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <p>No Urut</p>
+                                        <input class="form-control" id=""  asp-for="BPKB.SecquenceNo" placeholder="" readonly>
+                                    </div>
+                                    @if(ViewBag.EditType !="Pinjam" && ViewBag.EditType !="ReEntry" && ViewBag.EditType != "Out" )
+                                    {
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <p>Biaya Penitipan BPKB</p>
+                                            <input class="form-control" id="inputBiayaTitip"  asp-for="BiayaTitip" placeholder="">
+                                        </div>
+                                    }
+                                </div>
+
+                                
+                                @if(ViewBag.EditType == "In")
+                                {
+                                    <p>Keterangan Selisih BPKB</p>
+                                    <input class="form-control" id="" asp-for="BPKB.BpkbDifferenceDesc" placeholder="Input Selisih BPKB">
+
+                                    <p>Tanggal Deadline</p>
+                                    <input class="form-control" id="deadlinedate" asp-for="BPKB.DeadlineDate" type="date">
+                                }
+
+                            </div>
+                            <!-- END KOLOM 2 -->
+
+
+                            </div>
+                    </div>
+
+            </BPKBIn>
+        </div>
+</div>
+    @if(ViewBag.EditType =="Pinjam" || ViewBag.EditType == "ReEntry")
+    {
+        <div class="container" id = "BPKBPinjamContainer" >
+            <button id="BPKBPinjam_more" class="BPKBPinjam_more" type="button" style="width: 100%;">BPKB Pinjam</button>
+            <div class="data-input">
+                <btnBPKBPinjam>
+                    <h4>
+                        <div class="bgc-menu">
+                            BPKB Pinjam <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </div>
+                    </h4>
+                </btnBPKBPinjam>
+                <BPKBPinjam class="BPKBPinjam" id="BPKBPinjam">
+
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <!-- KOLOM 1 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+
+                                <p>Tanggal BPKB Pinjam</p>
+                                <input class="form-control" id="datebpkbloan" asp-for="BPKBPinjam.BpkbLoanDate" autocomplete="off" type="date">
+                                
+
+                                <p>Tanggal Rencana Pengembalian</p>
+                                <input class="form-control" id="datebpkbplan" asp-for="BPKBPinjam.BpkbPlanDate" autocomplete="off" type="date">
+
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <p>Alasan</p>
+                                        <select class="form-control" id="SelectReason" asp-for="BPKBPinjam.LoanReason" asp-items="@ViewBag.ReasonList">
+                                            <option>Pilih Alasan</option>
+                                        </select>
+                                        <input type="hidden" name="reason_name" id="reason_name" />
+                                        <span asp-validation-for="BPKBPinjam.LoanReason" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <p>Diterima Oleh</p>
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                        <input class="form-control" id="InputDiterimaOlehPinjam" placeholder="Diterima Oleh" readonly>
+                                        <input class="form-control" id="InputReceiverCodePinjam" asp-for="BPKBPinjam.LoanReceiverCode" placeholder="ReceiverCode" readonly>
+                                        <span asp-validation-for="BPKBPinjam.LoanReceiverCode" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-left: -2%;">
+                                        <div class="btn btn-submit btn-block" id="btnLoadModalReceiver"><i id="ibtnLoadModalReceiver" class="fa fa-sign-in fa-lg fa-fw"></i>...</div>
+                                    </div>
+                                </div>
+                                
+                                
+
+                                
+                            </div>
+                            <!-- END KOLOM 1 -->
+                            @*KOLOM 2*@
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+                               
+                                    <p>Nama Penerima</p>
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                        <input class="form-control" id="InputSpecialName" asp-for="BPKBPinjam.ReceiverName" placeholder="Input Nama Penerima">
+                                        <span asp-validation-for="BPKBPinjam.ReceiverName" class="text-danger"></span>
+                                    </div>
+                                    <div id="divSpecial" class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-left: -2%;" hidden>
+                                        <div>
+                                            <input hidden class="form-control" id="InputSpecialCode" asp-for="BPKBPinjam.ReceiverCode" placeholder="ReceiverCode" readonly>
+                                        </div>
+                                        <div id="divKaryawan" style="margin-left: -2%;">
+                                            <div class="btn btn-submit btn-block" id="btnLoadModalKaryawan"><i id="ibtnLoadModalKaryawan" class="fa fa-sign-in fa-lg fa-fw"></i>...</div>
+                                        </div>
+                                        <div id="divBiroJasa1" style="margin-left: -2%;">
+                                            <div class="btn btn-submit btn-block" id="btnLoadModalBiroJasa"><i id="ibtnLoadModalBiroJasa" class="fa fa-sign-in fa-lg fa-fw"></i>...</div>
+                                        </div>
+                                        <div id="divDealer"  style="margin-left: -2%;">
+                                            <div class="btn btn-submit btn-block" id="btnLoadModalDealer"><i id="ibtnLoadModalDealer" class="fa fa-sign-in fa-lg fa-fw"></i>...</div>
+                                        </div>
+                                        <div id="divAsuransi" style="margin-left: -2%;">
+                                            <div class="btn btn-submit btn-block" id="btnLoadModalAsuransi"><i id="ibtnLoadModalDealer" class="fa fa-sign-in fa-lg fa-fw"></i>...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>No Surat Kuasa</p>
+                                <input class="form-control" id="" placeholder="Input Surat Kuasa">
+
+                                <p>Alamat</p>
+                                <textarea class="form-control" id="InputAddress" asp-for="BPKBPinjam.Address" maxlength="100"></textarea>
+                                <span asp-validation-for="BPKBPinjam.Address" class="text-danger"></span>
+
+                                <p>No Telepon</p>
+                                <input class="form-control" id="InputPhone" asp-for="BPKBPinjam.ReceiverPhone" placeholder="Input Nomor Telepon">
+                                <span asp-validation-for="BPKBPinjam.ReceiverPhone" class="text-danger"></span>
+
+                                <div class="row" id="divBiroJasa2" hidden>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <p>Alasan</p>
+                                        <select class="form-control" id="SelectBureau" asp-for="BPKBPinjam.TypeOfServiceBureauNecessity" asp-items="@ViewBag.BureauList">
+                                            <option value="">Pilih Tipe</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <p>Uang Tunai Sebesar</p>
+                                <input class="form-control" id="InputMoneyReceived" type="number" asp-for="BPKBPinjam.MoneyReceived" placeholder="Input Uang Tunai">
+                                <span asp-validation-for="BPKBPinjam.MoneyReceived" class="text-danger"></span>
+                            
+                            </div>
+                            @*END KOLOM 2*@
+                        </div>
+                    </div>
+
+                </BPKBPinjam>
+            </div>
+        </div>
+    
+    }
+    @if(ViewBag.EditType == "ReEntry")
+    {
+        <div class="container" id="BPKBReEntryContainer" >
+            <button id="BPKBEntry_more" class="BPKBEntry_more" type="button" style="width: 100%;">BPKB ReEntry</button>
+            <div class="data-input">
+                <btnBPKBEntry>
+                    <h4>
+                        <div class="bgc-menu">
+                            BPKB ReEntry <i class="fa fa-chevron-circle-down" aria-hidden="true">
+
+                            </i>
+                        </div>
+                    </h4>
+                </btnBPKBEntry>
+                <BPKBEntry class="BPKBEntry" id="BPKBEntry">
+
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <!-- KOLOM 1 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+
+                                <p>Tanggal Pengembalian</p>
+                                <input class="form-control" id="datebpkbreentry" asp-for="BPKBPinjam.BpkbReturn" type="date">
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <p>Lokasi Penyimpanan</p>
+                                        <select class="form-control" id="SelectLocationReEntry" asp-for="BPKB.ReEntryLocationCode" asp-items="@ViewBag.LocationList">
+                                            <option value = "">Pilih Lokasi Penyimpanan</option>
+                                        </select>
+                                        <span asp-validation-for="BPKB.ReEntryLocationCode" class="text-danger"></span>
+                                        <input type="hidden" name="location_name" id="location_name" />
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <p>No Urut</p>
+                                        <input class="form-control" id="NoUrutReEntry" asp-for="BPKBPinjam.SequenceNo" placeholder="Input No Urut" disabled>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                            <!-- END KOLOM 1 -->
+                        </div>
+                    </div>
+
+                </BPKBEntry>
+            </div>
+        </div>
+        @Html.HiddenFor(m=>m.BPKB.BpkbStatus)
+    }
+    @if(ViewBag.EditType =="Out")
+    {
+        <div class="container" id="BPKBOutContainer">
+            <button id="BPKBOut_more" class="BPKBOut_more" type="button" style="width: 100%;">BPKB Out</button>
+            <div class="data-input">
+                <btnBPKBOut>
+                    <h4>
+                        <div class="bgc-menu">
+                            BPKB Out <i class="fa fa-chevron-circle-down" aria-hidden="true">
+
+                            </i>
+                        </div>
+                    </h4>
+                </btnBPKBOut>
+                <BPKBOut class="BPKBOut" id="BPKBOut">
+
+                    <div class="tile">
+                        <div class="form-group row">
+
+                            <!-- KOLOM 1 -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+
+                                <p>Tanggal BPKB Out</p>
+                                <input class="form-control ignore" id="inputBPKBOut" asp-for="BPKB.BpkbOut" type="date">
+                                
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <p>Alasan</p>
+                                        <select class="form-control" id="SelectReason" asp-for="BPKB.OutCode" >
+                                            <option value="">Pilih Alasan</option>
+                                            <option value = "1">Lain</option>
+                                            <option value = "2">Pelunasan</option>
+                                            <option value = "3">Asuransi</option>
+                                            <option value = "4">Tarikan Terjual</option>
+                                            <option value = "5">Write Off</option>
+                                            <option value = "6">Unit NPL</option>
+                                            
+                                        </select>
+                                        <span asp-validation-for="BPKB.OutCode" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <p>Diterima Oleh</p>
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                        <input class="form-control" id="InputDiterimaOlehOut" placeholder="Diterima Oleh">
+                                        <input class="form-control" id="InputReceiverCodeOut" asp-for="BPKB.ReceiverCode" placeholder="ReceiverCode">
+                                        <span asp-validation-for="BPKB.ReceiverCode" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-left: -2%;">
+                                        <div class="btn btn-submit btn-block" id="btnLoadModalReceiverOut"><i id="ibtnLoadModalReceiverOut" class="fa fa-sign-in fa-lg fa-fw"></i>...</div>
+                                    </div>
+                                </div>
+                                <p>Biaya Aging</p>
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                        <input class="form-control" id="InputBiayaAging" asp-for="biayaaging" placeholder="" readonly>
+                                    </div>
+                                </div>
+                                <p>Lama Aging</p>
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                        <input class="form-control" id="InputLamaAging" asp-for="jmlhariaging" placeholder="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </BPKBOut>
+            </div>
+        </div>
+    
+    }
+    <div class="container" style="margin-top: 5%; margin-bottom: 5%;" >
+        <div class="title text-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <button class="btn btn-submit btn-block" style="width: 100%;" id="btncancel_bpkb" asp-action="Cancel" asp-controller="BPKB"><i id="ibtncancel_bpkb" class="fa fa-sign-in fa-lg fa-fw"></i>Cancel</button>
+                    
+                </div>
+                @if(ViewBag.UMC && ViewBag.EditType == "In")
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <button class="btn btn-submit btn-block" style="width: 100%;" id="btnprint_bpkb" asp-action="PrintThirdParty" asp-controller="BPKB" asp-route-creditid="@Model.BPKB.CreditId" asp-route-StatusBPKB="@Model.BPKB.BpkbStatus" asp-route-CompanyId="@Model.BPKB.CompanyId">Print</button>
+                        
+                    </div>
+                }
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <button style="width: 100%;" id="btnsave" class="btn btn-submit btn-block" type="submit"><i id="ibtnsave" class="fa fa-sign-in fa-lg fa-fw"></i>Save</button>
+                    
+                </div>
+            </div> 
+        </div>
+    </div>
+    <input type="hidden" id="isview" value="@ViewBag.DisableControls" />
+    @Html.HiddenFor(m=>m.BPKB.CompanyId)
+</form>
+
+<div id="ModalTemplate" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4>@ViewBag.Title</h4>
+                <div class="tile">
+                    <div class="modal-body" id="ModalBody"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var state = "@((string)ViewBag.State)";
+        var msg = "@((string)ViewBag.Message)";
+        if (state == "@(Collection.Status.SUCCESS)") {
+            Common.Alert.Success(state);
+        } else if (state == "@(Collection.Status.FAILED)") {
+            Common.Alert.Error(msg);
+        }
+        if ('@ViewBag.EditType'== "Pinjam") 
+        {
+            document.getElementById("datebpkbloan").valueAsDate = new Date();
+            document.getElementById("datebpkbplan").valueAsDate = new Date();
+            
+            $("#btnLoadModal").attr("disabled", "disabled");
+            $("#BPKBInContainer *").prop('readonly', true);
+            $("#SelectLocation").prop('disabled',true);
+        }
+        if('@ViewBag.EditType' == "ReEntry")
+        {
+            document.getElementById("datebpkbreentry").valueAsDate = new Date();
+            $("#BPKBPinjamContainer *").prop('readonly', true);
+            document.getElementById("NoUrutReEntry").value = "";
+
+            $("#btnLoadModalReceiver").attr("disabled", "disabled");
+            $("#btnLoadModal").attr("disabled", "disabled");
+            $("#BPKBInContainer *").prop('readonly', true);
+            $("#SelectLocation").prop('disabled', true);
+            $("#SelectReason").prop('disabled', true);
+        }
+        if('@ViewBag.EditType' == "Out")
+        {
+            document.getElementById("inputBPKBOut").valueAsDate = new Date();
+            document.getElementById("InputDiterimaOlehOut").value = "";
+            document.getElementById("InputReceiverCodeOut").value = "";
+
+            $("#btnLoadModal").attr("disabled", "disabled");
+            $("#BPKBInContainer *").prop('readonly', true);
+            $("#SelectLocation").prop('disabled',true);
+        }
+        if('@ViewBag.AddEdit' == "Add")
+        {
+            
+            document.getElementById("dateBPKBin").valueAsDate = new Date();
+            document.getElementById("fakturdate").valueAsDate = new Date();
+            $("#inputBPKBOut").rules("remove", "required")
+        }
+        
+
+
+    })
+    </script>
+
+<script src="~/Scripts/Acquisition/BPKB.js"></script>
+
+<script src="~/Scripts/Acquisition/BPKBLookup.js"></script>

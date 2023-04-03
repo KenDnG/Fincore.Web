@@ -1,0 +1,98 @@
+﻿@using FINCORE.Services.Helpers.Response
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="top-content" id="top-content">
+	<div class="container">
+		<div class="text-left">
+			<table id="example" class="table table-striped table-bordered" style="width:100%; font-size: 9px;">
+				<thead>
+					<tr style="background-color: #ffd951; color: #000;">
+						<th>Order ID</th>
+						<th>Order Date</th>
+						<th>Nama Cabang</th>
+						<th>Nama Nasabah</th>
+						<th>Submit Date</th>
+						<th>Tanggal Masuk OMA</th>
+						<th>Tanggal Jawab</th>
+						<th>Submit - Jawab</th>
+						<th>OMA - Jawab</th>	
+						<th>Status Order</th>
+						<th>Keterangan</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					@{
+						var data = ViewBag.PagingData; //passing from Controller
+						var mPageSize = data.PageSize;
+						var mPageIndex = data.PageIndex;
+						var mTotalRecordCount = data.RecordCount;
+						var mTotalPages = data.TotalPages;
+						var dataOMA = ViewBag.OMAModels; //passing from Controller
+						var tgl_jawab = DateTime.Now;
+						foreach(var item in dataOMA)
+						{
+
+							@if(item.approve_date != null || item.reject_by != null)
+							{
+								tgl_jawab = item.approve_date;
+							}
+							else if (item.reject_date != null)
+							{
+								tgl_jawab = item.reject_date;
+							}
+							else
+							{
+								tgl_jawab = DateTime.Now;
+							}
+							TimeSpan submit_jawab = tgl_jawab - item.created_on;
+							TimeSpan oma_jawab = tgl_jawab - tgl_jawab;
+							if (item.sync_date != null)
+							{
+								oma_jawab = tgl_jawab - item.sync_date;
+							}
+							<tr>
+								<td><a asp-action="Index" asp-controller="OMA" asp-route-id="@item.order_id" asp-route-status="View">@item.order_id</a></td>
+								<td>@item.order_date</td>
+								<td>@item.branch_name</td>
+								<td>@item.customer_name</td>
+								<td>@item.order_date</td>
+								<td>@item.sync_date</td>
+								<td>@tgl_jawab</td>
+								<td>@submit_jawab</td>
+								<td>@oma_jawab</td>
+								<td>@item.status_order</td>
+								<td>@item.description</td>
+								<td>
+									@if(@item.status_order != "A")
+								{
+										<a class="btn btn-light" onclick="location.href='@Url.Action("Index", "OMA", new {id = @item.order_id, status = "Edit"})'">
+											<img src="~/assets/ico/edit.png" />
+										</a>
+								}	
+								</td>
+							</tr>
+						}
+						
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		var state = "@((string)ViewBag.State)";
+		var msg = "@((string)ViewBag.Message)";
+		if (state == "@(Collection.Status.SUCCESS)") {
+			Common.Alert.Success(state);
+		} else if (state == "@(Collection.Status.FAILED)") {
+			Common.Alert.Error(msg);
+		}
+	});
+</script>

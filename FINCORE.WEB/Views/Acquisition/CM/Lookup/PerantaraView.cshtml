@@ -1,0 +1,211 @@
+﻿@using FINCORE.Models.Models.Acquisition.CM.Paginations
+@using FINCORE.Services.Helpers.Models.Pagination
+@using FINCORE.WEB.Helpers
+@model PaginationModels<PaginationPerantaraModels>
+
+<div class="top-content" id="dvlookup_Perantara">
+    <div class="container">
+        <div class="form-group row">
+            <table>
+                <tr>
+                    <td>Nama Perantara :</td>
+                </tr>
+                <tr><td style="padding: 5px"></td></tr>
+                <tr>
+                    @{
+                        var searchTerm = "";
+                        if (Model != null)
+                        {
+                            searchTerm = Model.SearchTerm;
+                        }
+                    }
+                    <td><input class="form-control" id="txsearch_perantara" placeholder="Cari data ..." type="text" style="height: 30px" value="@searchTerm" /></td>
+                    <td><button class="btn btn-secondary" type="button" id="btnsearch_perantara" style="margin-left:10px"><i class="fa fa-search"></i> Search</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group row">
+            <table class="table table-striped table-bordered" style="width:100%; font-size: 11px;" id="tblpage_perantara">
+                <thead>
+                    <tr style="background-color: #ffd951; color: #000;">
+                        <th style="width:10px">No</th>
+                        <th>ID Perantara</th>
+                        <th>Nama Perantara</th>   
+                        <th>Kode Cabang</th>   
+                        <th>Nama Cabang</th>
+                        <th>Alamat</th>
+                        <th style="width:30px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var mPageSize = 0;
+                        var mPageIndex = 0;
+                        var mTotalRecordCount = 0;
+                        var mTotalPages = 0;
+
+                        if (Model == null)
+                        {
+                            <tr>
+                                <td colspan="100%"><div class="text-center">Data Not Available</div></td>
+                            </tr>
+                        }
+                        else
+                        {
+                            var dataPerantara = Model.Model;
+                            mPageSize = Model.PageSize;
+                            mPageIndex = Model.PageIndex;
+                            mTotalRecordCount = Model.RecordCount;
+                            mTotalPages = Model.TotalPages;
+
+                            if (mTotalRecordCount != 0)
+                            {
+                                foreach (var item in dataPerantara)
+                                {
+                                    var AgentIDText = $"{item.AgentID}";
+                                    var AgentNameText = $"{item.AgentName}";
+                                    var BranchIDText = $"{item.BranchID}";
+                                    var BranchNameText = $"{item.BranchName}";
+                                    var AddressText = $"{item.Address}";
+
+                                    var AgentID = $"'{item.AgentID}'";
+                                    var AgentName = $"'{item.AgentName}'";
+
+                                    <tr>
+                                        <td>@item.RowNumber</td>
+                                        <td>@AgentIDText</td>
+                                        <td>@AgentNameText</td>
+                                        <td>@BranchIDText</td>
+                                        <td>@BranchNameText</td>
+                                        <td>@AddressText</td>
+                                        <td>
+                                            <button class="btn btn-secondary" type="button" title="Select data" onclick="cm_lookup.SelectedPerantara(@AgentID,@AgentName)"><i class="fa fa-hand-pointer"></i> Pilih</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="100%"><div class="text-center">Data Not Available</div></td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group row">
+            @{
+                var pageSize = mPageSize;
+                var pageIndex = mPageIndex;
+                var recordCount = mTotalRecordCount;
+                var totalPages = mTotalPages;
+            }
+            <div style="padding-right:5px">
+                <button class="btn btn-secondary" type="button" title="Previous Page" id="btnprev_perantara"><i class="fa fa-arrow-left"></i> Previous</button>
+                <button class="btn btn-secondary" type="button" title="Next Page" id="btnnext_perantara">Next <i class="fa fa-arrow-right"></i></button>
+                &nbsp;Page
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <input class="form-control" id="txpages_perantara" title="Current Page. And you can input destination page" style="width: 70px; height:25px" type="number" />
+                    </td>
+                    <td>
+                        <div style="margin-left:6px">of &nbsp; @Commons.ConvertToNominal(@totalPages == 0 ? 1 : @totalPages)</div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-secondary" id="btngo_perantara" title="Goto selected page" style="margin-left:10px">Go</button>
+                    </td>
+                    <td>
+                        <div style="padding-left:10px">
+                            @Commons.ConvertToNominal(@recordCount) Record(s)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $("#mdlPerantara").on("hidden.bs.modal", function () {
+            document.getElementById("btnshow_Perantara").style.display = "block";
+        });
+    })
+
+    //untuk handle button Search, GO, Previous, Next in Paging List pada Partial View
+    var cm_paging = {
+        handle_btn: async function (pageIndex, searchTerm, BranchId, CompanyId, TipePerantara, mKey) {
+
+            var mUrl = "";
+            switch (mKey) {
+                case "Perantara":
+                    mUrl = "../CM/PaginationPerantara?";
+                    break;
+            }
+            var params = {
+                pageIndex: pageIndex,
+                searchTerm: searchTerm,
+                BranchId: BranchId,
+                CompanyId: CompanyId,
+                TipePerantara: TipePerantara
+            }
+            $.ajax({
+                url: mUrl,
+                type: "POST",
+                data: params,
+                success: function (data) {
+                    $("#containerPerantara").html(data);
+                },
+                error: function (error) {
+                    var d = error;
+                    Common.Alert.Error("Failed to show Lookup Perantara. Error " + d);
+                }
+            });
+        }
+    }
+
+    $(document).ready(function () {
+        var txsearch_perantara = "";
+        var BranchId = $("#txhiddenBranchId").val();
+        var CompanyId = $("#txhiddenCompanyId").val();
+        var TipePerantara = $("#tipeperantara").val();
+
+        $("#btnsearch_perantara").click(function () {
+            var currentPage = $("#txpages_perantara").val();
+            txsearch_perantara = $("#txsearch_perantara").val();
+
+            cm_paging.handle_btn(1, txsearch_perantara, BranchId, CompanyId, TipePerantara, 'Perantara');
+        })
+        $("#btnnext_perantara").click(function () {
+            txsearch_perantara = $("#txsearch_perantara").val();
+            var nextPage = parseInt($("#txpages_perantara").val()) + 1;
+            if (parseInt(nextPage) > @totalPages) {
+                Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+            } else {
+                cm_paging.handle_btn(nextPage, txsearch_perantara, BranchId, CompanyId, TipePerantara, 'Perantara');
+            }
+        })
+        $("#btnprev_perantara").click(function () {
+            txsearch_perantara = $("#txsearch_perantara").val();
+            var prevPage = parseInt($("#txpages_perantara").val()) - 1;
+            cm_paging.handle_btn(prevPage, txsearch_perantara, BranchId, CompanyId, TipePerantara, 'Perantara');
+        })
+        $("#btngo_perantara").click(function () {
+            txsearch_perantara = $("#txsearch_perantara").val();
+            var selectedPage = $("#txpages_perantara").val();
+            if (parseInt(selectedPage) > @totalPages) {
+                Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+            } else {
+                cm_paging.handle_btn(selectedPage, txsearch_perantara, BranchId, CompanyId, TipePerantara, 'Perantara');
+            }
+        })
+        $("#txpages_perantara").val(@ViewBag.CurrentPage);
+
+    });
+
+</script>

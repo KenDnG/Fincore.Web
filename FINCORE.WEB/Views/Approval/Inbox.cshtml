@@ -1,0 +1,254 @@
+﻿@using FINCORE.Models.Models.Approval
+@using FINCORE.Services.Helpers.Models.Pagination
+@model PaginationModels<PaginationInboxApprovalModels>
+
+@{
+    ViewData["TitlePaging"] = "INBOX APPROVAL";
+    //ViewData["Title"] = "MACF FINCORE";
+    ViewData["Title"] = "INBOX APPROVAL";
+}
+
+<!-- Modify by: Dena -->
+@if (TempData["Success"] is not null)
+{
+    <script>
+        Common.Alert.Success("@TempData["Success"]");
+    </script>
+}
+
+@if (TempData["Error"] is not null)
+{
+    <script>
+        Common.Alert.Error("@TempData["Error"]");
+    </script>
+}
+
+<input type="hidden" id="totalpages" value="@Model.TotalPages">
+<div class="top-content">
+    <div class="container">
+        <form name="pagination" asp-action="Inbox" asp-controller="Approval" method="post">
+            <div class="form-group row">
+                <table>
+                    <tr>
+                        <td><input class="form-control" id="txsearch" name="searchTerm" type="search" value="@Model.SearchTerm" /></td>
+                        <td>
+                            <button class="btn btn-secondary" type="submit" id="btnsearch" style="margin-left:10px">
+                                <i class="fa fa-search"></i> Search
+                            </button> &nbsp;
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(@Model.SearchTerm))
+                            {
+                                <a class="btn btn-secondary" asp-action="Inbox" asp-controller="Approval">
+                                    <i class="fa fa-search"></i> Back to Full List
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="form-group row">
+                <table class="table table-striped table-bordered" style="width:100%; font-size: 16px;" id="tblpage">
+                    <thead>
+                        <tr style="background-color: #ffd951; color: #000;">
+                            <th>Transaksi ID</th>
+                            <th>Tgl Transaksi</th>
+                            <th>Deskripsi</th>
+                            <th>NIK PIC</th>
+                            <th>Nama PIC</th>
+                            <th>NIK Next PIC</th>
+                            <th>Nama Next PIC</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var mPageSize = 0;
+                            var mPageIndex = 0;
+                            var mTotalRecordCount = 0;
+                            var mTotalPages = 0;
+
+                            if (Model is null)
+                            {
+                                <tr>
+                                    <td colspan="9">
+                                        <div class="text-center">Data Not Available</div>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                var dataAcq = Model.Model;
+                                mPageSize = Model.PageSize;
+                                mPageIndex = Model.PageIndex;
+                                mTotalRecordCount = Model.RecordCount;
+                                mTotalPages = Model.TotalPages;
+
+                                if (dataAcq is not null)
+                                {
+                                    foreach (var item in dataAcq)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(item.Controller)){
+
+                                                <a onclick="gotopage(this);return false;" action="@item.ActionView" controller="@item.Controller" transid="@item.TransactionId" href="">@item.TransactionId</a>                                                
+                                            }
+                                            else{
+                                                <span>@item.TransactionId</span>
+                                            }                                                                                        
+                                            </td>
+
+                                            <td>@item.GetFormatedString()</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.PICNIK</td>
+                                            <td>@item.PICName</td>
+                                            <td>@item.NextNIKPIC</td>
+                                            <td>@item.NextPICName</td>
+                                            <td>@item.Status</td>
+                                            <td style="width:20px">
+
+                                            @if (!string.IsNullOrEmpty(item.ActionApproved) )
+                                            {
+                                                <a onclick="gotopage(this);return false;" action="@item.ActionApproved" controller="@item.Controller" transid="@item.TransactionId" href="" class="btn btn-warning">Go</a>
+                                                                                            
+                                                                                                
+                                            }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="9"><div class="text-center">Data Not Available</div></td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-group row">
+                @{
+                    var pageSize = mPageSize;
+                    var pageIndex = mPageIndex;
+                    var recordCount = mTotalRecordCount;
+                    var totalPages = mTotalPages;
+                }                
+
+                <div style="padding-right:5px">
+                    @if (pageIndex > 1)
+                    {
+                        <button class="btn btn-secondary" type="submit" title="Previous Page" id="btnprev"><i class="fa fa-arrow-left"></i> Previous</button>
+                    }
+
+                    @if (pageIndex < totalPages)
+                    {
+                        <button class="btn btn-secondary" type="submit" title="Next Page" id="btnnext">Next <i class="fa fa-arrow-right"></i></button>
+                    }
+
+                    &nbsp;Page
+
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <input class="form-control" id="txpages" title="Current Page. And you can input destination page" style="width: 70px; height:25px" type="number" name="pageIndex" value="@pageIndex" />
+                        </td>
+                        <td>
+                            <div style="margin-left:6px">of &nbsp @(totalPages == 0 ? 1 : @totalPages)</div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-secondary" id="btngo" title="Goto selected page" style="margin-left:10px">Go</button>
+                        </td>
+                        <td>
+                            <div style="padding-left:10px">
+                                @recordCount Record(s)
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+<form method="post" name="viewform">
+    <input type="hidden" name="trans_id" id="transid" />
+</form>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var totalpages = $("#totalpages").val();
+
+        $("#btnsearch").click(function (e) {
+
+            e.preventDefault();
+
+            $("#txpages").val('1');
+
+            $('form[name="pagination"]').submit();
+        })        
+
+        $("#btnnext").click(function (e) {
+            
+            e.preventDefault();
+
+            var nextPage = parseInt($("#txpages").val()) + 1;
+
+            $("#txpages").val(nextPage);
+
+            if (parseInt(nextPage) > totalpages) {
+                Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+            } else {
+                $('form[name="pagination"]').submit();
+            }
+
+        })
+
+        $("#btnprev").click(function (e) {
+
+            e.preventDefault();
+
+            var prevPage = parseInt($("#txpages").val()) - 1;
+
+            $("#txpages").val(prevPage);
+
+            $('form[name="pagination"]').submit();
+        })
+
+        $("#btngo").click(function (e) {           
+
+            e.preventDefault();
+
+            var selectedPage = $("#txpages").val();
+
+            if (parseInt(selectedPage) > totalpages) {
+                Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+            } else {
+                $('form[name="pagination"]').submit();
+            }           
+        })
+        
+        $("#txpages").val(@ViewBag.CurrentPage);
+    });
+
+    function gotopage(link) {
+
+        var controller = link.getAttribute("controller");
+        var action = link.getAttribute("action");
+        var transid = link.getAttribute("transid");
+
+        document.viewform.action = '/' + controller + '/' + action + '/';
+
+        $('#transid').val(transid);
+
+        document.viewform.submit();
+    }
+</script>

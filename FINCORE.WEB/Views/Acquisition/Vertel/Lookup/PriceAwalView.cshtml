@@ -1,0 +1,158 @@
+﻿@using FINCORE.WEB.Helpers
+@model FINCORE.Models.Models.Acquisition.Vertel.ViewPriceAwal
+@{
+	ViewData["Title"] = "CM Price Awal";
+	var data = ViewBag.PriceAwal;
+}
+
+<div class="top-content" id="PriceAwalModal">
+	<div class="container">
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>CM No</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" id="priceCreditId" name="CreditId" style="width:500px;" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Lama Angsuran</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="Tenor" style="width:500px;" value="@data[0].Tenor" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Harga OTR</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="AssetCost" style="width:500px;" value="@data[0].AssetCost" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Uang Muka</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="TotalUppingOtr" style="width:500px;" value="@data[0].UangMuka" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Biaya Admin</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="AdminFee" style="width:500px;" value="@data[0].AdminFee" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Biaya Asuransi</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="InsuranceFee" style="width:500px;" value="@data[0].InsuranceFee" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Biaya Provinsi</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="BiayaProvisiIns" style="width:500px;" value="@data[0].BiayaProvisiIns"  disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Uang Muka Murni</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="NettDownPayment" style="width:500px;" value="@data[0].NettDownPayment" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Jumlah Pembiayaan</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="JmlPembiayaan" style="width:500px;" value="@data[0].JmlPembiayaan" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Angsuran</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="AmountInstallment" style="width:500px;" value="@data[0].AmountInstallment" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Bunga Efektif</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="RateValue" style="width:500px;" value="@data[0].RateValue" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Bunga Flat</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="FlatRate" style="width:500px;" value="@data[0].FlatRate" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Biaya Administrasi Dealer</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="DiscDeposit" style="width:500px;" value="@data[0].DiscDeposit" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<p>Persen NFA</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div>
+					<input type="text" class="form-control" name="PersenNfa" style="width:500px;" value="@data[0].PersenNfa" disabled />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@*<script src="~/Scripts/Vertel/vertel.js"></script>
+<script src="~/Scripts/Vertel/vertellookup.js"></script>*@
+
+<script>
+	var creditId = $("#InputCMNo").val();
+	document.getElementById("priceCreditId").value = creditId;
+</script>

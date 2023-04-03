@@ -1,0 +1,156 @@
+﻿@using FINCORE.Services.Helpers.Models.Pagination
+@using FINCORE.WEB.Helpers
+
+<div class="top-content" id="dvlookup_npp_process_credit">
+    <div class="container">
+        <div class="form-group row">
+            <table>
+                <tr>
+                    <td>Pilih Data Credit:</td>
+                </tr>
+                <tr><td style="padding: 5px"></td></tr>
+                <tr>
+                    @{
+                        var searchTerm = "";
+                        if (Model != null)
+                        {
+                            searchTerm = Model.SearchTerm;
+                        }
+                    }
+                    <td><input class="form-control" id="txsearch_credit_process" placeholder="Cari data ..." type="text" style="height: 30px" value="@searchTerm" /></td>
+                    <td><button class="btn btn-secondary" type="button" id="btnsearch_credit_process" style="margin-left:10px"><i class="fa fa-search"></i> Search</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group row">
+            <table class="table table-striped table-bordered" style="width:100%; font-size: 11px;" id="tblpage_credit_process">
+                <thead>
+                    <tr style="background-color: #ffd951; color: #000;">
+                        <th style="width:10px">Credit Id</th>
+                        <th>Tgl Akuisisi</th>
+                        <th>Nama Konsumen</th>
+                        <th>Item</th>
+                        <th>Nomor PO</th>
+                        <th>Nama Dealer</th>
+                        <th style="width:30px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var mPageSize = 0;
+                        var mPageIndex = 0;
+                        var mTotalRecordCount = 0;
+                        var mTotalPages = 0;
+
+                        if (Model == null)
+                        {
+                            <tr>
+                                <td colspan="100%"><div class="text-center">Data Not Available</div></td>
+                            </tr>
+                        }
+                        else
+                        {
+                            var dataList = Model.Model;
+                            mPageSize = Model.PageSize;
+                            mPageIndex = Model.PageIndex;
+                            mTotalRecordCount = Model.RecordCount;
+                            mTotalPages = Model.TotalPages;
+
+                            if (mTotalRecordCount != 0)
+                            {
+                                foreach (var item in dataList)
+                                {
+                                    <tr>
+                                        <td>@item.CreditId</td>
+                                        <td>@item.CreditDate</td>
+                                        <td>@item.CustomerName</td>
+                                        <td>@item.ItemName</td>
+                                        <td>@item.PONumber</td>
+                                        <td>@item.DealerName</td>
+                                        <td>
+                                            <button class="btn btn-secondary" type="button" title="Select data" onclick="nppProcessCredit.selectedNppProcessCredit('@item.CreditId')"><i class="fa fa-hand-pointer"></i> Pilih</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="100%"><div class="text-center">Data Not Available</div></td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group row">
+            @{
+                var pageSize = mPageSize;
+                var pageIndex = mPageIndex;
+                var recordCount = mTotalRecordCount;
+                var totalPages = mTotalPages;
+            }
+            <div style="padding-right:5px">
+                <button class="btn btn-secondary" type="button" title="Previous Page" id="btnprev_credit_process"><i class="fa fa-arrow-left"></i> Previous</button>
+                <button class="btn btn-secondary" type="button" title="Next Page" id="btnnext_credit_process">Next <i class="fa fa-arrow-right"></i></button>
+                &nbsp;Page
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <input class="form-control" id="txpages" title="Current Page. And you can input destination page" style="width: 70px; height:25px" type="number" />
+                    </td>
+                    <td>
+                        <div style="margin-left:6px">of &nbsp; @Commons.ConvertToNominal(@totalPages == 0 ? 1 : @totalPages)</div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-secondary" id="btngo_credit_process" title="Goto selected page" style="margin-left:10px">Go</button>
+                    </td>
+                    <td>
+                        <div style="padding-left:10px">
+                            @Commons.ConvertToNominal(@recordCount) Record(s)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/Acquisition/npp/npp.js"></script>
+<script type="text/javascript" src="~/Scripts/Acquisition/npp/lookup.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var txsearch_credit_process = "";
+        $("#btnsearch_credit_process").click(function () {
+            var currentPage = $("#txpages").val();
+            txsearch_credit_process = $("#txsearch_credit_process").val();
+            nppProcessCredit.handle_btn(1, txsearch_credit_process);
+        })
+        $("#btnnext_credit_process").click(function () {
+            txsearch_credit_process = $("#txsearch_credit_process").val();
+            var nextPage = parseInt($("#txpages").val()) + 1;
+            if (parseInt(nextPage) > @totalPages) {
+                Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+            } else {
+                nppProcessCredit.handle_btn(nextPage, txsearch_credit_process);
+            }
+        })
+        $("#btnprev_credit_process").click(function () {
+            txsearch_credit_process = $("#txsearch_credit_process").val();
+            var prevPage = parseInt($("#txpages").val()) - 1;
+            nppProcessCredit.handle_btn(prevPage, txsearch_credit_process);
+        })
+        $("#btngo_credit_process").click(function () {
+            txsearch_credit_process = $("#txsearch_credit_process").val();
+            var selectedPage = $("#txpages").val();
+            if (parseInt(selectedPage) > @totalPages) {
+                Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+            } else {
+                nppProcessCredit.handle_btn(selectedPage, txsearch_credit_process);
+            }
+        })
+        $("#txpages").val(@ViewBag.CurrentPage);
+    });
+</script>

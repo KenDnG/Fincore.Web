@@ -1,0 +1,198 @@
+﻿@using FINCORE.WEB.Helpers
+@{
+    ViewData["TitlePaging"] = "Customer Verification";
+    ViewData["Title"] = "Customer Verification";
+}
+
+@if (TempData["Success"] is not null)
+{
+    <script>
+        Common.Alert.Success("@TempData["Success"]");
+    </script>
+}
+
+@if (TempData["Error"] is not null)
+{
+    <script>
+        Common.Alert.Error("@TempData["Error"]");
+    </script>
+}
+
+
+
+<div class="top-content">
+    <div class="container">
+        <div class="form-group row">
+            <table>
+                <tr>
+                    <td style="font-weight:bold;">Credit ID</td>
+                </tr>
+                <tr><td style="padding: 5px"></td></tr>
+                <tr>
+                    <td><input class="form-control" id="txsearch" type="number" placeholder="Cari data ..."/></td>
+                    <td><button class="btn btn-secondary" type="button" id="btnsearch" style="margin-left:10px"><i class="fa fa-search"></i> Search</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group row">
+            <table class="table table-striped table-bordered" style="width:100%; font-size: 9px;" id="tblpage">
+                <thead>
+                    <tr style="background-color: #ffd951; color: #000;">
+                        <th>Credit ID</th>
+                        <th>Tanggal Approve NPP</th>
+                        <th>Nama Lessee</th>
+                        <th>Tipe Kendaraan</th>
+                        <th>Status Verifikasi</th>
+                        <th style="width:20px">Edit</th>
+                        <th style="width:20px">Print</th>
+                    </tr>
+                </thead>
+				<tbody>
+					@{
+						var data = ViewBag.PagingVertel; //passing from Controller
+						var mPageSize = data.PageSize;
+						var mPageIndex = data.PageIndex;
+						var mTotalRecordCount = data.RecordCount;
+						var mTotalPages = data.TotalPages;
+
+						var dataVertel = ViewBag.VertelModel; //passing from Controller
+						if (mTotalRecordCount != 0)
+						{
+							var i = 0;
+							foreach (var item in dataVertel)
+							{
+								<tr>
+									<td> <a href="@Url.Action("ViewVertel", "Vertel", new {CMNo = item.CMNo})">@item.CMNo</a> </td>
+									<td>
+										@if (item.ApproveDate != DateTime.MinValue)
+										{
+											<span>@item.ApproveDate</span>
+										}
+									</td>
+									<td>@item.CustomerName</td>
+									<td>@item.TipeKendaraan</td>
+									<td id="@i">@item.StatusVerifikasi</td>
+									<td>
+										@if (@item.StatusVerifikasi == "Draft" || @item.StatusVerifikasi == "Correction")
+										{
+											<img src="~/assets/ico/edit.png" onclick="location.href='@Url.Action("Edit", "Vertel", new {CMNo = item.CMNo, Panel = "Edit"})'" />
+										}
+									</td>
+									<td>
+										@if (@item.StatusVerifikasi == "Approved")
+										{
+											<img src="~/assets/ico/print.png" onclick="location.href='@Url.Action("PrinVerfikasiKonsumen", "Vertel", new {transId = item.CMNo})'" />
+
+										}
+									</td>
+								</tr>
+								i++;
+							}
+						}
+						else
+						{
+							<tr>
+								<td colspan="7"><div class="text-center">Data Not Available</div></td>
+							</tr>
+						}
+					}
+				</tbody>
+            </table>
+        </div>
+        <div class="form-group row">
+            @{
+                var pageSize = mPageSize;
+                var pageIndex = mPageIndex;
+                var recordCount = mTotalRecordCount;
+                var totalPages = mTotalPages;
+            }
+            <div style="padding-right:5px">
+                @if (pageIndex > 1)
+                {
+                    <button class="btn btn-secondary" id="btnprev"><i class="fa fa-arrow-left"></i> Previous</button>
+                }
+                @if (pageIndex < totalPages)
+                {
+                    <button class="btn btn-secondary" id="btnnext">Next <i class="fa fa-arrow-right"></i></button>
+                }
+                &nbsp;Page
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <input class="form-control" id="txpages" style="width: 60px;" type="number" />
+                    </td>
+                    <td>
+                        <div style="margin-left:6px">of &nbsp; @Commons.ConvertToNominal(@totalPages == 0 ? 1 : @totalPages)</div>
+                        <input id="totalPages" value="@Commons.ConvertToNominal(@totalPages)" hidden>
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary" id="btngo" style="margin-left:10px">Go</button>
+                    </td>
+                    <td>
+                        <div style="padding-left:10px">
+                            @Commons.ConvertToNominal(@recordCount) Record(s)                          
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
+			<button onclick="addVertel();" class="btn-submit">Add New Customer Verification</button>
+		</div>
+    </div>
+    
+</div>
+<!-- END LIST DATA TABLE -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var txSearch = "";
+        $("#btnsearch").click(function () {
+            var currentPage = $("#txpages").val();
+            txSearch = $("#txsearch").val();
+            window.location.href = '@Url.Action("List","Vertel")?pageIndex=' + currentPage + "&searchTerm=" + txSearch;
+        })
+        $("#btnnext").click(function () {
+            txSearch = $("#txsearch").val();
+            var nextPage = parseInt($("#txpages").val()) + 1;
+            window.location.href = '@Url.Action("List","Vertel")?pageIndex=' + nextPage + "&searchTerm=" + txSearch;
+        })
+        $("#btnprev").click(function () {
+            txSearch = $("#txsearch").val();
+            var prevPage = parseInt($("#txpages").val()) - 1;
+            window.location.href = '@Url.Action("List","Vertel")?pageIndex=' + prevPage + "&searchTerm=" + txSearch;
+        })
+        $("#btngo").click(function () {
+            txSearch = $("#txsearch").val();
+            var selectedPage = $("#txpages").val();
+            if (parseInt(selectedPage) > @totalPages) {
+                Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+            } else {
+                window.location.href = '@Url.Action("List","Vertel")?pageIndex=' + selectedPage + "&searchTerm=" + txSearch;
+            }
+        })
+        $("#txpages").val(@ViewBag.CurrentPage);
+        $("#btnadd").click(function () {
+            //alert("tes");
+            window.location.href = '@Url.Action("Add","Vertel")';
+        })
+
+        if ($("#txpages").val() == @recordCount){
+            $('#btnnext').hide();
+        }
+        else{
+            $('#btnnext').show();
+        }
+
+        if ( $("#txpages").val() == "1"){ 
+            $('#btnprev').hide();
+        }else
+        {
+            $('#btnprev').show();
+        }
+    });
+    function addVertel() {
+        window.location.href = '@Url.Action("Add","Vertel")';
+    }
+</script>

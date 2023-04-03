@@ -1,0 +1,3409 @@
+body {
+    font-family: 'arial', Times, serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #000;
+    line-height: 10px;
+    text-align: center;
+}
+
+strong {
+    font-weight: 500;
+}
+
+a {
+    color: #000;
+    border-bottom: 1px solid #000;
+    text-decoration: none;
+    transition: all .3s;
+}
+
+    a:hover, a:focus {
+        color: #444;
+        border: 0;
+        text-decoration: none;
+    }
+
+h1, h2 {
+    margin-top: 10px;
+    font-size: 38px;
+    font-weight: 100;
+    color: #555;
+    line-height: 50px;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 300;
+    color: #555;
+    line-height: 30px;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #555;
+    line-height: 26px;
+}
+
+p {
+    font-weight: bold;
+    font-size: small;
+    font-family: 'arial', Times, serif;
+}
+
+strong {
+    font-weight: 500;
+}
+
+a {
+    color: #000;
+    border-bottom: 1px solid #000;
+    text-decoration: none;
+    transition: all .3s;
+}
+
+    a:hover, a:focus {
+        color: #444;
+        border: 0;
+        text-decoration: none;
+    }
+
+h1, h2 {
+    margin-top: 10px;
+    font-size: 38px;
+    font-weight: 100;
+    color: #555;
+    line-height: 50px;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 300;
+    color: #555;
+    line-height: 30px;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #555;
+    line-height: 26px;
+}
+
+p {
+    font-weight: bold;
+    font-size: small;
+    font-family: 'arial', Times, serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.medium-paragraph {
+    font-size: 18px;
+    line-height: 34px;
+}
+
+::-moz-selection {
+    background: #f35b3f;
+    color: #fff;
+    text-shadow: none;
+}
+
+::selection {
+    background: #f35b3f;
+    color: #fff;
+    text-shadow: none;
+}
+
+/***** Wrapper *****/
+
+.wrapper {
+    display: block;
+}
+
+/***** Sidebar *****/
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -255px;
+    z-index: 999;
+    background: #fff;
+    color: #000;
+    transition: all .3s;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
+    text-align: left;
+}
+
+    .sidebar.active {
+        left: 0;
+    }
+
+.dismiss {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: all .3s;
+    background: #000;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+    .dismiss:hover, .dismiss:focus {
+        background: #555;
+        color: #fff;
+    }
+
+.sidebar .logo {
+    padding: 40px 20px;
+    border-bottom: 1px solid #444;
+    transition: all .3s;
+}
+
+    .sidebar .logo a {
+        display: inline-block;
+        width: 172px;
+        height: 34px;
+        border: 0;
+        color: #ffffff;
+        text-indent: -999999px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+.sidebar ul.menu-elements {
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+    transition: all .3s;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 12px;
+    border: 0;
+    color: #000;
+}
+
+    .sidebar ul li a:hover,
+    .sidebar ul li a:focus,
+    .sidebar ul li.active > a:hover,
+    .sidebar ul li.active > a:focus {
+        outline: 0;
+        background: #555;
+        color: #fff;
+    }
+
+    .sidebar ul li a i {
+        margin-right: 5px;
+    }
+
+.sidebar ul li.active > a, a[aria-expanded="true"] {
+    background: rgb(213, 213, 213);
+    color: #fff;
+}
+
+.sidebar ul ul a {
+    background: #fff;
+    color: #000;
+    padding-left: 30px;
+    font-size: 12px;
+}
+
+.sidebar ul ul li.active > a {
+    background: #fff;
+    color: #000;
+}
+
+.sidebar a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.sidebar .dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.sidebar .to-top {
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar .dark-light-buttons {
+    padding: 10px 20px 30px 20px;
+    text-align: center;
+}
+
+/* sidebar light */
+
+.sidebar.light {
+    background: #fff;
+    color: #888;
+}
+
+    .sidebar.light .dismiss {
+        background: #ddd;
+        color: #888;
+    }
+
+        .sidebar.light .dismiss:hover,
+        .sidebar.light .dismiss:focus {
+            background: #ccc;
+            color: #888;
+        }
+
+    .sidebar.light .logo {
+        border-color: #eee;
+    }
+
+    .sidebar.light ul.menu-elements {
+        border-color: #eee;
+    }
+
+    .sidebar.light ul li a {
+        color: #888;
+    }
+
+        .sidebar.light ul li a:hover,
+        .sidebar.light ul li a:focus,
+        .sidebar.light ul li.active > a:hover,
+        .sidebar.light ul li.active > a:focus {
+            background: #ccc;
+            color: #888;
+        }
+
+    .sidebar.light ul li.active > a, .sidebar.light a[aria-expanded="true"] {
+        background: #ddd;
+        color: #888;
+    }
+
+    .sidebar.light ul ul a {
+        background: #ddd;
+    }
+
+    .sidebar.light ul ul li.active > a {
+        background: #ccc;
+    }
+
+    .sidebar.light a.btn-customized-3 {
+        background: #ddd;
+        color: #888;
+    }
+
+        .sidebar.light a.btn-customized-3:hover,
+        .sidebar.light a.btn-customized-3:active,
+        .sidebar.light a.btn-customized-3:focus,
+        .sidebar.light a.btn-customized-3:active:focus,
+        .sidebar.light a.btn-customized-3.active:focus,
+        .sidebar.light a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active,
+        .sidebar.light a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+            background: #ccc;
+            color: #888;
+        }
+
+    .sidebar.light a.btn-customized-4.btn-customized-dark {
+        background: #555;
+    }
+
+    .sidebar.light a.btn-customized-4.btn-customized-light {
+        background: #eee;
+    }
+
+    .sidebar.light a.btn-customized-4.btn-customized-dark:hover,
+    .sidebar.light a.btn-customized-4.btn-customized-dark:active,
+    .sidebar.light a.btn-customized-4.btn-customized-dark:focus,
+    .sidebar.light a.btn-customized-4.btn-customized-dark:active:focus,
+    .sidebar.light a.btn-customized-4.btn-customized-dark.active:focus,
+    .sidebar.light a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active,
+    .sidebar.light a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        background: #ccc;
+        color: #fff;
+    }
+
+    .sidebar.light a.btn-customized-4.btn-customized-light:hover,
+    .sidebar.light a.btn-customized-4.btn-customized-light:active,
+    .sidebar.light a.btn-customized-4.btn-customized-light:focus,
+    .sidebar.light a.btn-customized-4.btn-customized-light:active:focus,
+    .sidebar.light a.btn-customized-4.btn-customized-light.active:focus,
+    .sidebar.light a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active,
+    .sidebar.light a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        background: #ccc;
+        color: #fff;
+    }
+
+/***** Dark overlay *****/
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(51, 51, 51, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+}
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+/***** Content *****/
+
+.content {
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.open-menu {
+    position: fixed;
+    top: 10px;
+    left: 5px;
+    z-index: 997;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
+}
+
+    .open-menu.btn-customized,
+    .open-menu.btn-customized:hover,
+    .open-menu.btn-customized:active,
+    .open-menu.btn-customized:focus,
+    .open-menu.btn-customized:active:focus,
+    .open-menu.btn-customized.active:focus,
+    .open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active,
+    .open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
+    }
+
+/***** Buttons *****/
+
+a.btn-customized {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px;
+    background: #000;
+    border: 0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 300;
+    color: #fff;
+    box-shadow: none;
+}
+
+    a.btn-customized:hover,
+    a.btn-customized:active,
+    a.btn-customized:focus,
+    a.btn-customized:active:focus,
+    a.btn-customized.active:focus,
+    a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active,
+    a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        outline: 0;
+        background: #444;
+        border: 0;
+        color: #fff;
+        box-shadow: none;
+    }
+
+a.btn-customized-2 {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: .75rem 1.5rem;
+    background: #fff;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555;
+    box-shadow: none;
+}
+
+    a.btn-customized-2:hover,
+    a.btn-customized-2:active,
+    a.btn-customized-2:focus,
+    a.btn-customized-2:active:focus,
+    a.btn-customized-2.active:focus,
+    a.btn-customized-2.btn.btn-primary:not(:disabled):not(.disabled):active,
+    a.btn-customized-2.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        outline: 0;
+        background: #ccc;
+        background: rgba(255, 255, 255, 0.5);
+        border: 0;
+        color: #555;
+        box-shadow: none;
+    }
+
+a.btn-customized-3 {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: .75rem 1.5rem;
+    background: #444;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    box-shadow: none;
+}
+
+    a.btn-customized-3:hover,
+    a.btn-customized-3:active,
+    a.btn-customized-3:focus,
+    a.btn-customized-3:active:focus,
+    a.btn-customized-3.active:focus,
+    a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active,
+    a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        outline: 0;
+        background: #555;
+        border: 0;
+        color: #fff;
+        box-shadow: none;
+    }
+
+    a.btn-customized i,
+    a.btn-customized-2 i,
+    a.btn-customized-3 i {
+        margin-right: 5px;
+    }
+
+a.btn-customized-4 {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 0 3px;
+    padding: 0;
+    background: #444;
+    border: 0;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    box-shadow: none;
+    text-indent: -999999px;
+}
+
+    a.btn-customized-4.btn-customized-dark {
+        background: #222;
+    }
+
+    a.btn-customized-4.btn-customized-light {
+        background: #fff;
+    }
+
+    a.btn-customized-4.btn-customized-dark:hover,
+    a.btn-customized-4.btn-customized-dark:active,
+    a.btn-customized-4.btn-customized-dark:focus,
+    a.btn-customized-4.btn-customized-dark:active:focus,
+    a.btn-customized-4.btn-customized-dark.active:focus,
+    a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active,
+    a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        outline: 0;
+        background: #555;
+        border: 0;
+        color: #fff;
+        box-shadow: none;
+    }
+
+    a.btn-customized-4.btn-customized-light:hover,
+    a.btn-customized-4.btn-customized-light:active,
+    a.btn-customized-4.btn-customized-light:focus,
+    a.btn-customized-4.btn-customized-light:active:focus,
+    a.btn-customized-4.btn-customized-light.active:focus,
+    a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active,
+    a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+        outline: 0;
+        background: #555;
+        border: 0;
+        color: #fff;
+        box-shadow: none;
+    }
+
+/***** General style, all sections *****/
+
+.section-container {
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.section-container-gray-bg {
+    background: #f8f8f8;
+}
+
+.section-container-image-bg,
+.section-container-image-bg h2,
+.section-container-image-bg h3 {
+    color: #fff;
+}
+
+    .section-container-image-bg .divider-1 span {
+        border-color: #fff;
+        border-color: rgba(255, 255, 255, 0.8);
+    }
+
+.section-description {
+    margin-top: 0px;
+    padding-bottom: 10px;
+}
+
+    .section-description p {
+        margin-top: 20px;
+        padding: 0 120px;
+    }
+
+.section-container-image-bg .section-description p {
+    opacity: 0.8;
+}
+
+.section-bottom-button {
+    padding-top: 20px;
+}
+
+/***** Divider *****/
+
+.divider-1 span {
+    display: inline-block;
+    width: 200px;
+    border-bottom: 1px dotted #aaa;
+}
+
+/***** Top content *****/
+
+.top-content {
+    width: 100%;
+    margin-top: 20px;
+}
+
+    .top-content h1 {
+        padding-top: 60px;
+        color: #fff;
+    }
+
+    .top-content .description {
+        margin: 30px 0 0 0;
+        padding-bottom: 30px;
+    }
+
+        .top-content .description p {
+            color: #fff;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .top-content .description a {
+            color: #fff;
+            color: rgba(255, 255, 255, 0.8);
+            border-color: #fff;
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+            .top-content .description a:hover,
+            .top-content .description a:focus {
+                color: #fff;
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+/***** Section 1 *****/
+
+.section-1-box {
+    padding-top: 30px;
+    text-align: left;
+}
+
+    .section-1-box .section-1-box-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+        border: 1px solid #f35b3f;
+        font-size: 40px;
+        color: #f35b3f;
+        line-height: 78px;
+        text-align: center;
+        border-radius: 50%;
+    }
+
+    .section-1-box h3 {
+        margin-top: 0;
+        padding: 0 0 10px 0;
+    }
+
+/***** Section 2 *****/
+
+.section-2-box {
+    margin-top: 30px;
+    text-align: left;
+}
+
+    .section-2-box h3 {
+        margin-top: 0;
+    }
+
+.section-2-box-text .medium-paragraph {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.section-2-box img {
+    border-radius: 6px;
+}
+
+/***** Section 3 *****/
+
+.section-3-box {
+    margin-top: 30px;
+    text-align: left;
+}
+
+    .section-3-box .section-3-box-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        background: #f35b3f;
+        font-size: 28px;
+        color: #fff;
+        line-height: 60px;
+        text-align: center;
+        border-radius: 50%;
+    }
+
+    .section-3-box h3 {
+        margin-top: 0;
+        padding: 0 0 10px 0;
+    }
+
+/***** Section 4 *****/
+
+.section-4-box {
+    margin-top: 30px;
+    text-align: left;
+}
+
+    .section-4-box h3 {
+        margin-top: 0;
+    }
+
+.section-4-box-text .medium-paragraph {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.section-4-box img {
+    border-radius: 6px;
+}
+
+/***** Section 5 *****/
+
+.section-5-box {
+    padding-top: 30px;
+    text-align: left;
+}
+
+.section-5-box-image {
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+    .section-5-box-image img {
+        transition: all .8s;
+    }
+
+    .section-5-box-image:hover img {
+        transform: scale(1.25);
+    }
+
+.section-5-box h3 {
+    margin-top: 30px;
+}
+
+    .section-5-box h3 a {
+        color: #555;
+        border: 0;
+    }
+
+        .section-5-box h3 a:hover, .section-5-box h3 a:focus {
+            color: #f35b3f;
+        }
+
+    .section-5-box h3 i {
+        padding-left: 10px;
+        color: #ccc;
+        transition: all .3s;
+    }
+
+    .section-5-box h3:hover i {
+        padding-left: 15px;
+    }
+
+.section-5-box-date {
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #aaa;
+    text-transform: uppercase;
+}
+
+    .section-5-box-date i {
+        padding-right: 5px;
+        color: #ddd;
+    }
+
+.section-5-container .section-bottom-button {
+    padding-top: 40px;
+}
+
+/***** Section 6 *****/
+
+.section-6-box {
+    padding-top: 30px;
+    text-align: left;
+}
+
+    .section-6-box h3 {
+        margin-top: 0;
+    }
+
+/* contact form */
+.section-6-form {
+    padding-top: 20px;
+    text-align: left;
+}
+
+    .section-6-form input[type="text"],
+    .section-6-form textarea {
+        background: none;
+        border: 1px solid #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #fff;
+        box-shadow: none;
+        transition: all .3s;
+    }
+
+    .section-6-form textarea {
+        height: 90px;
+    }
+
+        .section-6-form input[type="text"]:focus,
+        .section-6-form textarea:focus {
+            outline: 0;
+            background: #fff;
+            border: 1px solid #fff;
+            color: #888;
+            box-shadow: none;
+        }
+
+        .section-6-form input[type="text"].input-error,
+        .section-6-form textarea.input-error {
+            border-color: #f35b3f;
+        }
+
+        .section-6-form input[type="text"]::-moz-placeholder,
+        .section-6-form textarea::-moz-placeholder {
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .section-6-form input[type="text"]:-ms-input-placeholder,
+        .section-6-form textarea:-ms-input-placeholder {
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .section-6-form input[type="text"]::-webkit-input-placeholder,
+        .section-6-form textarea::-webkit-input-placeholder {
+            color: #ccc;
+            font-style: italic;
+        }
+
+    .section-6-form button.btn-customized {
+        padding: .75rem 1.5rem;
+        background: #f35b3f;
+        border: 0;
+        border-radius: 4px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #fff;
+        box-shadow: none;
+    }
+
+        .section-6-form button.btn-customized:hover,
+        .section-6-form button.btn-customized:active,
+        .section-6-form button.btn-customized:focus,
+        .section-6-form button.btn-customized:active:focus,
+        .section-6-form button.btn-customized.active:focus,
+        .section-6-form button.btn.btn-primary:not(:disabled):not(.disabled):active,
+        .section-6-form button.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+            outline: 0;
+            background: #cd533d;
+            background: rgba(243, 91, 63, 0.7);
+            border: 0;
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .section-6-form button.btn-customized i {
+            margin-right: 5px;
+        }
+/* end contact form */
+
+.section-6-social {
+    padding-top: 20px;
+}
+
+    .section-6-social a {
+        display: inline-block;
+        width: 46px;
+        height: 46px;
+        margin: 0 10px 10px 0;
+        background: #fff;
+        border: 0;
+        border-radius: 50%;
+        color: #555;
+        text-align: center;
+        line-height: 46px;
+    }
+
+        .section-6-social a:hover,
+        .section-6-social a:focus {
+            background: #ccc;
+            background: rgba(255, 255, 255, 0.5);
+            border: 0;
+            color: #555;
+        }
+
+.logoheader {
+    margin-top: 15px;
+    align-items: center;
+}
+
+.logosidebar {
+    padding: 40px 20px;
+    border-bottom: 1px solid #444;
+    transition: all .3s;
+}
+
+/***** Footer *****/
+
+footer {
+    padding: 40px 0;
+}
+
+.form-style-3 {
+    max-width: 100%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    margin-top: 0%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+    .form-style-3 label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+        .form-style-3 label > span {
+            float: left;
+            width: 100px;
+            color: black;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+    .form-style-3 fieldset {
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        margin: 0px 0px 10px 0px;
+        border: 1px solid #FFA500;
+        padding: 20px;
+        background: #FFFFF0;
+    }
+
+        .form-style-3 fieldset legend {
+            color: #FFF;
+            border-top: 1px solid #FFD2D2;
+            border-left: 1px solid #FFD2D2;
+            border-right: 1px solid #FFD2D2;
+            border-radius: 5px 5px 0px 0px;
+            -webkit-border-radius: 5px 5px 0px 0px;
+            -moz-border-radius: 5px 5px 0px 0px;
+            background: #FFA500;
+            padding: 0px 8px 3px 8px;
+            font-weight: normal;
+            font-size: 12px;
+        }
+
+    .form-style-3 textarea {
+        width: 250px;
+        height: 100px;
+    }
+
+    .form-style-3 input[type=text],
+    .form-style-3 input[type=date],
+    .form-style-3 input[type=datetime],
+    .form-style-3 input[type=number],
+    .form-style-3 input[type=search],
+    .form-style-3 input[type=time],
+    .form-style-3 input[type=url],
+    .form-style-3 input[type=email],
+    .form-style-3 select,
+    .form-style-3 textarea {
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border: 1px solid #F7C221;
+        outline: none;
+        color: black;
+        padding: 5px 8px 5px 8px;
+        background: #FFF;
+    }
+
+fixedfooter {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
+footer {
+    padding: 40px 0;
+}
+
+.form-style-3 {
+    max-width: 100%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    margin-top: 0%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+    .form-style-3 label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+        .form-style-3 label > span {
+            float: left;
+            width: 100px;
+            color: black;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+    .form-style-3 fieldset {
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        margin: 0px 0px 10px 0px;
+        border: 1px solid #FFA500;
+        padding: 20px;
+        background: #FFFFF0;
+    }
+
+        .form-style-3 fieldset legend {
+            color: #FFF;
+            border-top: 1px solid #FFD2D2;
+            border-left: 1px solid #FFD2D2;
+            border-right: 1px solid #FFD2D2;
+            border-radius: 5px 5px 0px 0px;
+            -webkit-border-radius: 5px 5px 0px 0px;
+            -moz-border-radius: 5px 5px 0px 0px;
+            background: #FFA500;
+            padding: 0px 8px 3px 8px;
+            font-weight: normal;
+            font-size: 12px;
+        }
+
+    .form-style-3 textarea {
+        width: 250px;
+        height: 100px;
+    }
+
+    .form-style-3 input[type=text],
+    .form-style-3 input[type=date],
+    .form-style-3 input[type=datetime],
+    .form-style-3 input[type=number],
+    .form-style-3 input[type=search],
+    .form-style-3 input[type=time],
+    .form-style-3 input[type=url],
+    .form-style-3 input[type=email],
+    .form-style-3 select,
+    .form-style-3 textarea {
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border: 1px solid #F7C221;
+        outline: none;
+        color: black;
+        padding: 5px 8px 5px 8px;
+        background: #FFF;
+    }
+
+    .form-style-3 input[type=submit],
+    .form-style-3 input[type=button] {
+        background: #F7C221;
+        border: 1px solid #FFA500;
+        padding: 5px 15px 5px 15px;
+        color: black;
+        border-radius: 3px;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        font-weight: bold;
+    }
+
+    .form-style-3 .required {
+        color: red;
+        font-weight: normal;
+    }
+
+    .form-style-3 .required {
+        color: red;
+        font-weight: normal;
+    }
+
+.containers {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #fff;
+    /* border: #ddd solid 1px; */
+    color: black;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    .containers {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .containers {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .containers {
+        width: 1170px;
+    }
+}
+
+.data-input {
+    margin-top: 1%;
+}
+
+.feature-wrapper {
+    z-index: 1;
+    display: block;
+    padding: 88px 0 40px 0;
+    position: relative;
+    margin: 0px;
+    /* background-color: #F7F7F7; */
+    text-align: left;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 75%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+.bgc-menu {
+    background-color: #ff971f;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+    padding: 0.5%;
+    width: 100%;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.bgc-header {
+    background-color: #ffd951;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 3px solid #ffd951;
+    padding: 0.5%;
+    width: 100%;
+}
+
+.bgc-small {
+    background-color: #ff971f;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 5%;
+    border-radius: 3px solid #ff971f;
+    padding: 0.5%;
+    width: 100%;
+}
+
+.tile {
+    position: relative;
+    background: #ffffff;
+    font-size: 12px;
+    /* border: #F7C221 solid 1px ; */
+    padding: 30px;
+    margin-top: 1%;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+    .CASheader,
+    .Identitas,
+    .Karakter,
+    .Penghasilan,
+    .Tanggungan,
+    .Rumah,
+    .Pasangan,
+    .Penjamin,
+    .Referensi,
+    .Tagihan,
+    .Pembatalan,
+    .BadanUsaha,
+    .Asset,
+    .Price,
+    .CMO,
+    .Dokumen,
+    .NPPADD,
+    .AddData,
+    .DataPersonal,
+    .DataPersonalRate,
+    .DataPersonalAdmin,
+    .DataPersonalProvisi,
+    .DataItem,
+    .DataPenagihan,
+    .DataPencairan,
+    .Verifikasi,
+    .Kesesuaian,
+    .AddDataBPKB,
+    .BPKBIn,
+    .RepeatOrder,
+    .FotoID,
+    .Analisa,
+    .BPKBPinjam,
+    .BPKBOut,
+    .BPKBEntry {
+        display: none;
+    }
+
+    #CASheader_more,
+    #Identitas_more,
+    #Karakter_more,
+    #Penghasilan_more,
+    #Tanggungan_more,
+    #Rumah_more,
+    #Pasangan_more,
+    #Penjamin_more,
+    #Referensi_more,
+    #Tagihan_more,
+    #Pembatalan_more,
+    #BadanUsaha_more,
+    #Asset_more,
+    #Price_more,
+    #CMO_more,
+    #Dokumen_more,
+    #NPPADD_more,
+    #AddData_more,
+    #DataPersonal_more,
+    #DataPersonalRate_more,
+    #DataPersonalAdmin_more,
+    #DataPersonalProvisi_more,
+    #DataItem_more,
+    #DataPenagihan_more,
+    #DataPencairan_more,
+    #Verifikasi_more,
+    #Kesesuaian_more,
+    #AddDataBPKB_more,
+    #BPKBIn_more,
+    #RepeatOrder_more,
+    #FotoID_more,
+    #Analisa_more,
+    #SkalaResiko_more,
+    #Keputusan_more,
+    #BPKBPinjam_more,
+    #BPKBOut_more,
+    #BPKBEntry_more {
+        display: block;
+        text-align: left;
+        background-color: #ff971f;
+        border: #ff971f solid 1px;
+        color: #fff;
+    }
+}
+
+.CASheader_more,
+.Identitas_more,
+.Karakter_more,
+.Penghasilan_more,
+.Tanggungan_more,
+.Rumah_more,
+.Pasangan_more,
+.Penjamin_more,
+.Referensi_more,
+.Tagihan_more,
+.Pembatalan_more,
+.BadanUsaha_more,
+.Asset_more,
+.Price_more,
+.CMO_more,
+.Dokumen_more,
+.NPPADD_more,
+.AddData_more,
+.DataPersonal_more,
+.DataPersonalRate_more,
+.DataPersonalAdmin_more,
+.DataPersonalProvisi_more,
+.DataItem_more,
+.DataPenagihan_more,
+.DataPencairan_more,
+.Verifikasi_more,
+.Kesesuaian_more,
+.AddDataBPKB_more,
+.BPKBIn_more,
+.RepeatOrder_more,
+.FotoID_more,
+.Analisa_more,
+.SkalaResiko_more,
+.Keputusan_more,
+.BPKBPinjam_more,
+.BPKBOut_more,
+.BPKBEntry_more {
+    display: none;
+}
+
+.more {
+    display: block !important;
+}
+
+@media screen and (max-width: 600px) {
+    .bgc-menu {
+        visibility: hidden;
+        clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 100%;
+        height: 100vh;
+        display: none;
+    }
+}
+
+@media print {
+    .tile {
+        border: 1px solid #ddd;
+    }
+}
+
+.tile.small {
+    padding: 0;
+}
+
+.tile .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    color: #555;
+    border-radius: 3px;
+}
+
+    .tile .overlay .l-text {
+        font-size: 24px;
+        margin-top: 15px;
+    }
+
+.tile .tile-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.tile .tile-title-w-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .tile .tile-title-w-btn p {
+        margin: 0;
+    }
+
+    .tile .tile-title-w-btn .title {
+        margin: 0;
+    }
+
+    .tile .tile-title-w-btn .side {
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+
+    .tile .tile-title-w-btn .btn-group {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+    }
+
+.tile .tile-footer {
+    border-top: 1px solid #ddd;
+    padding: 20px 0 0 0;
+    margin-top: 10px;
+}
+
+.form-control {
+    border-radius: 3px;
+    box-shadow: none !important;
+    font-family: 'arial', Times, serif;
+    color: #000;
+    /* margin-top: -2%; */
+}
+
+    .form-control:focus {
+        border-color: #E9BF66 !important;
+    }
+
+#contactform .form-control {
+    margin-bottom: 5%;
+    height: 35px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.btn-submit {
+    display: inline-block;
+    padding: 6px 13px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 2;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    background: #ff971f;
+    color: #fff !important;
+    border: 1px solid #ff971f;
+    border-radius: 3px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bgc-menu {
+    background-color: #ff971f;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+    padding: 0.5%;
+    width: 100%;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.bgc-header {
+    background-color: #ffd951;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 3px solid #ffd951;
+    padding: 0.5%;
+    width: 100%;
+}
+
+.bgc-small {
+    background-color: #ff971f;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 5%;
+    border-radius: 3px solid #ff971f;
+    padding: 0.5%;
+    width: 100%;
+}
+
+.tile {
+    position: relative;
+    background: #ffffff;
+    font-size: 12px;
+    /* border: #F7C221 solid 1px ; */
+    padding: 30px;
+    margin-top: 1%;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+    .CASheader,
+    .Identitas,
+    .Karakter,
+    .Penghasilan,
+    .Tanggungan,
+    .Rumah,
+    .Pasangan,
+    .Penjamin,
+    .Referensi,
+    .Tagihan,
+    .Pembatalan,
+    .BadanUsaha,
+    .Asset,
+    .Price,
+    .CMO,
+    .Dokumen,
+    .NPPADD,
+    .AddData,
+    .DataPersonal,
+    .DataPersonalRate,
+    .DataPersonalAdmin,
+    .DataPersonalProvisi,
+    .DataItem,
+    .DataPenagihan,
+    .DataPencairan,
+    .Verifikasi,
+    .Kesesuaian,
+    .AddDataBPKB,
+    .BPKBIn,
+    .RepeatOrder,
+    .FotoID,
+    .Analisa {
+        display: none;
+    }
+
+    #CASheader_more,
+    #Identitas_more,
+    #Karakter_more,
+    #Penghasilan_more,
+    #Tanggungan_more,
+    #Rumah_more,
+    #Pasangan_more,
+    #Penjamin_more,
+    #Referensi_more,
+    #Tagihan_more,
+    #Pembatalan_more,
+    #BadanUsaha_more,
+    #Asset_more,
+    #Price_more,
+    #CMO_more,
+    #Dokumen_more,
+    #NPPADD_more,
+    #AddData_more,
+    #DataPersonal_more,
+    #DataPersonalRate_more,
+    #DataPersonalAdmin_more,
+    #DataPersonalProvisi_more,
+    #DataItem_more,
+    #DataPenagihan_more,
+    #DataPencairan_more,
+    #Verifikasi_more,
+    #Kesesuaian_more,
+    #AddDataBPKB_more,
+    #BPKBIn_more,
+    #RepeatOrder_more,
+    #FotoID_more,
+    #Analisa_more {
+        display: block;
+        text-align: left;
+        background-color: #ff971f;
+        border: #ff971f solid 1px;
+        color: #fff;
+    }
+}
+
+.CASheader_more,
+.Identitas_more,
+.Karakter_more,
+.Penghasilan_more,
+.Tanggungan_more,
+.Rumah_more,
+.Pasangan_more,
+.Penjamin_more,
+.Referensi_more,
+.Tagihan_more,
+.Pembatalan_more,
+.BadanUsaha_more,
+.Asset_more,
+.Price_more,
+.CMO_more,
+.Dokumen_more,
+.NPPADD_more,
+.AddData_more,
+.DataPersonal_more,
+.DataPersonalRate_more,
+.DataPersonalAdmin_more,
+.DataPersonalProvisi_more,
+.DataItem_more,
+.DataPenagihan_more,
+.DataPencairan_more,
+.Verifikasi_more,
+.Kesesuaian_more,
+.AddDataBPKB_more,
+.BPKBIn_more,
+.RepeatOrder_more,
+.FotoID_more,
+.Analisa_more {
+    display: none;
+}
+
+.more {
+    display: block !important;
+}
+
+@media screen and (max-width: 600px) {
+    .bgc-menu {
+        visibility: hidden;
+        clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 100%;
+        height: 100vh;
+        display: none;
+    }
+}
+
+@media print {
+    .tile {
+        border: 1px solid #ddd;
+    }
+}
+
+.tile.small {
+    padding: 0;
+}
+
+.tile .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    color: #555;
+    border-radius: 3px;
+}
+
+    .tile .overlay .l-text {
+        font-size: 24px;
+        margin-top: 15px;
+    }
+
+.tile .tile-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.tile .tile-title-w-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .tile .tile-title-w-btn p {
+        margin: 0;
+    }
+
+    .tile .tile-title-w-btn .title {
+        margin: 0;
+    }
+
+    .tile .tile-title-w-btn .side {
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+
+    .tile .tile-title-w-btn .btn-group {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+    }
+
+.tile .tile-footer {
+    border-top: 1px solid #ddd;
+    padding: 20px 0 0 0;
+    margin-top: 10px;
+}
+
+.form-control {
+    border-radius: 3px;
+    box-shadow: none !important;
+    font-family: 'arial', Times, serif;
+    color: #000;
+    /* margin-top: -2%; */
+}
+
+    .form-control:focus {
+        border-color: #E9BF66 !important;
+    }
+
+#contactform .form-control {
+    margin-bottom: 5%;
+    height: 35px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.btn-submit {
+    display: inline-block;
+    padding: 6px 13px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 2;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    background: #ff971f;
+    color: #fff !important;
+    border: 1px solid #ff971f;
+    border-radius: 3px;
+}
+
+    .btn-submit:hover, .btn-input:focus, .btn-input:active, .btn-input.active, .open > .dropdown-toggle.btn-primary {
+        color: rgb(0, 0, 0) !important;
+        background-color: #ffd951 !important;
+        border-color: #ffd951 !important;
+        border-radius: 3px;
+    }
+
+.btn-input {
+    display: inline-block;
+    padding: 6px 13px;
+    margin-bottom: 0;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 2;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    background: #ff971f;
+    color: #fff !important;
+    border: 1px solid #ff971f;
+    border-radius: 3px;
+}
+
+    .btn-input:hover, .btn-input:focus, .btn-input:active, .btn-input.active, .open > .dropdown-toggle.btn-primary {
+        color: rgb(0, 0, 0) !important;
+        background-color: #ffd951 !important;
+        border-color: #ffd951 !important;
+        border-radius: 3px;
+    }
+
+.btn-open {
+    display: inline-block;
+    padding: 5px;
+    margin-bottom: 0;
+    font-size: 8px;
+    font-weight: 900;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffd951 !important;
+    border-color: #ffd951 !important;
+    border-radius: 3px;
+}
+
+    .btn-open:hover, .btn-open:focus, .btn-open:active, .btn-open.active, .open > .dropdown-toggle.btn-open {
+        background-color: #ff971f;
+        color: #000 !important;
+        border: 1px solid #ff971f;
+        border-radius: 3px;
+    }
+
+.btn-delete {
+    display: inline-block;
+    padding: 6px 13px;
+    margin-bottom: 0;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 2;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #fff !important;
+    background-color: #ff0000 !important;
+    border-color: #ff0000 !important;
+    border-radius: 3px;
+}
+
+    .btn-delete:hover, .btn-delete:focus, .btn-delete:active, .btn-delete.active {
+        color: #fff !important;
+        background-color: #820101 !important;
+        border-color: #820101 !important;
+        border-radius: 3px;
+    }
+
+.datepicker {
+    border-radius: 4px;
+    direction: ltr;
+}
+
+.datepicker-inline {
+    width: 220px;
+}
+
+.datepicker.datepicker-rtl {
+    direction: rtl;
+}
+
+    .datepicker.datepicker-rtl table tr td span {
+        float: right;
+    }
+
+.datepicker-dropdown {
+    top: 0;
+    left: 0;
+    padding: 4px;
+}
+
+    .datepicker-dropdown:before {
+        content: '';
+        display: inline-block;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid rgba(0, 0, 0, 0.15);
+        border-top: 0;
+        border-bottom-color: rgba(0, 0, 0, 0.2);
+        position: absolute;
+    }
+
+    .datepicker-dropdown:after {
+        content: '';
+        display: inline-block;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid #ffffff;
+        border-top: 0;
+        position: absolute;
+    }
+
+    .datepicker-dropdown.datepicker-orient-left:before {
+        left: 6px;
+    }
+
+    .datepicker-dropdown.datepicker-orient-left:after {
+        left: 7px;
+    }
+
+    .datepicker-dropdown.datepicker-orient-right:before {
+        right: 6px;
+    }
+
+    .datepicker-dropdown.datepicker-orient-right:after {
+        right: 7px;
+    }
+
+    .datepicker-dropdown.datepicker-orient-bottom:before {
+        top: -7px;
+    }
+
+    .datepicker-dropdown.datepicker-orient-bottom:after {
+        top: -6px;
+    }
+
+    .datepicker-dropdown.datepicker-orient-top:before {
+        bottom: -7px;
+        border-bottom: 0;
+        border-top: 7px solid rgba(0, 0, 0, 0.15);
+    }
+
+    .datepicker-dropdown.datepicker-orient-top:after {
+        bottom: -6px;
+        border-bottom: 0;
+        border-top: 6px solid #ffffff;
+    }
+
+.datepicker table {
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    .datepicker table tr td,
+    .datepicker table tr th {
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        border: none;
+    }
+
+.table-striped .datepicker table tr td,
+.table-striped .datepicker table tr th {
+    background-color: transparent;
+}
+
+.datepicker-days tbody tr td {
+    border-radius: 50%;
+    font-weight: 500;
+}
+
+.datepicker table tr td.old,
+.datepicker table tr td.new {
+    color: #999999;
+}
+
+.datepicker table tr td.day:hover,
+.datepicker table tr td.focused {
+    background: #eeeeee;
+    cursor: pointer;
+}
+
+.datepicker table tr td.disabled,
+.datepicker table tr td.disabled:hover {
+    background: none;
+    color: #999999;
+    cursor: default;
+}
+
+.datepicker table tr td.highlighted {
+    color: #000000;
+    background-color: #d9edf7;
+    border-color: #85c5e5;
+    border-radius: 0;
+}
+
+    .datepicker table tr td.highlighted:focus,
+    .datepicker table tr td.highlighted.focus {
+        color: #000000;
+        background-color: #afd9ee;
+        border-color: #298fc2;
+    }
+
+    .datepicker table tr td.highlighted:hover {
+        color: #000000;
+        background-color: #afd9ee;
+        border-color: #52addb;
+    }
+
+    .datepicker table tr td.highlighted:active,
+    .datepicker table tr td.highlighted.active,
+    .open > .dropdown-toggle.datepicker table tr td.highlighted {
+        color: #000000;
+        background-color: #afd9ee;
+        border-color: #52addb;
+    }
+
+        .datepicker table tr td.highlighted:active:hover,
+        .datepicker table tr td.highlighted.active:hover,
+        .open > .dropdown-toggle.datepicker table tr td.highlighted:hover,
+        .datepicker table tr td.highlighted:active:focus,
+        .datepicker table tr td.highlighted.active:focus,
+        .open > .dropdown-toggle.datepicker table tr td.highlighted:focus,
+        .datepicker table tr td.highlighted:active.focus,
+        .datepicker table tr td.highlighted.active.focus,
+        .open > .dropdown-toggle.datepicker table tr td.highlighted.focus {
+            color: #000000;
+            background-color: #91cbe8;
+            border-color: #298fc2;
+        }
+
+    .datepicker table tr td.highlighted:active,
+    .datepicker table tr td.highlighted.active,
+    .open > .dropdown-toggle.datepicker table tr td.highlighted {
+        background-image: none;
+    }
+
+    .datepicker table tr td.highlighted.disabled:hover,
+    .datepicker table tr td.highlighted[disabled]:hover,
+    fieldset[disabled] .datepicker table tr td.highlighted:hover,
+    .datepicker table tr td.highlighted.disabled:focus,
+    .datepicker table tr td.highlighted[disabled]:focus,
+    fieldset[disabled] .datepicker table tr td.highlighted:focus,
+    .datepicker table tr td.highlighted.disabled.focus,
+    .datepicker table tr td.highlighted[disabled].focus,
+    fieldset[disabled] .datepicker table tr td.highlighted.focus {
+        background-color: #d9edf7;
+        border-color: #85c5e5;
+    }
+
+    .datepicker table tr td.highlighted.focused {
+        background: #afd9ee;
+    }
+
+    .datepicker table tr td.highlighted.disabled,
+    .datepicker table tr td.highlighted.disabled:active {
+        background: #d9edf7;
+        color: #999999;
+    }
+
+.datepicker table tr td.today {
+    color: #000000;
+    background-color: #ffdb99;
+    border-color: #ffb733;
+}
+
+    .datepicker table tr td.today:focus,
+    .datepicker table tr td.today.focus {
+        color: #000000;
+        background-color: #ffc966;
+        border-color: #b37400;
+    }
+
+    .datepicker table tr td.today:hover {
+        color: #000000;
+        background-color: #ffc966;
+        border-color: #f59e00;
+    }
+
+    .datepicker table tr td.today:active,
+    .datepicker table tr td.today.active,
+    .open > .dropdown-toggle.datepicker table tr td.today {
+        color: #000000;
+        background-color: #ffc966;
+        border-color: #f59e00;
+    }
+
+        .datepicker table tr td.today:active:hover,
+        .datepicker table tr td.today.active:hover,
+        .open > .dropdown-toggle.datepicker table tr td.today:hover,
+        .datepicker table tr td.today:active:focus,
+        .datepicker table tr td.today.active:focus,
+        .open > .dropdown-toggle.datepicker table tr td.today:focus,
+        .datepicker table tr td.today:active.focus,
+        .datepicker table tr td.today.active.focus,
+        .open > .dropdown-toggle.datepicker table tr td.today.focus {
+            color: #000000;
+            background-color: #ffbc42;
+            border-color: #b37400;
+        }
+
+    .datepicker table tr td.today:active,
+    .datepicker table tr td.today.active,
+    .open > .dropdown-toggle.datepicker table tr td.today {
+        background-image: none;
+    }
+
+    .datepicker table tr td.today.disabled:hover,
+    .datepicker table tr td.today[disabled]:hover,
+    fieldset[disabled] .datepicker table tr td.today:hover,
+    .datepicker table tr td.today.disabled:focus,
+    .datepicker table tr td.today[disabled]:focus,
+    fieldset[disabled] .datepicker table tr td.today:focus,
+    .datepicker table tr td.today.disabled.focus,
+    .datepicker table tr td.today[disabled].focus,
+    fieldset[disabled] .datepicker table tr td.today.focus {
+        background-color: #ffdb99;
+        border-color: #ffb733;
+    }
+
+    .datepicker table tr td.today.focused {
+        background: #ffc966;
+    }
+
+    .datepicker table tr td.today.disabled,
+    .datepicker table tr td.today.disabled:active {
+        background: #ffdb99;
+        color: #999999;
+    }
+
+.datepicker table tr td.range {
+    color: #000000;
+    background-color: #eeeeee;
+    border-color: #bbbbbb;
+    border-radius: 0;
+}
+
+    .datepicker table tr td.range:focus,
+    .datepicker table tr td.range.focus {
+        color: #000000;
+        background-color: #d5d5d5;
+        border-color: #7c7c7c;
+    }
+
+    .datepicker table tr td.range:hover {
+        color: #000000;
+        background-color: #d5d5d5;
+        border-color: #9d9d9d;
+    }
+
+    .datepicker table tr td.range:active,
+    .datepicker table tr td.range.active,
+    .open > .dropdown-toggle.datepicker table tr td.range {
+        color: #000000;
+        background-color: #d5d5d5;
+        border-color: #9d9d9d;
+    }
+
+        .datepicker table tr td.range:active:hover,
+        .datepicker table tr td.range.active:hover,
+        .open > .dropdown-toggle.datepicker table tr td.range:hover,
+        .datepicker table tr td.range:active:focus,
+        .datepicker table tr td.range.active:focus,
+        .open > .dropdown-toggle.datepicker table tr td.range:focus,
+        .datepicker table tr td.range:active.focus,
+        .datepicker table tr td.range.active.focus,
+        .open > .dropdown-toggle.datepicker table tr td.range.focus {
+            color: #000000;
+            background-color: #c3c3c3;
+            border-color: #7c7c7c;
+        }
+
+    .datepicker table tr td.range:active,
+    .datepicker table tr td.range.active,
+    .open > .dropdown-toggle.datepicker table tr td.range {
+        background-image: none;
+    }
+
+    .datepicker table tr td.range.disabled:hover,
+    .datepicker table tr td.range[disabled]:hover,
+    fieldset[disabled] .datepicker table tr td.range:hover,
+    .datepicker table tr td.range.disabled:focus,
+    .datepicker table tr td.range[disabled]:focus,
+    fieldset[disabled] .datepicker table tr td.range:focus,
+    .datepicker table tr td.range.disabled.focus,
+    .datepicker table tr td.range[disabled].focus,
+    fieldset[disabled] .datepicker table tr td.range.focus {
+        background-color: #eeeeee;
+        border-color: #bbbbbb;
+    }
+
+    .datepicker table tr td.range.focused {
+        background: #d5d5d5;
+    }
+
+    .datepicker table tr td.range.disabled,
+    .datepicker table tr td.range.disabled:active {
+        background: #eeeeee;
+        color: #999999;
+    }
+
+    .datepicker table tr td.range.highlighted {
+        color: #000000;
+        background-color: #e4eef3;
+        border-color: #9dc1d3;
+    }
+
+        .datepicker table tr td.range.highlighted:focus,
+        .datepicker table tr td.range.highlighted.focus {
+            color: #000000;
+            background-color: #c1d7e3;
+            border-color: #4b88a6;
+        }
+
+        .datepicker table tr td.range.highlighted:hover {
+            color: #000000;
+            background-color: #c1d7e3;
+            border-color: #73a6c0;
+        }
+
+        .datepicker table tr td.range.highlighted:active,
+        .datepicker table tr td.range.highlighted.active,
+        .open > .dropdown-toggle.datepicker table tr td.range.highlighted {
+            color: #000000;
+            background-color: #c1d7e3;
+            border-color: #73a6c0;
+        }
+
+            .datepicker table tr td.range.highlighted:active:hover,
+            .datepicker table tr td.range.highlighted.active:hover,
+            .open > .dropdown-toggle.datepicker table tr td.range.highlighted:hover,
+            .datepicker table tr td.range.highlighted:active:focus,
+            .datepicker table tr td.range.highlighted.active:focus,
+            .open > .dropdown-toggle.datepicker table tr td.range.highlighted:focus,
+            .datepicker table tr td.range.highlighted:active.focus,
+            .datepicker table tr td.range.highlighted.active.focus,
+            .open > .dropdown-toggle.datepicker table tr td.range.highlighted.focus {
+                color: #000000;
+                background-color: #a8c8d8;
+                border-color: #4b88a6;
+            }
+
+        .datepicker table tr td.range.highlighted:active,
+        .datepicker table tr td.range.highlighted.active,
+        .open > .dropdown-toggle.datepicker table tr td.range.highlighted {
+            background-image: none;
+        }
+
+        .datepicker table tr td.range.highlighted.disabled:hover,
+        .datepicker table tr td.range.highlighted[disabled]:hover,
+        fieldset[disabled] .datepicker table tr td.range.highlighted:hover,
+        .datepicker table tr td.range.highlighted.disabled:focus,
+        .datepicker table tr td.range.highlighted[disabled]:focus,
+        fieldset[disabled] .datepicker table tr td.range.highlighted:focus,
+        .datepicker table tr td.range.highlighted.disabled.focus,
+        .datepicker table tr td.range.highlighted[disabled].focus,
+        fieldset[disabled] .datepicker table tr td.range.highlighted.focus {
+            background-color: #e4eef3;
+            border-color: #9dc1d3;
+        }
+
+        .datepicker table tr td.range.highlighted.focused {
+            background: #c1d7e3;
+        }
+
+        .datepicker table tr td.range.highlighted.disabled,
+        .datepicker table tr td.range.highlighted.disabled:active {
+            background: #e4eef3;
+            color: #999999;
+        }
+
+    .datepicker table tr td.range.today {
+        color: #000000;
+        background-color: #f7ca77;
+        border-color: #f1a417;
+    }
+
+        .datepicker table tr td.range.today:focus,
+        .datepicker table tr td.range.today.focus {
+            color: #000000;
+            background-color: #f4b747;
+            border-color: #815608;
+        }
+
+        .datepicker table tr td.range.today:hover {
+            color: #000000;
+            background-color: #f4b747;
+            border-color: #bf800c;
+        }
+
+        .datepicker table tr td.range.today:active,
+        .datepicker table tr td.range.today.active,
+        .open > .dropdown-toggle.datepicker table tr td.range.today {
+            color: #000000;
+            background-color: #f4b747;
+            border-color: #bf800c;
+        }
+
+            .datepicker table tr td.range.today:active:hover,
+            .datepicker table tr td.range.today.active:hover,
+            .open > .dropdown-toggle.datepicker table tr td.range.today:hover,
+            .datepicker table tr td.range.today:active:focus,
+            .datepicker table tr td.range.today.active:focus,
+            .open > .dropdown-toggle.datepicker table tr td.range.today:focus,
+            .datepicker table tr td.range.today:active.focus,
+            .datepicker table tr td.range.today.active.focus,
+            .open > .dropdown-toggle.datepicker table tr td.range.today.focus {
+                color: #000000;
+                background-color: #f2aa25;
+                border-color: #815608;
+            }
+
+        .datepicker table tr td.range.today:active,
+        .datepicker table tr td.range.today.active,
+        .open > .dropdown-toggle.datepicker table tr td.range.today {
+            background-image: none;
+        }
+
+        .datepicker table tr td.range.today.disabled:hover,
+        .datepicker table tr td.range.today[disabled]:hover,
+        fieldset[disabled] .datepicker table tr td.range.today:hover,
+        .datepicker table tr td.range.today.disabled:focus,
+        .datepicker table tr td.range.today[disabled]:focus,
+        fieldset[disabled] .datepicker table tr td.range.today:focus,
+        .datepicker table tr td.range.today.disabled.focus,
+        .datepicker table tr td.range.today[disabled].focus,
+        fieldset[disabled] .datepicker table tr td.range.today.focus {
+            background-color: #f7ca77;
+            border-color: #f1a417;
+        }
+
+        .datepicker table tr td.range.today.disabled,
+        .datepicker table tr td.range.today.disabled:active {
+            background: #f7ca77;
+            color: #999999;
+        }
+
+.datepicker table tr td.selected,
+.datepicker table tr td.selected.highlighted {
+    color: #ffffff;
+    background-color: #999999;
+    border-color: #555555;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+    .datepicker table tr td.selected:focus,
+    .datepicker table tr td.selected.highlighted:focus,
+    .datepicker table tr td.selected.focus,
+    .datepicker table tr td.selected.highlighted.focus {
+        color: #ffffff;
+        background-color: #808080;
+        border-color: #161616;
+    }
+
+    .datepicker table tr td.selected:hover,
+    .datepicker table tr td.selected.highlighted:hover {
+        color: #ffffff;
+        background-color: #808080;
+        border-color: #373737;
+    }
+
+    .datepicker table tr td.selected:active,
+    .datepicker table tr td.selected.highlighted:active,
+    .datepicker table tr td.selected.active,
+    .datepicker table tr td.selected.highlighted.active,
+    .open > .dropdown-toggle.datepicker table tr td.selected,
+    .open > .dropdown-toggle.datepicker table tr td.selected.highlighted {
+        color: #ffffff;
+        background-color: #808080;
+        border-color: #373737;
+    }
+
+        .datepicker table tr td.selected:active:hover,
+        .datepicker table tr td.selected.highlighted:active:hover,
+        .datepicker table tr td.selected.active:hover,
+        .datepicker table tr td.selected.highlighted.active:hover,
+        .open > .dropdown-toggle.datepicker table tr td.selected:hover,
+        .open > .dropdown-toggle.datepicker table tr td.selected.highlighted:hover,
+        .datepicker table tr td.selected:active:focus,
+        .datepicker table tr td.selected.highlighted:active:focus,
+        .datepicker table tr td.selected.active:focus,
+        .datepicker table tr td.selected.highlighted.active:focus,
+        .open > .dropdown-toggle.datepicker table tr td.selected:focus,
+        .open > .dropdown-toggle.datepicker table tr td.selected.highlighted:focus,
+        .datepicker table tr td.selected:active.focus,
+        .datepicker table tr td.selected.highlighted:active.focus,
+        .datepicker table tr td.selected.active.focus,
+        .datepicker table tr td.selected.highlighted.active.focus,
+        .open > .dropdown-toggle.datepicker table tr td.selected.focus,
+        .open > .dropdown-toggle.datepicker table tr td.selected.highlighted.focus {
+            color: #ffffff;
+            background-color: #6e6e6e;
+            border-color: #161616;
+        }
+
+        .datepicker table tr td.selected:active,
+        .datepicker table tr td.selected.highlighted:active,
+        .datepicker table tr td.selected.active,
+        .datepicker table tr td.selected.highlighted.active,
+        .open > .dropdown-toggle.datepicker table tr td.selected,
+        .open > .dropdown-toggle.datepicker table tr td.selected.highlighted {
+            background-image: none;
+        }
+
+    .datepicker table tr td.selected.disabled:hover,
+    .datepicker table tr td.selected.highlighted.disabled:hover,
+    .datepicker table tr td.selected[disabled]:hover,
+    .datepicker table tr td.selected.highlighted[disabled]:hover,
+    fieldset[disabled] .datepicker table tr td.selected:hover,
+    fieldset[disabled] .datepicker table tr td.selected.highlighted:hover,
+    .datepicker table tr td.selected.disabled:focus,
+    .datepicker table tr td.selected.highlighted.disabled:focus,
+    .datepicker table tr td.selected[disabled]:focus,
+    .datepicker table tr td.selected.highlighted[disabled]:focus,
+    fieldset[disabled] .datepicker table tr td.selected:focus,
+    fieldset[disabled] .datepicker table tr td.selected.highlighted:focus,
+    .datepicker table tr td.selected.disabled.focus,
+    .datepicker table tr td.selected.highlighted.disabled.focus,
+    .datepicker table tr td.selected[disabled].focus,
+    .datepicker table tr td.selected.highlighted[disabled].focus,
+    fieldset[disabled] .datepicker table tr td.selected.focus,
+    fieldset[disabled] .datepicker table tr td.selected.highlighted.focus {
+        background-color: #999999;
+        border-color: #555555;
+    }
+
+.datepicker table tr td.active,
+.datepicker table tr td.active.highlighted {
+    color: #ffffff;
+    background-color: #428bca;
+    border-color: #357ebd;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+    .datepicker table tr td.active:focus,
+    .datepicker table tr td.active.highlighted:focus,
+    .datepicker table tr td.active.focus,
+    .datepicker table tr td.active.highlighted.focus {
+        color: #ffffff;
+        background-color: #009688;
+        border-color: #193c5a;
+    }
+
+    .datepicker table tr td.active:hover,
+    .datepicker table tr td.active.highlighted:hover {
+        color: #ffffff;
+        background-color: #009688;
+        border-color: #007d71;
+    }
+
+    .datepicker table tr td.active:active,
+    .datepicker table tr td.active.highlighted:active,
+    .datepicker table tr td.active.active,
+    .datepicker table tr td.active.highlighted.active,
+    .open > .dropdown-toggle.datepicker table tr td.active,
+    .open > .dropdown-toggle.datepicker table tr td.active.highlighted {
+        color: #ffffff;
+        background-color: #009688;
+        border-color: #007d71;
+    }
+
+        .datepicker table tr td.active:active:hover,
+        .datepicker table tr td.active.highlighted:active:hover,
+        .datepicker table tr td.active.active:hover,
+        .datepicker table tr td.active.highlighted.active:hover,
+        .open > .dropdown-toggle.datepicker table tr td.active:hover,
+        .open > .dropdown-toggle.datepicker table tr td.active.highlighted:hover,
+        .datepicker table tr td.active:active:focus,
+        .datepicker table tr td.active.highlighted:active:focus,
+        .datepicker table tr td.active.active:focus,
+        .datepicker table tr td.active.highlighted.active:focus,
+        .open > .dropdown-toggle.datepicker table tr td.active:focus,
+        .open > .dropdown-toggle.datepicker table tr td.active.highlighted:focus,
+        .datepicker table tr td.active:active.focus,
+        .datepicker table tr td.active.highlighted:active.focus,
+        .datepicker table tr td.active.active.focus,
+        .datepicker table tr td.active.highlighted.active.focus,
+        .open > .dropdown-toggle.datepicker table tr td.active.focus,
+        .open > .dropdown-toggle.datepicker table tr td.active.highlighted.focus {
+            color: #ffffff;
+            background-color: #007d71;
+            border-color: #193c5a;
+        }
+
+        .datepicker table tr td.active:active,
+        .datepicker table tr td.active.highlighted:active,
+        .datepicker table tr td.active.active,
+        .datepicker table tr td.active.highlighted.active,
+        .open > .dropdown-toggle.datepicker table tr td.active,
+        .open > .dropdown-toggle.datepicker table tr td.active.highlighted {
+            background-image: none;
+        }
+
+    .datepicker table tr td.active.disabled:hover,
+    .datepicker table tr td.active.highlighted.disabled:hover,
+    .datepicker table tr td.active[disabled]:hover,
+    .datepicker table tr td.active.highlighted[disabled]:hover,
+    fieldset[disabled] .datepicker table tr td.active:hover,
+    fieldset[disabled] .datepicker table tr td.active.highlighted:hover,
+    .datepicker table tr td.active.disabled:focus,
+    .datepicker table tr td.active.highlighted.disabled:focus,
+    .datepicker table tr td.active[disabled]:focus,
+    .datepicker table tr td.active.highlighted[disabled]:focus,
+    fieldset[disabled] .datepicker table tr td.active:focus,
+    fieldset[disabled] .datepicker table tr td.active.highlighted:focus,
+    .datepicker table tr td.active.disabled.focus,
+    .datepicker table tr td.active.highlighted.disabled.focus,
+    .datepicker table tr td.active[disabled].focus,
+    .datepicker table tr td.active.highlighted[disabled].focus,
+    fieldset[disabled] .datepicker table tr td.active.focus,
+    fieldset[disabled] .datepicker table tr td.active.highlighted.focus {
+        background-color: #428bca;
+        border-color: #357ebd;
+    }
+
+.datepicker table tr td span {
+    display: block;
+    width: 23%;
+    height: 54px;
+    line-height: 54px;
+    float: left;
+    margin: 1%;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+    .datepicker table tr td span:hover {
+        background: #eeeeee;
+    }
+
+    .datepicker table tr td span.disabled,
+    .datepicker table tr td span.disabled:hover {
+        background: none;
+        color: #999999;
+        cursor: default;
+    }
+
+    .datepicker table tr td span.active,
+    .datepicker table tr td span.active:hover,
+    .datepicker table tr td span.active.disabled,
+    .datepicker table tr td span.active.disabled:hover {
+        color: #ffffff;
+        background-color: #428bca;
+        border-color: #357ebd;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    }
+
+        .datepicker table tr td span.active:focus,
+        .datepicker table tr td span.active:hover:focus,
+        .datepicker table tr td span.active.disabled:focus,
+        .datepicker table tr td span.active.disabled:hover:focus,
+        .datepicker table tr td span.active.focus,
+        .datepicker table tr td span.active:hover.focus,
+        .datepicker table tr td span.active.disabled.focus,
+        .datepicker table tr td span.active.disabled:hover.focus {
+            color: #ffffff;
+            background-color: #009688;
+            border-color: #193c5a;
+        }
+
+        .datepicker table tr td span.active:hover,
+        .datepicker table tr td span.active:hover:hover,
+        .datepicker table tr td span.active.disabled:hover,
+        .datepicker table tr td span.active.disabled:hover:hover {
+            color: #ffffff;
+            background-color: #009688;
+            border-color: #007d71;
+        }
+
+            .datepicker table tr td span.active:active,
+            .datepicker table tr td span.active:hover:active,
+            .datepicker table tr td span.active.disabled:active,
+            .datepicker table tr td span.active.disabled:hover:active,
+            .datepicker table tr td span.active.active,
+            .datepicker table tr td span.active:hover.active,
+            .datepicker table tr td span.active.disabled.active,
+            .datepicker table tr td span.active.disabled:hover.active,
+            .open > .dropdown-toggle.datepicker table tr td span.active,
+            .open > .dropdown-toggle.datepicker table tr td span.active:hover,
+            .open > .dropdown-toggle.datepicker table tr td span.active.disabled,
+            .open > .dropdown-toggle.datepicker table tr td span.active.disabled:hover {
+                color: #ffffff;
+                background-color: #009688;
+                border-color: #007d71;
+            }
+
+                .datepicker table tr td span.active:active:hover,
+                .datepicker table tr td span.active:hover:active:hover,
+                .datepicker table tr td span.active.disabled:active:hover,
+                .datepicker table tr td span.active.disabled:hover:active:hover,
+                .datepicker table tr td span.active.active:hover,
+                .datepicker table tr td span.active:hover.active:hover,
+                .datepicker table tr td span.active.disabled.active:hover,
+                .datepicker table tr td span.active.disabled:hover.active:hover,
+                .open > .dropdown-toggle.datepicker table tr td span.active:hover,
+                .open > .dropdown-toggle.datepicker table tr td span.active:hover:hover,
+                .open > .dropdown-toggle.datepicker table tr td span.active.disabled:hover,
+                .open > .dropdown-toggle.datepicker table tr td span.active.disabled:hover:hover,
+                .datepicker table tr td span.active:active:focus,
+                .datepicker table tr td span.active:hover:active:focus,
+                .datepicker table tr td span.active.disabled:active:focus,
+                .datepicker table tr td span.active.disabled:hover:active:focus,
+                .datepicker table tr td span.active.active:focus,
+                .datepicker table tr td span.active:hover.active:focus,
+                .datepicker table tr td span.active.disabled.active:focus,
+                .datepicker table tr td span.active.disabled:hover.active:focus,
+                .open > .dropdown-toggle.datepicker table tr td span.active:focus,
+                .open > .dropdown-toggle.datepicker table tr td span.active:hover:focus,
+                .open > .dropdown-toggle.datepicker table tr td span.active.disabled:focus,
+                .open > .dropdown-toggle.datepicker table tr td span.active.disabled:hover:focus,
+                .datepicker table tr td span.active:active.focus,
+                .datepicker table tr td span.active:hover:active.focus,
+                .datepicker table tr td span.active.disabled:active.focus,
+                .datepicker table tr td span.active.disabled:hover:active.focus,
+                .datepicker table tr td span.active.active.focus,
+                .datepicker table tr td span.active:hover.active.focus,
+                .datepicker table tr td span.active.disabled.active.focus,
+                .datepicker table tr td span.active.disabled:hover.active.focus,
+                .open > .dropdown-toggle.datepicker table tr td span.active.focus,
+                .open > .dropdown-toggle.datepicker table tr td span.active:hover.focus,
+                .open > .dropdown-toggle.datepicker table tr td span.active.disabled.focus,
+                .open > .dropdown-toggle.datepicker table tr td span.active.disabled:hover.focus {
+                    color: #ffffff;
+                    background-color: #007d71;
+                    border-color: #193c5a;
+                }
+
+                .datepicker table tr td span.active:active,
+                .datepicker table tr td span.active:hover:active,
+                .datepicker table tr td span.active.disabled:active,
+                .datepicker table tr td span.active.disabled:hover:active,
+                .datepicker table tr td span.active.active,
+                .datepicker table tr td span.active:hover.active,
+                .datepicker table tr td span.active.disabled.active,
+                .datepicker table tr td span.active.disabled:hover.active,
+                .open > .dropdown-toggle.datepicker table tr td span.active,
+                .open > .dropdown-toggle.datepicker table tr td span.active:hover,
+                .open > .dropdown-toggle.datepicker table tr td span.active.disabled,
+                .open > .dropdown-toggle.datepicker table tr td span.active.disabled:hover {
+                    background-image: none;
+                }
+
+            .datepicker table tr td span.active.disabled:hover,
+            .datepicker table tr td span.active:hover.disabled:hover,
+            .datepicker table tr td span.active.disabled.disabled:hover,
+            .datepicker table tr td span.active.disabled:hover.disabled:hover,
+            .datepicker table tr td span.active[disabled]:hover,
+            .datepicker table tr td span.active:hover[disabled]:hover,
+            .datepicker table tr td span.active.disabled[disabled]:hover,
+            .datepicker table tr td span.active.disabled:hover[disabled]:hover,
+            fieldset[disabled] .datepicker table tr td span.active:hover,
+            fieldset[disabled] .datepicker table tr td span.active:hover:hover,
+            fieldset[disabled] .datepicker table tr td span.active.disabled:hover,
+            fieldset[disabled] .datepicker table tr td span.active.disabled:hover:hover,
+            .datepicker table tr td span.active.disabled:focus,
+            .datepicker table tr td span.active:hover.disabled:focus,
+            .datepicker table tr td span.active.disabled.disabled:focus,
+            .datepicker table tr td span.active.disabled:hover.disabled:focus,
+            .datepicker table tr td span.active[disabled]:focus,
+            .datepicker table tr td span.active:hover[disabled]:focus,
+            .datepicker table tr td span.active.disabled[disabled]:focus,
+            .datepicker table tr td span.active.disabled:hover[disabled]:focus,
+            fieldset[disabled] .datepicker table tr td span.active:focus,
+            fieldset[disabled] .datepicker table tr td span.active:hover:focus,
+            fieldset[disabled] .datepicker table tr td span.active.disabled:focus,
+            fieldset[disabled] .datepicker table tr td span.active.disabled:hover:focus,
+            .datepicker table tr td span.active.disabled.focus,
+            .datepicker table tr td span.active:hover.disabled.focus,
+            .datepicker table tr td span.active.disabled.disabled.focus,
+            .datepicker table tr td span.active.disabled:hover.disabled.focus,
+            .datepicker table tr td span.active[disabled].focus,
+            .datepicker table tr td span.active:hover[disabled].focus,
+            .datepicker table tr td span.active.disabled[disabled].focus,
+            .datepicker table tr td span.active.disabled:hover[disabled].focus,
+            fieldset[disabled] .datepicker table tr td span.active.focus,
+            fieldset[disabled] .datepicker table tr td span.active:hover.focus,
+            fieldset[disabled] .datepicker table tr td span.active.disabled.focus,
+            fieldset[disabled] .datepicker table tr td span.active.disabled:hover.focus {
+                background-color: #428bca;
+                border-color: #357ebd;
+            }
+
+    .datepicker table tr td span.old,
+    .datepicker table tr td span.new {
+        color: #999999;
+    }
+
+.datepicker .datepicker-switch {
+    width: 145px;
+}
+
+.datepicker .datepicker-switch,
+.datepicker .prev,
+.datepicker .next,
+.datepicker tfoot tr th {
+    cursor: pointer;
+}
+
+    .datepicker .datepicker-switch:hover,
+    .datepicker .prev:hover,
+    .datepicker .next:hover,
+    .datepicker tfoot tr th:hover {
+        background: #eeeeee;
+    }
+
+.datepicker .cw {
+    font-size: 10px;
+    width: 12px;
+    padding: 0 2px 0 5px;
+    vertical-align: middle;
+}
+
+.input-group.date .input-group-addon {
+    cursor: pointer;
+}
+
+.input-daterange {
+    width: 100%;
+}
+
+    .input-daterange input {
+        text-align: center;
+    }
+
+        .input-daterange input:first-child {
+            border-radius: 3px 0 0 3px;
+        }
+
+        .input-daterange input:last-child {
+            border-radius: 0 3px 3px 0;
+        }
+
+    .input-daterange .input-group-addon {
+        width: auto;
+        min-width: 16px;
+        padding: 4px 5px;
+        font-weight: normal;
+        line-height: 1.42857143;
+        text-align: center;
+        text-shadow: 0 1px 0 #fff;
+        vertical-align: middle;
+        background-color: #eeeeee;
+        border: solid #cccccc;
+        border-width: 1px 0;
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+.datepicker.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    z-index: 1000;
+    float: left;
+    display: none;
+    min-width: 160px;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    *border-right-width: 2px;
+    *border-bottom-width: 2px;
+    color: #333333;
+    font-size: 13px;
+    line-height: 1.42857143;
+}
+
+    .datepicker.dropdown-menu th,
+    .datepicker.datepicker-inline th,
+    .datepicker.dropdown-menu td,
+    .datepicker.datepicker-inline td {
+        padding: 0px 5px;
+    }
+
+.material-half-bg {
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, rgb(255, 72, 0), yellow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+    .material-half-bg .cover {
+        background-color: linear-gradient(to bottom right, red, yellow);
+        height: 50vh;
+    }
+
+.login-content {
+    /* display: -webkit-box;
+  display: -ms-flexbox; */
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+    .login-content .logo {
+        /* margin-bottom: 40px; */
+        font-family: "Niconne";
+        color: #fff;
+    }
+
+        .login-content .logo h1 {
+            /* font-size: 52px; */
+            font-weight: 400;
+        }
+
+    .login-content .login-box {
+        position: relative;
+        min-width: 350px;
+        min-height: 390px;
+        background-color: #fff;
+        -webkit-box-shadow: 0px 29px 147.5px 102.5px rgba(0, 0, 0, 0.05), 0px 29px 95px 0px rgba(0, 0, 0, 0.16);
+        box-shadow: 0px 29px 147.5px 102.5px rgba(0, 0, 0, 0.05), 0px 29px 95px 0px rgba(0, 0, 0, 0.16);
+        -webkit-perspective: 800px;
+        perspective: 800px;
+        -webkit-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        border-radius: 14px;
+    }
+
+        .login-content .login-box .login-head {
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .login-content .login-box label {
+            color: #666;
+            font-weight: 700;
+        }
+
+        .login-content .login-box .utility {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 1px;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .login-content .login-box .btn-container {
+            margin-bottom: 0;
+        }
+
+        .login-content .login-box .login-form, .login-content .login-box .forget-form {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -webkit-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .login-content .login-box .forget-form {
+            opacity: 0;
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .login-content .login-box.flipped {
+            min-height: 300px;
+        }
+
+            .login-content .login-box.flipped .login-form {
+                opacity: 0;
+                -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
+            }
+
+            .login-content .login-box.flipped .forget-form {
+                opacity: 1;
+                -webkit-transform: rotateY(0deg);
+                transform: rotateY(0deg);
+            }
+
+@media (max-width: 351px) {
+    .login-content .login-box {
+        min-width: 100%;
+    }
+
+        .login-content .login-box .login-form, .login-content .login-box .forget-form {
+            width: 100%;
+        }
+}
+
+.semibold-text {
+    font-weight: 600 !important;
+}
+
+.input-group {
+    display: flex;
+    width: 100%;
+}
+
+.input-group-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ff8400;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #fff;
+    border: 1px solid rgb(219, 219, 219);
+    border-right-color: #fff;
+}
+
+.control-label {
+    background-color: #fff;
+    border: 1px solid rgb(219, 219, 219);
+    background: url(assets/img/logoheader.PNG) no-repeat scroll 7px 7px;
+    padding-left: 30px;
+}
+
+    .control-label:focus {
+        background-color: #fff;
+        border: 1px solid #E9BF66);
+        border-color: #E9BF66 !important;
+    }
+
+/* BUTTON PRINT */
+.iconprint {
+    position: relative;
+}
+
+    .iconprint :is(.btnicon, .link) {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        color: #151515;
+        border-radius: 50%;
+    }
+
+.btnicon {
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    transition: outline .25s;
+}
+
+    .active .btnicon,
+    .btnicon:hover {
+        outline: 5px solid #bb93fc;
+        outline-offset: -4px;
+    }
+
+.item {
+    position: absolute;
+    list-style: none;
+    transition: transform .5s;
+    transition-delay: var(--d);
+}
+
+.iconprint.active.item:nth-child(1) {
+    transform: translateX(-65px);
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.row {
+    display: flex;
+}
+
+.btn-submit:hover, .ladda-button:focus, .ladda-button:active, .ladda-button.active, .open > .dropdown-toggle.btn-primary {
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffd951 !important;
+    border-color: #ffd951 !important;
+    border-radius: 3px;
+}
+
+.ladda-button:hover, .ladda-button:focus, .ladda-button:active, .ladda-button.active, .open > .dropdown-toggle.btn-primary {
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffd951 !important;
+    border-color: #ffd951 !important;
+    border-radius: 3px;
+}
+
+.ladda-button {
+    position: relative;
+    display: inline-block;
+    padding: 6px 13px;
+    margin-bottom: 0;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 2;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    background: #ff971f;
+    color: #fff !important;
+    border: 1px solid #ff971f;
+    border-radius: 3px;
+}
+
+    .ladda-button .ladda-spinner {
+        position: absolute;
+        z-index: 2;
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        top: 50%;
+        margin-top: 0;
+        opacity: 0;
+        pointer-events: none
+    }
+
+    .ladda-button .ladda-label {
+        position: relative;
+        z-index: 3
+    }
+
+    .ladda-button .ladda-progress {
+        position: absolute;
+        width: 0;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(0,0,0,0.2);
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: 0.1s linear all !important;
+        -moz-transition: 0.1s linear all !important;
+        -ms-transition: 0.1s linear all !important;
+        -o-transition: 0.1s linear all !important;
+        transition: 0.1s linear all !important
+    }
+
+    .ladda-button[data-loading] .ladda-progress {
+        opacity: 1;
+        visibility: visible
+    }
+
+    .ladda-button, .ladda-button .ladda-spinner, .ladda-button .ladda-label {
+        -webkit-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important;
+        -moz-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important;
+        -ms-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important;
+        -o-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all !important
+    }
+
+        .ladda-button[data-style=zoom-in], .ladda-button[data-style=zoom-in] .ladda-spinner, .ladda-button[data-style=zoom-in] .ladda-label, .ladda-button[data-style=zoom-out], .ladda-button[data-style=zoom-out] .ladda-spinner, .ladda-button[data-style=zoom-out] .ladda-label {
+            -webkit-transition: 0.3s ease all !important;
+            -moz-transition: 0.3s ease all !important;
+            -ms-transition: 0.3s ease all !important;
+            -o-transition: 0.3s ease all !important;
+            transition: 0.3s ease all !important
+        }
+
+        .ladda-button[data-style=expand-right] .ladda-spinner {
+            right: -6px
+        }
+
+        .ladda-button[data-style=expand-right][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-right][data-size="xs"] .ladda-spinner {
+            right: -12px
+        }
+
+        .ladda-button[data-style=expand-right][data-loading] {
+            padding-right: 56px
+        }
+
+            .ladda-button[data-style=expand-right][data-loading] .ladda-spinner {
+                opacity: 1
+            }
+
+            .ladda-button[data-style=expand-right][data-loading][data-size="s"], .ladda-button[data-style=expand-right][data-loading][data-size="xs"] {
+                padding-right: 40px
+            }
+
+        .ladda-button[data-style=expand-left] .ladda-spinner {
+            left: 26px
+        }
+
+        .ladda-button[data-style=expand-left][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-left][data-size="xs"] .ladda-spinner {
+            left: 4px
+        }
+
+        .ladda-button[data-style=expand-left][data-loading] {
+            padding-left: 56px
+        }
+
+            .ladda-button[data-style=expand-left][data-loading] .ladda-spinner {
+                opacity: 1
+            }
+
+            .ladda-button[data-style=expand-left][data-loading][data-size="s"], .ladda-button[data-style=expand-left][data-loading][data-size="xs"] {
+                padding-left: 40px
+            }
+
+        .ladda-button[data-style=expand-up] {
+            overflow: hidden
+        }
+
+            .ladda-button[data-style=expand-up] .ladda-spinner {
+                top: -32px;
+                left: 50%;
+                margin-left: 0
+            }
+
+            .ladda-button[data-style=expand-up][data-loading] {
+                padding-top: 54px
+            }
+
+                .ladda-button[data-style=expand-up][data-loading] .ladda-spinner {
+                    opacity: 1;
+                    top: 26px;
+                    margin-top: 0
+                }
+
+                .ladda-button[data-style=expand-up][data-loading][data-size="s"], .ladda-button[data-style=expand-up][data-loading][data-size="xs"] {
+                    padding-top: 32px
+                }
+
+                    .ladda-button[data-style=expand-up][data-loading][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-up][data-loading][data-size="xs"] .ladda-spinner {
+                        top: 4px
+                    }
+
+        .ladda-button[data-style=expand-down] {
+            overflow: hidden
+        }
+
+            .ladda-button[data-style=expand-down] .ladda-spinner {
+                top: 62px;
+                left: 50%;
+                margin-left: 0
+            }
+
+            .ladda-button[data-style=expand-down][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-down][data-size="xs"] .ladda-spinner {
+                top: 40px
+            }
+
+            .ladda-button[data-style=expand-down][data-loading] {
+                padding-bottom: 54px
+            }
+
+                .ladda-button[data-style=expand-down][data-loading] .ladda-spinner {
+                    opacity: 1
+                }
+
+                .ladda-button[data-style=expand-down][data-loading][data-size="s"], .ladda-button[data-style=expand-down][data-loading][data-size="xs"] {
+                    padding-bottom: 32px
+                }
+
+        .ladda-button[data-style=slide-left] {
+            overflow: hidden
+        }
+
+            .ladda-button[data-style=slide-left] .ladda-label {
+                position: relative
+            }
+
+            .ladda-button[data-style=slide-left] .ladda-spinner {
+                left: 100%;
+                margin-left: 0
+            }
+
+            .ladda-button[data-style=slide-left][data-loading] .ladda-label {
+                opacity: 0;
+                left: -100%
+            }
+
+            .ladda-button[data-style=slide-left][data-loading] .ladda-spinner {
+                opacity: 1;
+                left: 50%
+            }
+
+        .ladda-button[data-style=slide-right] {
+            overflow: hidden
+        }
+
+            .ladda-button[data-style=slide-right] .ladda-label {
+                position: relative
+            }
+
+            .ladda-button[data-style=slide-right] .ladda-spinner {
+                right: 100%;
+                margin-left: 0;
+                left: 16px
+            }
+
+            .ladda-button[data-style=slide-right][data-loading] .ladda-label {
+                opacity: 0;
+                left: 100%
+            }
+
+            .ladda-button[data-style=slide-right][data-loading] .ladda-spinner {
+                opacity: 1;
+                left: 50%
+            }
+
+        .ladda-button[data-style=slide-up] {
+            overflow: hidden
+        }
+
+            .ladda-button[data-style=slide-up] .ladda-label {
+                position: relative
+            }
+
+            .ladda-button[data-style=slide-up] .ladda-spinner {
+                left: 50%;
+                margin-left: 0;
+                margin-top: 1em
+            }
+
+            .ladda-button[data-style=slide-up][data-loading] .ladda-label {
+                opacity: 0;
+                top: -1em
+            }
+
+            .ladda-button[data-style=slide-up][data-loading] .ladda-spinner {
+                opacity: 1;
+                margin-top: 0
+            }
+
+        .ladda-button[data-style=slide-down] {
+            overflow: hidden
+        }
+
+            .ladda-button[data-style=slide-down] .ladda-label {
+                position: relative
+            }
+
+            .ladda-button[data-style=slide-down] .ladda-spinner {
+                left: 50%;
+                margin-left: 0;
+                margin-top: -2em
+            }
+
+            .ladda-button[data-style=slide-down][data-loading] .ladda-label {
+                opacity: 0;
+                top: 1em
+            }
+
+            .ladda-button[data-style=slide-down][data-loading] .ladda-spinner {
+                opacity: 1;
+                margin-top: 0
+            }
+
+        .ladda-button[data-style=zoom-out] {
+            overflow: hidden
+        }
+
+            .ladda-button[data-style=zoom-out] .ladda-spinner {
+                left: 50%;
+                margin-left: 32px;
+                -webkit-transform: scale(2.5);
+                -moz-transform: scale(2.5);
+                -ms-transform: scale(2.5);
+                -o-transform: scale(2.5);
+                transform: scale(2.5)
+            }
+
+            .ladda-button[data-style=zoom-out] .ladda-label {
+                position: relative;
+                display: inline-block
+            }
+
+            .ladda-button[data-style=zoom-out][data-loading] .ladda-label {
+                opacity: 0;
+                -webkit-transform: scale(0.5);
+                -moz-transform: scale(0.5);
+                -ms-transform: scale(0.5);
+                -o-transform: scale(0.5);
+                transform: scale(0.5)
+            }
+
+            .ladda-button[data-style=zoom-out][data-loading] .ladda-spinner {
+                opacity: 1;
+                margin-left: 0;
+                -webkit-transform: none;
+                -moz-transform: none;
+                -ms-transform: none;
+                -o-transform: none;
+                transform: none
+            }
+
+        .ladda-button[data-style=zoom-in] {
+            overflow: hidden
+        }
+
+            .ladda-button[data-style=zoom-in] .ladda-spinner {
+                left: 50%;
+                margin-left: -16px;
+                -webkit-transform: scale(0.2);
+                -moz-transform: scale(0.2);
+                -ms-transform: scale(0.2);
+                -o-transform: scale(0.2);
+                transform: scale(0.2)
+            }
+
+            .ladda-button[data-style=zoom-in] .ladda-label {
+                position: relative;
+                display: inline-block
+            }
+
+            .ladda-button[data-style=zoom-in][data-loading] .ladda-label {
+                opacity: 0;
+                -webkit-transform: scale(2.2);
+                -moz-transform: scale(2.2);
+                -ms-transform: scale(2.2);
+                -o-transform: scale(2.2);
+                transform: scale(2.2)
+            }
+
+            .ladda-button[data-style=zoom-in][data-loading] .ladda-spinner {
+                opacity: 1;
+                margin-left: 0;
+                -webkit-transform: none;
+                -moz-transform: none;
+                -ms-transform: none;
+                -o-transform: none;
+                transform: none
+            }
+
+        .ladda-button[data-style=contract] {
+            overflow: hidden;
+            width: 100px
+        }
+
+            .ladda-button[data-style=contract] .ladda-spinner {
+                left: 50%;
+                margin-left: 0
+            }
+
+            .ladda-button[data-style=contract][data-loading] {
+                border-radius: 50%;
+                width: 52px
+            }
+
+                .ladda-button[data-style=contract][data-loading] .ladda-label {
+                    opacity: 0
+                }
+
+                .ladda-button[data-style=contract][data-loading] .ladda-spinner {
+                    opacity: 1
+                }
+
+        .ladda-button[data-style=contract-overlay] {
+            overflow: hidden;
+            width: 100px;
+            box-shadow: 0px 0px 0px 2000px transparent
+        }
+
+            .ladda-button[data-style=contract-overlay] .ladda-spinner {
+                left: 50%;
+                margin-left: 0
+            }
+
+            .ladda-button[data-style=contract-overlay][data-loading] {
+                border-radius: 50%;
+                width: 52px;
+                box-shadow: 0px 0px 0px 2000px rgba(0,0,0,0.8)
+            }
+
+                .ladda-button[data-style=contract-overlay][data-loading] .ladda-label {
+                    opacity: 0
+                }
+
+                .ladda-button[data-style=contract-overlay][data-loading] .ladda-spinner {
+                    opacity: 1
+                }
+
+display: flex;
+}
+
+.scroll {
+    max-height: 350px;
+    overflow-y: auto;
+    overflow-x: auto;
+}

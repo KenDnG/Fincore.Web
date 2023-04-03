@@ -1,0 +1,801 @@
+﻿@using FINCORE.WEB.Helpers
+@using FINCORE.Services.Helpers.Response
+@using static FINCORE.Services.Helpers.Response.Collection
+@model FINCORE.Models.Models.Vertel.VertelModels
+@inject IHttpContextAccessor HttpContextAccessor
+
+@addTagHelper *, Microsoft.AspNetCore.MVC.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@{
+	ViewData["TitlePaging"] = "EDIT Verifikasi Konsumen";
+	ViewData["Title"] = "EDIT Verifikasi Konsumen";
+	var dataVerifikasi = ViewBag.VerifikasiKonsumen;
+}
+
+@{
+	var dta = Model;
+	var isEdit = Sessions.GetSessionFromJson<Boolean>(HttpContextAccessor.HttpContext.Session, SessionIdentity.ISEDIT_KEY_NAME);
+}
+
+<input type="hidden" id="optBiaya" value="@dataVerifikasi.OptBiayaAdmin">
+<input type="hidden" id="biayaAdmin" value="@dataVerifikasi.BiayaAdmin">
+
+<!-- Content -->
+<form id="contactform" asp-action="Save" asp-controller="Vertel" method="post" enctype="multipart/form-data">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	<div class="content">
+
+		<!-- open sidebar menu -->
+		<a class="btn btn-primary btn-customized open-menu" href="#" role="button">
+			<i class="fas fa-align-left"></i> <span>Menu</span>
+		</a>
+
+		<!--/ Verifikasi Konsumen Input -->
+		<section id="contact" class="feature-wrapper">
+			<div class="containers" style="margin-top: -5%;">
+				<!-- Verifikasi Konsumen -->
+				<div class="container">
+					<button id="Verifikasi_more" class="Verifikasi_more" type="button" style="width: 100%;">Hasil Verifikasi Konsumen by Phone</button>
+					<div class="data-input">
+						<btnVerifikasi><h4><div class="bgc-menu">Hasil Verifikasi Konsumen by Phone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnVerifikasi>
+						<div class="Verifikasi" id="Verifikasi">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="tile">
+									<div class="form-group row">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%;">
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>Credit ID</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" asp-for="Cmno" id="InputCMNo" placeholder="" value="@dataVerifikasi.Cmno" style="width:90%">
+												<span asp-validation-for="Cmno" class="text-danger"></span>
+											</div>
+											<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<a class="btn-input" id="btnLoadModal" data-toggle="tab" style="margin-left: -200%;">Pilih Credit ID</a>
+												</div>
+											</div>
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>Nama Konsumen</p>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<input class="form-control" id="InputCustomerName" placeholder="" value="@dataVerifikasi.NamaPelanggan" disabled>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>Alamat Konsumen</p>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<input class="form-control" id="InputAddress" placeholder="" disabled value="@dataVerifikasi.AlamatPelanggan">
+											</div>
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>No Tlp Konsumen</p>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<input class="form-control" id="InputPhone" placeholder="" disabled value="@dataVerifikasi.Phone">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>Status Konsumen</p>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<input class="form-control" hidden value="@dataVerifikasi.StatusVerifikasi" asp-for="StatusVerifikasi">
+												<input class="form-control" hidden value="@dataVerifikasi.CreatedBy" asp-for="CreatedBy">
+												<input class="form-control" hidden value="@dataVerifikasi.CreatedOn" asp-for="CreatedOn">
+												<input class="form-control" id="valStatus" hidden value="@dataVerifikasi.OptBisaDiHubungi">
+												<select class="form-control" id="SelectStatusKonsumen" asp-for="OptBisaDiHubungi" onchange="change_tbl(this.value)" required="required">
+													<option value="">Pilih Status Konsumen</option>
+													<option value="0">Tidak Bisa Dihubungi</option>
+													<option value="1">Bisa Dihubungi</option>
+													<option value="2">Data Alamat Tidak Sesuai</option>
+													<option value="3">Data CM Tidak Sesuai</option>
+													<option value="4">Konsumen Tidak Mengangkat Telepon</option>
+												</select>
+												<span asp-validation-for="OptBisaDiHubungi" class="text-danger"></span>
+											</div>
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>Nama STNK</p>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<input class="form-control" asp-for="NamaStnk" id="InputNamaSTNK" placeholder="" value="@dataVerifikasi.NamaStnk" disabled>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>Nama Pasangan</p>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<input class="form-control" id="InputNamaPasangan" asp-for="NamaPasanganStnk" placeholder="" value="@dataVerifikasi.NamaPasanganStnk" disabled>
+											</div>
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>Tgl Terima Tagihan</p>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<input class="form-control" id="dtTglTerimaTagihan" name="strTglTerimaTagihan" asp-for="TglTerimaTagihan" type="text" placeholder="Select Date" value="@dataVerifikasi.strTglTerimaTagihan" disabled>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>Tanggal Konfirmasi</p>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<input class="form-control" id="dtTanggalKonfirmasi" type="text" name="strTglKonfirmasi" asp-for="TglKonfirmasi" value="@dataVerifikasi.strTglKonfirmasi" placeholder="" disabled>
+											</div>
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<p>Jam Konfirmasi</p>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<input class="form-control" value="@dataVerifikasi.JamKonfirmasi" disabled>
+												<input type="hidden" class="form-control" id="InputJamKonfirmasi" value="@dataVerifikasi.JamKonfirmasi" asp-for="JamKonfirmasi">
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END Verifikasi Konsumen -->
+				<!-- Kesesuaian Tagihan / Kontrak -->
+				<div class="container">
+					<button id="Kesesuaian_more" class="Kesesuaian_more" type="button" style="width: 100%;">Sesuai Tagihan, Kontrak / Tidak</button>
+					<div class="data-input">
+						<btnKesesuaian><h4><div class="bgc-menu">Sesuai Tagihan, Kontrak / Tidak <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></div></h4></btnKesesuaian>
+						<div class="Kesesuaian" id="Kesesuaian">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="tile">
+									<div class="form-group row">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<h5><div class="bgc-small">Verifikasi</div></h5>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<h5><div class="bgc-small">Tercatat</div></h5>
+											</div>
+											<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+												<h5><div class="bgc-small">Sesuai</div></h5>
+											</div>
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+												<h5><div class="bgc-small">Tidak Sesuai</div></h5>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<h5><div class="bgc-small">Sebenarnya</div></h5>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%;">
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Tgl Terima Pinjaman</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" id="dtTglTerimaPinjaman" placeholder="" value="@dataVerifikasi.TglTerimaPinjaman">
+											</div>
+											<div class="text-center">
+												<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+													<input class="form-check-input" type="radio" asp-for="OptTglTerimaMotor" value="true" id="rbOptTglSesuai" checked>
+												</div>
+											</div>
+											<div class="text-center">
+												<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+													<input class="form-check-input" type="radio" asp-for="OptTglTerimaMotor" value="false" id="rbOptTglTidakSesuai">
+												</div>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" type="text" asp-for="OptTglTerimaMotorSebenarnya" id="dtTglTerimaSebenarnya" placeholder="" value="@dataVerifikasi.OptTglTerimaMotorSebenarnya" disabled>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="formOpt">
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Tipe Kendaraan</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" id="InputTipeKendaraan" placeholder="" value="@dataVerifikasi.Tipe">
+											</div>
+											<div class="text-center">
+												<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+													<input class="form-check-input" type="radio" asp-for="OptTipeMotor" value="true" id="rbOptTipeKendaraanSesuai" checked>
+												</div>
+											</div>
+											<div class="text-center">
+												<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+													<input class="form-check-input" type="radio" asp-for="OptTipeMotor" value="false" id="rbOptTipeKendaraanTidakSesuai">
+												</div>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" asp-for="OptTipeMotorSebenarnya" id="InputTipeKendaraanSebenarnya" placeholder="" value="@dataVerifikasi.OptTipeMotorSebenarnya">
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Angsuran</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" id="InputAngsuran" placeholder="Rp" type="number" value="@dataVerifikasi.Installment">
+											</div>
+											<div class="text-center">
+												<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+													<input class="form-check-input" type="radio" asp-for="OptAngsuran" value="true" id="rbOptAngsuranSesuai" checked>
+												</div>
+											</div>
+											<div class="text-center">
+												<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+													<input class="form-check-input" type="radio" asp-for="OptAngsuran" value="false" id="rbOptAngsuranTidakSesuai">
+												</div>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" asp-for="OptAngsuranSebenarnya" id="InputAngsuranSebenarnya" placeholder="Rp" value="@dataVerifikasi.OptAngsuranSebenarnya" type="text">
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Tenor</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" id="InputTenor" placeholder="" value="@dataVerifikasi.Tenor" type="number">
+											</div>
+											<div class="text-center">
+												<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+													<input class="form-check-input" type="radio" asp-for="OptTenor" value="true" id="rbOptTenorSesuai" checked>
+												</div>
+											</div>
+											<div class="text-center">
+												<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+													<input class="form-check-input" type="radio" asp-for="OptTenor" value="false" id="rbOptTenorTidakSesuai">
+												</div>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" asp-for="OptTenorSebenarnya" id="InputTenorSebenarnya" placeholder="" value="@dataVerifikasi.OptTenorSebenarnya" type="number">
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Pembayaran Konsumen (DP Setor)</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" id="InputDP" placeholder="Rp" value="@dataVerifikasi.DPSetor" type="number">
+											</div>
+											<div class="text-center">
+												<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+													<input class="form-check-input" type="radio" asp-for="OptDpsetor" value="true" id="rbOptDPSesuai" checked>
+												</div>
+											</div>
+											<div class="text-center">
+												<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+													<input class="form-check-input" type="radio" asp-for="OptDpsetor" value="false" id="rbOptDPTidakSesuai">
+												</div>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" asp-for="OptDpsetorSebenarnya" id="InputDPSebenarnya" placeholder="Rp" value="@dataVerifikasi.OptDpsetorSebenarnya" type="text">
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 2%;">
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Nama Penerima Motor</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" asp-for="NamaPenerimaMotor" id="InputPenerimaMotor" placeholder="" value="@dataVerifikasi.NamaPenerimaMotor">
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Hubungan Penerima Motor</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" asp-for="HubunganPenerimaMotor" id="InputHubunganPenerimaMotor" placeholder="" value="@dataVerifikasi.HubunganPenerimaMotor">
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Jatuh Tempo</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" asp-for="PermintaanJt" id="dtJatuhTempo" type="text" placeholder="Select Date" value="@dataVerifikasi.PermintaanJt">
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Catatan Lain</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" asp-for="CatatanLain" id="InputCatatanLain" placeholder="" value="@dataVerifikasi.CatatanLain">
+												<span asp-validation-for="CatatanLain" class="text-danger"></span>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p>Biaya Admin Lainnya</p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<input class="form-control" id="valBiaya" hidden value="@dataVerifikasi.OptBiayaAdmin">
+												<select class="form-control" id="SelectBiayaAdmin" asp-for="OptBiayaAdmin" onchange="change_option_biaya(this)" required="required">
+													<option value="0">Tidak</option>
+													<option value="1">Ya</option>
+												</select>
+												<span asp-validation-for="OptBiayaAdmin" class="text-danger"></span>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+												<p id="titleBiaya"></p>
+											</div>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="showBiayaText">
+												<input type="hidden" class="form-control" id="BiayaAdminHide" value="@dataVerifikasi.BiayaAdmin">
+
+											</div>
+										</div>
+
+										<div class="container">
+											<div class="title text-right">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<a class="btn-input" id="myBtn" data-toggle="tab" style="margin-left: 35%;">View Data Price Awal</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END Kesesuaian Tagihan / Kontrak -->
+				<!-- Upload Dokumen -->
+				<div class="container">
+					@{
+						var statevalue = ViewBag.state;
+						var messagevalue = ViewBag.message;
+						<input type="hidden" id="state" value="@statevalue" />
+						<input type="hidden" id="mesage" value="@messagevalue" />
+					}
+
+					<div class="form-group row" id="docIn">
+						<table class="table table-bordered" style="width:95%; font-size: 9px; margin:auto">
+							<thead class="text-center">
+								@{
+									var DocField = ViewBag.DocField;
+									//<tr style="background-color: #ff971f; color: #FFF; text-align: center;">
+									//	<th colspan="4">Dokumen  Aplikasi IN</th>
+									//</tr>
+								}
+								<tr style="background-color: #ffd951; color: #000;  text-align: center;">
+									<th>Nama Dokumen</th>
+									<th>Ada</th>
+									<th>Tidak Ada</th>
+									<th>Upload Document</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									if (DocField.Count >= 0)
+									{
+										var i = 0;
+										foreach (var item in DocField)
+										{
+											var idrb1 = $"rbDocFieldTrue{i}";
+											var idrb2 = $"rbDocFieldFalse{i}";
+											var idPath = $"path{i}";
+											var pathValue = $"{item.Path}";
+											var chooseId = $"choose{i}";
+
+											<tr>
+												<input type="hidden" asp-for="DocFieldModels[i].FieldId" value="@item.FieldId" />
+												<td><input type="hidden" asp-for="DocFieldModels[i].FieldName" value="@item.FieldName" /> @item.FieldName</td>
+												<td>
+													@if (item.Path == null)
+													{
+														<div class="text-center">
+															<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+																<input class="form-check-input" asp-for="DocFieldModels[i].isAvailable" type="radio" value="true" id="@idrb1">
+															</div>
+														</div>
+													}
+													else
+													{
+														<div class="text-center">
+															<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+																<input class="form-check-input" asp-for="DocFieldModels[i].isAvailable" type="radio" value="true" id="@idrb1" checked>
+															</div>
+														</div>
+													}
+												</td>
+												<td>
+													@if (item.Path == null)
+													{
+														<div class="text-center">
+															<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+																<input class="form-check-input" asp-for="DocFieldModels[i].isAvailable" type="radio" value="false" id="@idrb2">
+															</div>
+														</div>
+													}
+													else
+													{
+														<div class="text-center">
+															<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+																<input class="form-check-input" asp-for="DocFieldModels[i].isAvailable" type="radio" value="false" id="@idrb2" disabled>
+															</div>
+														</div>
+													}
+												</td>
+												<td style="text-align:center;" id="@chooseId">
+													<div id="@i">
+														@if (item.Path != null)
+														{
+															<a id="downloadFile" class="btn" style="background-color:#ff941c;" onclick="location.href='@Url.Action("DownloadFile", "Vertel", new {path = @item.Path + @item.FileName, FileName = @item.FileName, IsNewZoom = @item.IsNewZoom})'" download>Download File</a>
+															<button id="btnChangeFile" type="button" onclick="changeFile(@i)" class="btn btn-danger"><i class="fa fa-minus-circle"></i> Ganti File</button>
+															<input type="hidden" asp-for="DocFieldModels[i].Path" value="@item.Path">
+															<input type="hidden" asp-for="DocFieldModels[i].FileName" value="@item.FileName">
+															<input type="hidden" asp-for="DocFieldModels[i].CreditId" value="@item.CreditId">
+															<input type="hidden" asp-for="DocFieldModels[i].IsNewZoom" value="@item.IsNewZoom">
+															<input type="hidden" asp-for="DocFieldModels[i].FieldId" value="@item.FieldId">
+															<input type="hidden" asp-for="DocFieldModels[i].PhotoId" value="@item.PhotoId">
+															<input type="hidden" asp-for="DocFieldModels[i].PhotoTypeId" value="@item.PhotoTypeId">
+														}
+														else
+														{
+															<input type="file" asp-for="DokumenIn" src="~/assets/ico/edit.png" id="@idPath" value="@pathValue">
+														}
+													</div>
+												</td>
+											</tr>
+											i++;
+										}
+									}
+									else
+									{
+										<tr>
+											<td colspan="100%"><div class="text-center">Data Not Available</div></td>
+										</tr>
+									}
+								}				
+						</table>
+					</div>
+				</div>
+				<!-- END Upload Dokumen -->
+
+				<!-- BUTTON CANCEL SAVE -->
+				<div class="container" style="margin-top: 5%; margin-bottom: 5%;">
+					<div class="title text-center">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+								<button class="btn-submit" id="btnSave" name="SaveType" value="E" style="width: 100%;">Save</button>
+							</div>
+
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+								<button class="btn-submit" id="btnRFA" name="SaveType" value="R" style="width: 100%;">RFA</button>
+							</div>
+
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+								<button class="btn-submit" id="btnCancel" asp-action="List" asp-controller="Vertel" style="width: 100%;">Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END BUTTON CANCEL SAVE -->
+
+			</div>
+		</section>
+		<!-- END Verifikasi Konsumen Input -->
+	</div>
+</form>
+@*LOOKUP*@
+
+<div id="exampleModalLong" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="row">
+			<div class="col-md-12">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4>Pilih Credit ID</h4>
+				<div class="tile">
+					<div class="modal-body" id="ModalBody"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@*END LOOKUP*@
+@*LOOKUP Price Awal*@
+<div id="PriceAwalModal" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="row">
+			<div class="col-md-12">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4>Price Awal</h4>
+				<div class="tile">
+					<div class="modal-body" id="ModalBody"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@*END LOOKUP Price Awal*@
+
+
+<!-- FOOTER -->
+<footer class="footer-container">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<p> PT Mega Central Finance PT Mega Auto Finance</p>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- END FOOTER -->
+<!-- End content -->
+<script src="~/Scripts/Vertel/vertel.js"></script>
+<script src="~/Scripts/Vertel/vertellookup.js"></script>
+
+<script>
+	document.getElementById("SelectStatusKonsumen").value = $('#valStatus').val();
+	document.getElementById("SelectBiayaAdmin").value = $('#valBiaya').val();
+
+	$("#myBtn").click(function () {
+		let creditId = $('#InputCMNo').val();
+		$.ajax({
+			url: "/Vertel/PriceAwal",
+			data: { creditId: creditId },
+			type: "POST",
+			success: function (data) {
+				$('#PriceAwalModal').find('.modal-body').html(data);
+				$('#PriceAwalModal').modal({
+					backdrop: false
+				});
+			},
+			error: function (err) {
+			}
+		})
+	})
+
+	function change_tbl(dhi) {
+		let CMNo = $('#InputCMNo').val();
+		let statusKonsumen = $('#SelectStatusKonsumen').val();
+
+		if (CMNo == null || CMNo == "") {
+			Common.Alert.Warning("Silahkan pilih Credit ID Terlebih Dahulu!");
+			$('#SelectStatusKonsumen').val("");
+			return;
+		}
+
+		if (statusKonsumen != '' || statusKonsumen != null) {
+			$.ajax({
+				url: "/Vertel/GetDocField",
+				data: { CMNo: CMNo },
+				type: "POST",
+				success: function (data) {
+					console.log('status konsumen',statusKonsumen);
+					if (statusKonsumen == "0" || statusKonsumen == "4") {
+						$('#InputPenerimaMotor').prop("disabled", true);
+						$('#InputHubunganPenerimaMotor').prop("disabled", true);
+						$('#dtTglTerimaTagihan').prop("disabled", true);
+						$('#docIn').hide();
+						$('#dtTglTerimaTagihan').val();
+					}
+					else{
+						$('#InputPenerimaMotor').prop("disabled", false);
+						$('#InputHubunganPenerimaMotor').prop("disabled", false);
+						$('#dtTglTerimaTagihan').prop("disabled", false);
+						$('#docIn').show();
+
+						for (let i = 0; i < 100; i++) {
+							$('.form-check-input').click(function () {
+								if ($('#rbDocFieldTrue' + i).is(':checked') == true) {
+									$('#path' + i).prop('required', true);
+								}
+							});
+
+							$('.form-check-input').click(function () {
+								if ($('#rbDocFieldFalse' + i).is(':checked') == true) {
+									$('#path' + i).removeAttr('required');
+								}
+							});
+						}
+					}
+				},
+				error: function (err) {
+
+				}
+			})
+
+			return;
+		}
+	}
+
+	function changeFile(row) {
+		$('#' + row).remove();
+		$("#choose" + row).append("<input type='file' name='DokumenIn' src='~/assets/ico/edit.png'> ");
+	}
+
+	$('input[type=file]').on('change', function () {
+		if (this.files.size / 1024 > 500.112109375) {
+			Common.Alert.Warning("Please upload file with a size under 500 KB!");
+		}
+	});
+
+	function change_option_biaya(opt) {
+		var value = opt.value;
+		let statusBiaya = $('#SelectBiayaAdmin').val();
+
+		if (statusBiaya == "1") {
+			$("#titleBiaya").show();
+			$("#showBiayaText").show();
+		}
+		else if (statusBiaya == "0") {
+			document.getElementById("InputBiayaAdmin").value = null;
+			$("#titleBiaya").hide();
+			$("#showBiayaText").hide();
+		}
+
+	}
+
+	$(document).ready(function () {
+		let optBiayaAdmin = $('#valBiaya').val();
+		let statusKonsumen = $('#SelectStatusKonsumen').val();
+
+		if (statusKonsumen == "0" || statusKonsumen == "4") {
+			$('#InputPenerimaMotor').prop("disabled", true);
+			$('#InputHubunganPenerimaMotor').prop("disabled", true);
+			$('#dtTglTerimaTagihan').prop("disabled", true);
+			$('#docIn').hide();
+		}
+		else{
+			$('#InputPenerimaMotor').prop("disabled", false);
+			$('#InputHubunganPenerimaMotor').prop("disabled", false);
+			$('#dtTglTerimaTagihan').prop("disabled", false);
+			$('#docIn').show();
+		}
+		// [START][HIDE AND SHOW BIAYA ADMIN]
+		if (optBiayaAdmin == "1") {
+			$("#titleBiaya").append('Jumlah Nominal Admin');
+			$("#showBiayaText").append("<input class='form-control' name='BiayaAdmin' id='InputBiayaAdmin' type='number' placeholder='0'>");
+			document.getElementById("InputBiayaAdmin").value = $('#BiayaAdminHide').val();
+		}
+		else if (optBiayaAdmin == "0")
+		{
+			$("#titleBiaya").append('Jumlah Nominal Admin');
+			$("#titleBiaya").hide();
+			$("#showBiayaText").append("<input class='form-control' name='BiayaAdmin' id='InputBiayaAdmin' type='number' placeholder='0'>");
+			$("#showBiayaText").hide();
+			document.getElementById("InputBiayaAdmin").value = null;
+		}
+		// [END][HIDE AND SHOW BIAYA ADMIN]
+
+		for (let i = 0; i < 100; i++) {
+			$('.form-check-input').click(function () {
+				if ($('#rbDocFieldTrue' + i).is(':checked') == true) {
+					$('#path' + i).prop('required', true);
+				}
+			});
+
+			$('.form-check-input').click(function () {
+				if ($('#rbDocFieldFalse' + i).is(':checked') == true) {
+					$('#path' + i).removeAttr('required');
+				}
+			});
+		}
+
+		// [START Enabled/Disabled Form Sebenenarnya]
+		
+		if ($('#dtTglTerimaSebenarnya').val() == null || $('#dtTglTerimaSebenarnya').val() == ""|| $('#dtTglTerimaSebenarnya').val() == 0) {
+			$('#rbOptTglSesuai').prop('checked', true);
+			$('#dtTglTerimaSebenarnya').prop("disabled", true);
+		}
+		else {
+			$('#rbOptTglTidakSesuai').prop('checked', true);
+			$('#dtTglTerimaSebenarnya').prop("disabled", false);
+		}
+
+		if ($('#InputTenorSebenarnya').val() == null || $('#InputTenorSebenarnya').val() == "" || $('#InputTenorSebenarnya').val() == 0) {
+			$('#rbOptTenorSesuai').prop('checked', true);
+			$('#InputTenorSebenarnya').prop("disabled", true);
+		}
+		else {
+			$('#rbOptTenorTidakSesuai').prop('checked', true);
+			$('#InputTenorSebenarnya').prop('checked', false);
+		}
+
+		if ($('#InputTipeKendaraanSebenarnya').val() == null || $('#InputTipeKendaraanSebenarnya').val() == "" || $('#InputTipeKendaraanSebenarnya').val() == 0) {
+			$('#rbOptTipeKendaraanSesuai').prop('checked', true);
+			$('#InputTipeKendaraanSebenarnya').prop('disabled', true);
+		}
+		else {
+			$('#rbOptTipeKendaraanTidakSesuai').prop('checked', true);
+			$('#InputTipeKendaraanSebenarnya').prop('disabled', false);
+		}
+
+		if ($('#InputAngsuranSebenarnya').val() == null || $('#InputAngsuranSebenarnya').val() == "" || $('#InputAngsuranSebenarnya').val() == 0) {
+			$('#rbOptAngsuranSesuai').prop('checked', true);
+			$('#InputAngsuranSebenarnya').prop('disabled', true);
+		}
+		else {
+			$('#rbOptAngsuranTidakSesuai').prop('checked', true);
+			$('#InputAngsuranSebenarnya').prop('disabled', false);
+		}
+
+		if ($('#InputDPSebenarnya').val() == null || $('#InputDPSebenarnya').val() == "" || $('#InputDPSebenarnya').val() == 0) {
+			$('#rbOptDPSesuai').prop('checked', true);
+			$('#InputDPSebenarnya').prop('disabled', true);
+		}
+		else {
+			$('#rbOptDPTidakSesuai').prop('checked', true);
+			$('#InputDPSebenarnya').prop('disabled', false);
+		}
+
+
+		$('input[type=radio]').click(function () {
+			if ($('#rbOptTglTidakSesuai').is(':checked')) {
+				$('#dtTglTerimaSebenarnya').prop('disabled', false);
+			} else {
+				$('#dtTglTerimaSebenarnya').prop('disabled', true);
+			}
+
+			if ($('#rbOptTipeKendaraanTidakSesuai').is(':checked')) {
+				$('#InputTipeKendaraanSebenarnya').prop('disabled', false);
+			} else {
+				$('#InputTipeKendaraanSebenarnya').prop('disabled', true);
+			}
+
+			if ($('#rbOptAngsuranTidakSesuai').is(':checked')) {
+				$('#InputAngsuranSebenarnya').prop('disabled', false);
+			} else {
+				$('#InputAngsuranSebenarnya').prop('disabled', true);
+			}
+
+			if ($('#rbOptTenorTidakSesuai').is(':checked')) {
+				$('#InputTenorSebenarnya').prop('disabled', false);
+			} else {
+				$('#InputTenorSebenarnya').prop('disabled', true);
+			}
+
+			if ($('#rbOptDPTidakSesuai').is(':checked')) {
+				$('#InputDPSebenarnya').prop('disabled', false);
+			} else {
+				$('#InputDPSebenarnya').prop('disabled', true);
+			}
+		});
+		// [END Enabled/Disabled Form Sebenenarnya]
+	});
+</script>
+<script>
+	$(document).ready(function () {
+
+		$("btnVerifikasi").click(function () {
+			$("#Verifikasi").toggle();
+		});
+
+		$("btnKesesuaian").click(function () {
+			$("#Kesesuaian").toggle();
+		});
+
+		$("btnDokumenVertel").click(function () {
+			$("#DokumenVertel").toggle();
+		});
+
+		document.getElementById("Verifikasi_more").addEventListener('click', changeClass);
+
+		function changeClass() {
+			var content = document.getElementById("Verifikasi");
+
+			var identitas = document.getElementById("Verifikasi_more");
+			content.classList.toggle('show');
+
+			if (content.classList.contains("Show")) {
+				console.log('show');
+				identitas.innerHTML = "Hasil Verifikasi Konsumen by Phone";
+			} else {
+				console.log('hide');
+				identitas.innerHTML = "Hasil Verifikasi Konsumen by Phone";
+			}
+		}
+
+	});
+</script>

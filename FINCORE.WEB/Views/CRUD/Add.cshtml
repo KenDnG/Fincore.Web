@@ -1,0 +1,112 @@
+﻿@model FINCORE.Models.Models.Acquisition.CASModels
+@using FINCORE.Services.Helpers.Response;
+@{
+    ViewData["Title"] = "TEST CRUD - Razor";
+}
+
+<!-- DATA NASABAH -->
+<div class="container">
+    <form id="contactform" asp-action="InsertRazor" asp-controller="CRUD" method="post">
+        <h4 style="font-family: 'arial', Times, serif;"><div class="bgc-menu">TEST CRUD with Razor</div></h4>
+        <div class="data-input">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <!-- START FORM INPUT TEST CRUD -->
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="tile" style="height: 550px;">
+                        <div class="form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p>Kode Cabang</p>
+                                <input class="form-control" id="txtkodecabang" asp-for="KodeCabang" placeholder="Kode Cabang" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p>PO No</p>
+                                <input class="form-control" id="txtpono" asp-for="PoNo" placeholder="PO No">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p>Tipe Konsumen</p>
+                                <input class="form-control" id="txttipekonsumen" asp-for="TipeKonsumen" placeholder="Tipe Konsumen">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p>Existing Customer RO</p>
+                                <input class="form-control" id="txtexistingcustomer" asp-for="ExistingCustomerRO" placeholder="Existing Customer RO">
+                            </div>
+                        </div>                                            
+                        <div class="form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p>Nama Nasabah</p>
+                                <input class="form-control" id="txtnamanasabah" placeholder="Nama Nasabah" asp-for="NamaNasabah">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit" style="width: 25%; margin-bottom:50%">Save</button>
+                </div>
+                <!-- END FORM INPUT TEST CRUD -->
+                <!-- START LIST DATA TABLE -->
+                <div class="col-lg-8">
+                    <div class="tile" style="height: 550px;">
+                        <div class="form-group row">
+                            <table class="table table-striped table-bordered" style="width:100%; font-size: 9px;" id="tblrz">
+                                <thead>
+                                    <tr style="background-color: #ffd951; color: #000;">
+                                        <th>No</th>
+                                        <th>CAS ID</th>
+                                        <th>Nama Pelanggan</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @*@{
+                                    var data = ViewBag.PagingCAS;
+                                    foreach (var item in data)
+                                    {
+                                    <tr>
+                                    <td>@item.RowNumber</td>
+                                    <td>@item.CASId</td>
+                                    <td>@item.NamaPelanggan</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Email</td>
+                                    </tr>
+                                    }
+                                    }*@
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- END LIST DATA TABLE -->
+
+            </div>
+        </div>
+    </form>
+</div>
+<!-- END DATA NASABAH -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var tbl = $('#tblrz').DataTable({
+            responsive: true,
+            processing: true,
+            lengthMenu: [[5, 10, 25, 30, 50, 100, 200, 300], [5, 10, 25, 30, 50, 100, 200, 300]]
+        });
+        var pageShow = tbl.page.info().length;
+
+
+        var state = "@((string)ViewBag.State)";
+        var msg = "@((string)ViewBag.Message)";
+        if (state == "@(Collection.Status.SUCCESS)") {
+            Common.Alert.Success(state);
+        } else if (state == "@(Collection.Status.FAILED)") {
+            Common.Alert.Error(msg);
+        }
+    });
+</script>

@@ -1,0 +1,210 @@
+﻿@using FINCORE.Models.Models.Payment.CashierSessionVerify
+@using FINCORE.Services.Helpers.Models.Pagination
+@model PaginationModels<TransactionDetailReceiptModels>
+@{
+	ViewData["TitlePaging"] = "CASHIER SESSION VERIFY VIEW (RECEIPT)";
+	ViewData["Title"] = "CASHIER SESSION VERIFY VIEW (RECEIPT)";
+}
+
+@if (TempData["Error"] is not null)
+{
+	<script>
+		Common.Alert.Warning("@TempData["Error"]");
+	</script>
+}
+
+<style>
+	#header {
+		text-align: center;
+	}
+</style>
+
+<input type="hidden" id="totalpages" value="@Model.TotalPages" />
+
+<div class="container">
+	<div asp-validation-summary="All" class="text-danger"></div>
+	<form name="paginationReceipt" asp-action="TransactionDetailReceipt" asp-controller="CashierSessionVerify" method="post">
+		<cssessioninput class="CSSessionInput" id="CSSessionInput" style="">
+			<div class="tile">
+				<div class="form-group row">
+					<div>
+						<label>Session ID:</label>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top: -1%;">
+						@{
+							string sessionId = "";
+
+							if (Model.Model is not null && Model.Model.Count > 0)
+							{
+								var firstModel = Model.Model.FirstOrDefault();
+								if (firstModel is not null)
+									sessionId = firstModel.SessionId ?? "";
+							}
+
+						}
+
+						<input type="text" id="disabledInput" disabled="" class="form-control" value="@sessionId">
+						<input type="hidden" name="SessionId" class="form-control" value="@sessionId">
+					</div>
+				</div>
+
+				<div class="form-group row"></div>
+
+				<div class="form-group row">
+					<div class="mb-2 mt-2">
+						<table>
+							<tr>
+								<td><input class="form-control" id="txsearch" name="searchTerm" type="search" value="" placeholder="No. Referensi" /></td>
+								<td>
+									<button class="btn btn-secondary" type="submit" id="btnsearch" style="margin-left:10px">
+										<i class="fa fa-search"></i> Search
+									</button> &nbsp;
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<table class="table table-striped table-bordered" style="width:100%; font-size: 16px;" id="tblpage">
+						<thead>
+							<tr style="background-color: #ff971f; color: #FFF; text-align: center;"><th id="mandatory" colspan="7" style="font-size: 15px;" rowspan="1">Daftar Penerimaan</th></tr>
+							<tr style="background-color: #ffd951; color: #000;">
+								<td id="header">Tgl Terima</td>
+								<td id="header">Branch Id</td>
+								<td id="header">Sumber Penerimaan</td>
+								<td id="header">Tgl Bayar</td>
+								<td id="header">Jumlah</td>
+								<td id="header">No. Referensi</td>
+								<td id="header">Print</td>
+							</tr>
+						</thead>
+						<tbody>
+
+							@if (Model.Model is not null && Model.Model.Count > 0 && Model.TotalPages > 0)
+							{
+								foreach (var item in Model.Model)
+								{
+									<tr>
+										<td style="text-align: center;">@item.GetFormatedDateOfReceipt()</td>
+										<td style="text-align: center;">@item.BranchId</td>
+										<td>@item.SourceAcceptance</td>
+										<td style="text-align: center;">@item.GetFormatedPayDate()</td>
+										<td style="text-align: right;">@Html.Raw(@String.Format("{0:Rp #,###.00;(Rp #,###.00);Rp 0.00}", @item.PayAmount))</td>
+										<td style="text-align: center;">@item.ReferenceNumber</td>
+										<td>
+											<div class="dropdown dropleft float-left">
+												<button style="border-color:antiquewhite;text-align: center" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" alt="print"><img src="~/assets/ico/print.png"></button>
+												<div class="dropdown-menu" style="font-size: 9px; background-color: rgb(255, 217, 81); color: rgb(0, 0, 0); font-family: Verdana, Geneva, Tahoma, sans-serif; position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-101px, 0px, 0px);" x-placement="left-start">
+													<a class="dropdown-item" href="BPKB Edit.html">Print KWT</a>
+													<a class="dropdown-item" href="BPKB Pinjam.html">Print DTL</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+								}
+							}
+							else
+							{
+								<tr>
+									<td colspan="7">
+										<div class="text-center">Data Not Available</div>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+
+				<div class="form-group row">
+					@{
+						var pageSize = Model.PageSize;
+						var pageIndex = Model.PageIndex;
+						var recordCount = Model.RecordCount;
+						var totalPages = Model.TotalPages;
+					}
+
+					<div style="padding-right:5px">
+						@if (pageIndex > 1)
+						{
+							<button class="btn btn-secondary" type="submit" title="Previous Page" id="btnprev"><i class="fa fa-arrow-left"></i> Previous</button>
+						}
+
+						@if (pageIndex < totalPages)
+						{
+							<button class="btn btn-secondary" type="submit" title="Next Page" id="btnnext">Next <i class="fa fa-arrow-right"></i></button>
+						}
+
+						&nbsp;Page
+
+					</div>
+					<table>
+						<tr>
+							<td>
+								<input class="form-control" id="txpages" title="Current Page. And you can input destination page" style="width: 70px; height:25px" type="number" name="pageIndex" value="@pageIndex" />
+							</td>
+							<td>
+								<div style="margin-left:6px">of &nbsp @(totalPages == 0 ? 1 : @totalPages)</div>
+							</td>
+							<td>
+								<button type="button" class="btn btn-secondary" id="btngo" title="Goto selected page" style="margin-left:10px">Go</button>
+							</td>
+							<td>
+								<div style="padding-left:10px">
+									@recordCount Record(s)
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+		</cssessioninput>
+	</form>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+	<a href="@Url.Action("Index","CashierSessionVerify")" class="btn-submit" style="max-width: 100%;">Back</a>
+</div>
+
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		var totalpages = $("#totalpages").val();
+
+		$("#btnsearch").click(function (e) {
+			e.preventDefault();
+			$("#txpages").val('1');
+			$('form[name="paginationReceipt"]').submit();
+		})
+
+		$("#btnnext").click(function (e) {
+			e.preventDefault();
+			var nextPage = parseInt($("#txpages").val()) + 1;
+			$("#txpages").val(nextPage);
+			if (parseInt(nextPage) > totalpages) {
+				Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+			} else {
+				$('form[name="paginationReceipt"]').submit();
+			}
+		})
+
+		$("#btnprev").click(function (e) {
+			e.preventDefault();
+			var prevPage = parseInt($("#txpages").val()) - 1;
+			$("#txpages").val(prevPage);
+			$('form[name="paginationReceipt"]').submit();
+		})
+
+		$("#btngo").click(function (e) {
+			e.preventDefault();
+			var selectedPage = $("#txpages").val();
+
+			if (parseInt(selectedPage) > totalpages) {
+				Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+			}
+			else {
+				$('form[name="paginationReceipt"]').submit();
+			}
+		})
+	});
+
+</script>

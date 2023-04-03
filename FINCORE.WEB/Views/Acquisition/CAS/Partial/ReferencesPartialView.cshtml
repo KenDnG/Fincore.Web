@@ -1,0 +1,144 @@
+﻿@*NOTE - FITUR KEDEPAN: 
+-- Data Referensi CAS Pakai Partial View agar dynamic*@
+
+@*<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="border-right: 2px solid #e8e8e8">
+    <div id="ReferensiYes" style="display: none;">
+
+        <div>
+            <h5><div class="bgc-small" style="margin-top: 10%;">Data Referensi 1</div></h5>
+            <input type="hidden" asp-for="DtReferensi.referensi_id" value="3" id="txref1" />
+            <p>Nama Lengkap Referensi</p>
+            <input class="form-control" id="" placeholder="Input Nama Lengkap Referensi 1" asp-for="DtReferensi.nama_referensi">
+
+            <p>Hubungan Dengan Pemohon</p>
+            <select class="form-control" id="" asp-items="@ViewBag.SelectRelationship" name="DtReferensi.hubungan_pemohon">
+                <option>Pilih Hubungan Dengan Pemohon</option>
+            </select>
+
+            <p>Alamat Referensi</p>
+            <textarea class="form-control" id="" asp-for="DtReferensi.alamat_referensi" rows="" placeholder="Input Alamat Referensi"></textarea>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <p>No Telepon</p>
+                    <input class="form-control" type="number" id="" maxlength="14" placeholder="Input No Telepon" asp-for="DtReferensi.no_telepon">
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <p>No Telepon Kantor</p>
+                    <input class="form-control" id="" type="number" maxlength="14" placeholder="Input No Telepon Kantor" asp-for="DtReferensi.no_telp_kantor">
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <p>No Handphone</p>
+                    <input class="form-control" id="" type="number" maxlength="14" placeholder="Input No Handphone" asp-for="DtReferensi.mobile_phone">
+                </div>
+            </div>
+
+            <p style="margin-top: 3%;">Lokasi Referensi</p>
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                    <input type="hidden" asp-for="DtReferensi.lokasi_id_referensi" id="txlokref1id" />
+                    <textarea class="form-control" rows="" id="txlokref1name" disabled="" placeholder="Pilih Lokasi Referensi"></textarea>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <button class="btn-input ladda-button" type="button" id="btnshowlokasiref1" data-style="zoom-in" style="width: 100%; margin-bottom: 5%;">Pilih lokasi</button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h5><div class="bgc-small" style="margin-top: 10%;">Data Referensi 2</div></h5>
+            <input type="hidden" asp-for="DtReferensi.referensi_id" value="4" id="txref2" />
+            <p>Nama Lengkap Referensi</p>
+            <input class="form-control" id="" placeholder="Input Nama Lengkap Referensi 2" asp-for="DtReferensi.nama_referensi">
+
+            <p>Hubungan Dengan Pemohon</p>
+            <select class="form-control" id="" asp-items="@ViewBag.SelectRelationship" name="DtReferensi.hubungan_pemohon">
+                <option>Pilih Hubungan Dengan Pemohon</option>
+            </select>
+
+            <p>Alamat Referensi</p>
+            <textarea class="form-control" id="" asp-for="DtReferensi.alamat_referensi" rows="" placeholder="Input Alamat Referensi"></textarea>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <p>No Telepon</p>
+                    <input class="form-control" id="" placeholder="Input No Telepon" maxlength="14" asp-for="DtReferensi.no_telepon">
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <p>No Telepon Kantor</p>
+                    <input class="form-control" id="" type="number" maxlength="14" placeholder="Input No Telepon Kantor" asp-for="DtReferensi.no_telp_kantor">
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <p>No Handphone</p>
+                    <input class="form-control" id="" type="number" maxlength="14" placeholder="Input No Handphone" asp-for="DtReferensi.mobile_phone">
+                </div>
+            </div>
+
+            <p style="margin-top: 3%;">Lokasi Referensi</p>
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                    <input type="hidden" asp-for="DtReferensi.lokasi_id_referensi" id="txlokref2id" />
+                    <textarea class="form-control" rows="" id="txlokref2name" disabled="" placeholder="Pilih Lokasi Referensi"></textarea>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <button class="btn-input ladda-button" type="button" id="btnshowlokasiref2" data-style="zoom-in" style="width: 100%; margin-bottom: 5%;">Pilih lokasi</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div id="ReferensiYes1" style="display: none;">
+
+        <div>
+            <h5><div class="bgc-small" style="margin-top: 10%;">Data Referensi 3</div></h5>
+            <input type="hidden" asp-for="DtReferensi.referensi_id" value="5" id="txref3" />
+            <p>Nama Lengkap Referensi</p>
+            <input class="form-control" id="" placeholder="Input Nama Lengkap Referensi 3" asp-for="DtReferensi.nama_referensi">
+
+            <p>Hubungan Dengan Pemohon</p>
+            <select class="form-control" id="" asp-items="@ViewBag.SelectRelationship" name="DtReferensi.hubungan_pemohon">
+                <option>Pilih Hubungan Dengan Pemohon</option>
+            </select>
+
+            <p>Alamat Referensi</p>
+            <textarea class="form-control" id="" asp-for="DtReferensi.alamat_referensi" rows="" placeholder="Input Alamat Referensi"></textarea>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <p>No Telepon</p>
+                    <input class="form-control" id="" type="number" maxlength="14" placeholder="Input No Telepon" asp-for="DtReferensi.no_telepon">
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <p>No Telepon Kantor</p>
+                    <input class="form-control" id="" type="number" maxlength="14" placeholder="Input No Telepon Kantor" asp-for="DtReferensi.no_telp_kantor">
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <p>No Handphone</p>
+                    <input class="form-control" id="" type="number" maxlength="14" placeholder="Input No Handphone" asp-for="DtReferensi.mobile_phone">
+                </div>
+            </div>
+
+            <p style="margin-top: 3%;">Lokasi Referensi</p>
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                    <input type="hidden" asp-for="DtReferensi.lokasi_id_referensi" id="txlokref3id" />
+                    <textarea class="form-control" rows="" id="txlokref3name" disabled="" placeholder="Pilih Lokasi Referensi"></textarea>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <button class="btn-input ladda-button" type="button" id="btnshowlokasiref3" data-style="zoom-in" style="width: 100%; margin-bottom: 5%;">Pilih lokasi</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+*@

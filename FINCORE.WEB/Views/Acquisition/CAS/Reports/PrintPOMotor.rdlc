@@ -1,0 +1,2351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ReportItemSchemas">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>d4c267ad-01fc-4f5d-8ad5-c15912efe973</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Items">
+      <Query>
+        <DataSourceName>ReportItemSchemas</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="po_no">
+          <DataField>po_no</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="branch_id">
+          <DataField>branch_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="branch_name">
+          <DataField>branch_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="branch_address">
+          <DataField>branch_address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="branch_province">
+          <DataField>branch_province</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="branch_phone">
+          <DataField>branch_phone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dealer_fax">
+          <DataField>dealer_fax</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="item_desc">
+          <DataField>item_desc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="price">
+          <DataField>price</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="deposit">
+          <DataField>deposit</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="nfa">
+          <DataField>nfa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="customer_name">
+          <DataField>customer_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="qq_name">
+          <DataField>qq_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="mail_address">
+          <DataField>mail_address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="print_date">
+          <DataField>print_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="approved_by">
+          <DataField>approved_by</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="sum_of_print">
+          <DataField>sum_of_print</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="first_payment">
+          <DataField>first_payment</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="amount_installment">
+          <DataField>amount_installment</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="tenor">
+          <DataField>tenor</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="is_subsidi_dealer">
+          <DataField>is_subsidi_dealer</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="item_id">
+          <DataField>item_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="asset_kind_id">
+          <DataField>asset_kind_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="asset_kind_description">
+          <DataField>asset_kind_description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="asset_brand_id">
+          <DataField>asset_brand_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="asset_brand_name">
+          <DataField>asset_brand_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="asset_type_id">
+          <DataField>asset_type_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="asset_series_id">
+          <DataField>asset_series_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="asset_type_description">
+          <DataField>asset_type_description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="year_item">
+          <DataField>year_item</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="print_by">
+          <DataField>print_by</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="company_id">
+          <DataField>company_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="company_name">
+          <DataField>company_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dealer_code">
+          <DataField>dealer_code</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dealer_name">
+          <DataField>dealer_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dealer_address">
+          <DataField>dealer_address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dealer_phone">
+          <DataField>dealer_phone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ReportItemSchemas</rd:DataSetName>
+        <rd:SchemaPath>D:\Application Manager\Application Source Code\NAIK SERVER\FINCORE.WEB\FINCORE.WEB\ReportPOSchemas.xsd</rd:SchemaPath>
+        <rd:TableName>PrintPOMotorModels</rd:TableName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="BranchName">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!branch_name.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>BranchName</rd:DefaultName>
+            <Top>0.09113in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.18542in</Height>
+            <Width>1in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="BranchAddress">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!branch_address.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>BranchAddress</rd:DefaultName>
+            <Top>0.31821in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.17292in</Height>
+            <Width>4.01042in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Telp :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>0.54807in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.19375in</Height>
+            <Width>0.35417in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="BranchPhone">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!branch_phone.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>BranchPhone</rd:DefaultName>
+            <Top>0.54807in</Top>
+            <Left>0.57652in</Left>
+            <Height>0.19375in</Height>
+            <Width>1.44792in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="BranchCity">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>BranchCity</rd:DefaultName>
+            <Top>0.79739in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.175in</Height>
+            <Width>1in</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="productmarketingname">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>productmarketingname</rd:DefaultName>
+            <Top>0.79739in</Top>
+            <Left>4.74666in</Left>
+            <Height>0.175in</Height>
+            <Width>1.44792in</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line1">
+            <Top>1.02933in</Top>
+            <Left>0.15291in</Left>
+            <Height>0in</Height>
+            <Width>6.04167in</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>No: </Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>1.13488in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1625in</Height>
+            <Width>1.66667in</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="PONo">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!po_no.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>PONo</rd:DefaultName>
+            <Top>1.13488in</Top>
+            <Left>2.02791in</Left>
+            <Height>0.1875in</Height>
+            <Width>1.3125in</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Tgl Cetak PO:</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>1.34182in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1875in</Height>
+            <Width>1.66667in</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="PrintDate">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                      <Format>d</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>PrintDate</rd:DefaultName>
+            <Top>1.35432in</Top>
+            <Left>2.02791in</Left>
+            <Height>0.1875in</Height>
+            <Width>1.3125in</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Kepada Yth,</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>1.58717in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1875in</Height>
+            <Width>1.66667in</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="DealerName">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!dealer_name.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>DealerName</rd:DefaultName>
+            <Top>1.81704in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.175in</Height>
+            <Width>2.875in</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="DealerAddress1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!dealer_address.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>DealerAddress1</rd:DefaultName>
+            <Top>2.03648in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1875in</Height>
+            <Width>2.875in</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Telp :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>2.26843in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1875in</Height>
+            <Width>0.53125in</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="DealerPhone">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!dealer_phone.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>DealerPhone</rd:DefaultName>
+            <Top>2.26843in</Top>
+            <Left>0.81958in</Left>
+            <Height>0.1875in</Height>
+            <Width>2.20833in</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Fax :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>2.51287in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1625in</Height>
+            <Width>0.53125in</Width>
+            <ZIndex>16</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="DealerFax">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!dealer_fax.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>DealerFax</rd:DefaultName>
+            <Top>2.51287in</Top>
+            <Left>0.81958in</Left>
+            <Height>0.175in</Height>
+            <Width>2.20833in</Width>
+            <ZIndex>17</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="DealerAddres2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>DealerAddres2</rd:DefaultName>
+            <Top>2.74482in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.175in</Height>
+            <Width>2.875in</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line2">
+            <Top>2.99948in</Top>
+            <Left>0.15291in</Left>
+            <Height>0in</Height>
+            <Width>6.04167in</Width>
+            <ZIndex>19</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Kendaraan :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>3.09552in</Top>
+            <Left>0.16333in</Left>
+            <Height>0.175in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>20</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Sisa Pelunasan :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>4.01635in</Top>
+            <Left>0.16333in</Left>
+            <Height>0.175in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>21</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox11">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Uang Muka :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>3.58441in</Top>
+            <Left>0.16333in</Left>
+            <Height>0.175in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>22</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox12">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Harga Perolehan:</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>3.33996in</Top>
+            <Left>0.16333in</Left>
+            <Height>0.1875in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Item">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!item_desc.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Item</rd:DefaultName>
+            <Top>3.09552in</Top>
+            <Left>1.67375in</Left>
+            <Height>0.175in</Height>
+            <Width>2.64236in</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Price">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Rp. </Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                      <Format>#,0.00;(#,0.00)</Format>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!price.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                      <Format>#,0.00;(#,0.00)</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Price</rd:DefaultName>
+            <Top>3.33996in</Top>
+            <Left>1.67375in</Left>
+            <Height>0.1875in</Height>
+            <Width>1in</Width>
+            <ZIndex>25</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Deposit">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Rp. </Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                      <Format>#,0.00;(#,0.00)</Format>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!deposit.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                      <Format>#,0.00;(#,0.00)</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Deposit</rd:DefaultName>
+            <Top>3.58441in</Top>
+            <Left>1.67375in</Left>
+            <Height>0.175in</Height>
+            <Width>1in</Width>
+            <ZIndex>26</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="NFA">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Rp. </Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                      <Format>#,0.00;(#,0.00)</Format>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!nfa.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                      <Format>#,0.00;(#,0.00)</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NFA</rd:DefaultName>
+            <Top>4.01635in</Top>
+            <Left>1.67375in</Left>
+            <Height>0.175in</Height>
+            <Width>1in</Width>
+            <ZIndex>27</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line3">
+            <Top>4.45781in</Top>
+            <Left>0.15291in</Left>
+            <Height>0in</Height>
+            <Width>5.9375in</Width>
+            <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Alamat Kirim :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>4.75385in</Top>
+            <Left>0.16333in</Left>
+            <Height>0.175in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>29</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox14">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Pembeli:</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>4.52677in</Top>
+            <Left>0.16333in</Left>
+            <Height>0.175in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>30</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CustomerName">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!customer_name.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CustomerName</rd:DefaultName>
+            <Top>4.52677in</Top>
+            <Left>1.67375in</Left>
+            <Height>0.175in</Height>
+            <Width>1.875in</Width>
+            <ZIndex>31</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="MailAddress">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!mail_address.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>MailAddress</rd:DefaultName>
+            <Top>4.75385in</Top>
+            <Left>1.67375in</Left>
+            <Height>0.425in</Height>
+            <Width>1.875in</Width>
+            <ZIndex>32</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>QQ :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>4.52677in</Top>
+            <Left>3.66666in</Left>
+            <Height>0.175in</Height>
+            <Width>0.35417in</Width>
+            <ZIndex>33</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="QQName">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!qq_name.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>QQName</rd:DefaultName>
+            <Top>4.52677in</Top>
+            <Left>4.16333in</Left>
+            <Height>0.175in</Height>
+            <Width>1.9375in</Width>
+            <ZIndex>34</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line4">
+            <Top>5.21774in</Top>
+            <Left>0.15291in</Left>
+            <Height>0in</Height>
+            <Width>5.9375in</Width>
+            <ZIndex>35</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox16">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Konfirmasi Dealer (Mohon Di Fax Kembali)</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>5.29552in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1625in</Height>
+            <Width>3.38542in</Width>
+            <ZIndex>36</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox17">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>No. Rangka :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>5.53995in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1625in</Height>
+            <Width>1.61667in</Width>
+            <ZIndex>37</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox18">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>No. Mesin :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>5.76911in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1625in</Height>
+            <Width>1.61667in</Width>
+            <ZIndex>38</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox19">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Tgl Rencana Kirim Kendaraan:</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>6.01077in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.1625in</Height>
+            <Width>1.61667in</Width>
+            <ZIndex>39</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line5">
+            <Top>5.69529in</Top>
+            <Left>1.90291in</Left>
+            <Height>0in</Height>
+            <Width>4.13958in</Width>
+            <ZIndex>40</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="Line6">
+            <Top>6.18576in</Top>
+            <Left>1.90292in</Left>
+            <Height>0in</Height>
+            <Width>4.13958in</Width>
+            <ZIndex>41</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="Line7">
+            <Top>5.9441in</Top>
+            <Left>1.90292in</Left>
+            <Height>0in</Height>
+            <Width>4.13957in</Width>
+            <ZIndex>42</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="Line8">
+            <Top>6.28069in</Top>
+            <Left>0.15291in</Left>
+            <Height>0in</Height>
+            <Width>5.9375in</Width>
+            <ZIndex>43</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox38">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>Ketentuan:</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>    - PO Berlaku Setelah Konsumen Melunasi Total Uang Muka</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>    - Apabila Pengiriman Tidak Dapat Dilaksanakan Sesuai Rencana Kirim, Maka Harus </Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>      Diberitahukan Kepada Kami Secepatnya</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>    - Masa Berlaku PO Adalah 1 Bulan Setelah Tgl Cetak PO Sebagaimana Tercantum Di Atas</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>    - Syarat - Syarat Penagihan :</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>          * Copy Kwitansi Pembayaran Uang Muka Pembelian</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>          * Kwitansi Pelunasan Pembelian</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>          * Bukti Penyerahan Kendaraan / Surat Jalan</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>          * Surat Pernyataan Penyerahan BPKB Atau Asli BPKB</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox38</rd:DefaultName>
+            <Top>6.30359in</Top>
+            <Left>0.15291in</Left>
+            <Height>1.11458in</Height>
+            <Width>5.9375in</Width>
+            <ZIndex>44</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line9">
+            <Top>7.49174in</Top>
+            <Left>0.15291in</Left>
+            <Height>0in</Height>
+            <Width>5.9375in</Width>
+            <ZIndex>45</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox39">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Menyetujui Dealer</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>7.59938in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.17292in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>46</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="BranchCity1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>BranchCity1</rd:DefaultName>
+            <Top>7.59938in</Top>
+            <Left>3.8161in</Left>
+            <Height>0.17292in</Height>
+            <Width>1in</Width>
+            <ZIndex>47</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox41">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>,</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox41</rd:DefaultName>
+            <Top>7.59938in</Top>
+            <Left>4.88555in</Left>
+            <Height>0.17292in</Height>
+            <Width>0.13542in</Width>
+            <ZIndex>48</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="PrintDate1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!print_date.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                      <Format>dd MMMM, yyyy</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>PrintDate1</rd:DefaultName>
+            <Top>7.59938in</Top>
+            <Left>5.09041in</Left>
+            <Height>0.17292in</Height>
+            <Width>1in</Width>
+            <ZIndex>49</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ApprovedBy">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Menyetujui</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ApprovedBy</rd:DefaultName>
+            <Top>7.73478in</Top>
+            <Left>5.01749in</Left>
+            <Height>0.17292in</Height>
+            <Width>1.15625in</Width>
+            <ZIndex>50</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox44">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Print By:</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox44</rd:DefaultName>
+            <Top>8.00492in</Top>
+            <Left>3.0661in</Left>
+            <Height>0.16042in</Height>
+            <Width>0.48958in</Width>
+            <ZIndex>51</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="UserName">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!print_by.Value</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>UserName</rd:DefaultName>
+            <Top>8.00492in</Top>
+            <Left>3.62514in</Left>
+            <Height>0.16042in</Height>
+            <Width>1in</Width>
+            <ZIndex>52</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="PrintDate2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>PrintDate2</rd:DefaultName>
+            <Top>8.25492in</Top>
+            <Left>5.19458in</Left>
+            <Height>0.16042in</Height>
+            <Width>1in</Width>
+            <ZIndex>53</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox45">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Print ke:</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox44</rd:DefaultName>
+            <Top>8.26187in</Top>
+            <Left>3.06611in</Left>
+            <Height>0.16042in</Height>
+            <Width>0.48958in</Width>
+            <ZIndex>54</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="SumOfPrint">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!sum_of_print.Value</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>SumOfPrint</rd:DefaultName>
+            <Top>8.26187in</Top>
+            <Left>3.62514in</Left>
+            <Height>0.16042in</Height>
+            <Width>1in</Width>
+            <ZIndex>55</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox40">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>/DPG</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!deposit.Value</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>/KWP</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!nfa.Value</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>/OT</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!price.Value</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>8.24937in</Top>
+            <Left>0.16333in</Left>
+            <Height>0.17292in</Height>
+            <Width>2.86458in</Width>
+            <ZIndex>56</ZIndex>
+            <Style>
+              <Border />
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox20">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Aksesoris  :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>4.25503in</Top>
+            <Left>0.15291in</Left>
+            <Height>0.175in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>57</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="NFA2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Rp. </Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                      <Format>#,0.00;(#,0.00)</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NFA</rd:DefaultName>
+            <Top>4.23302in</Top>
+            <Left>1.67375in</Left>
+            <Height>0.175in</Height>
+            <Width>1in</Width>
+            <ZIndex>58</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox21">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Kepala Cabang</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>8.12784in</Top>
+            <Left>5.29249in</Left>
+            <Height>0.1625in</Height>
+            <Width>1in</Width>
+            <ZIndex>59</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox22">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Tenor :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>3.58441in</Top>
+            <Left>2.92722in</Left>
+            <Height>0.175in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>60</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox23">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!tenor.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>  bulan</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>3.58441in</Top>
+            <Left>4.31611in</Left>
+            <Height>0.175in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>61</ZIndex>
+            <ToolTip>=Iif(Fields!item_id.Value="001", True, False)</ToolTip>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line10">
+            <Top>8.53129in</Top>
+            <Left>0.16187in</Left>
+            <Height>0in</Height>
+            <Width>5.9375in</Width>
+            <ZIndex>62</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox42">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>"Purchase Order (PO) ini merupakan produk resmi dari PT. Mega Central Finance (MCF) yang hanya diperoleh melalui email resmi PT MCF dan dipergunakan untuk kepentingan bisnis MCF. Ketiadaan tandatangan kepala cabang di dalam PO tidak mengurangi keabsahan PO ini. Apabila pihak rekanan menerima PO melalui jalur yang tidak resmi dari MCF, maka MCF menyatakan tidak 
+bertanggungjawab atas segala kerugian/tuntutan/klaim yang timbul sehubungan dengan penggunaan PO tersebut."</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>8.60772in</Top>
+            <Left>0.24313in</Left>
+            <Height>0.54792in</Height>
+            <Width>5.79937in</Width>
+            <ZIndex>63</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox24">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Angsuran :</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>3.80247in</Top>
+            <Left>0.16333in</Left>
+            <Height>0.175in</Height>
+            <Width>1.375in</Width>
+            <ZIndex>64</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox25">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Rp. </Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!amount_installment.Value</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>3.79968in</Top>
+            <Left>1.67375in</Left>
+            <Height>0.175in</Height>
+            <Width>1.15625in</Width>
+            <ZIndex>65</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="img_company_mcf">
+            <Source>Embedded</Source>
+            <Value>MCF</Value>
+            <Top>0.23147cm</Top>
+            <Left>13.99148cm</Left>
+            <Height>0.59972cm</Height>
+            <Width>2.18722cm</Width>
+            <ZIndex>66</ZIndex>
+            <Visibility>
+              <Hidden>=IIf(Fields!company_id.Value = 3,true,false)</Hidden>
+            </Visibility>
+            <ToolTip>Company Logo MCF</ToolTip>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Image Name="img_company_maf">
+            <Source>Embedded</Source>
+            <Value>MAF</Value>
+            <Top>0.23147cm</Top>
+            <Left>13.9562cm</Left>
+            <Height>0.59972cm</Height>
+            <Width>2.2225cm</Width>
+            <ZIndex>67</ZIndex>
+            <Visibility>
+              <Hidden>=IIf(Fields!company_id.Value = 2,true,false)</Hidden>
+            </Visibility>
+            <ToolTip>Company Logo MAF</ToolTip>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+        </ReportItems>
+        <Height>23.85314cm</Height>
+        <Style />
+      </Body>
+      <Width>16.89842cm</Width>
+      <Page>
+        <PageHeight>27.94cm</PageHeight>
+        <PageWidth>21.59cm</PageWidth>
+        <LeftMargin>2.54cm</LeftMargin>
+        <RightMargin>2.54cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="MCF">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="MAF">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>565a39f5-ba42-4548-9fe9-7d8482a052da</rd:ReportID>
+</Report>

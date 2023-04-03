@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" id="ReportItemSchemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PrintPOMobilModels" nillable="true" type="PrintPOMobilModels" />
+  <xs:complexType name="PrintPOMobilModels">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="po_no" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_address" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_province" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_phone" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dealer_fax" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="item_desc" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="price" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="deposit" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="nfa" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="customer_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="qq_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="mail_address" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="print_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="approved_by" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="sum_of_print" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="first_payment" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="amount_installment" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="tenor" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="is_subsidi_dealer" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="item_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_kind_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_kind_description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_brand_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_brand_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_type_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_series_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_type_description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="year_item" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="print_by" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="company_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="company_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dealer_code" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dealer_name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintPOMotorModels" nillable="true" type="PrintPOMotorModels" />
+  <xs:complexType name="PrintPOMotorModels">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="po_no" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_address" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_province" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="branch_phone" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dealer_fax" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="item_desc" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="price" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="deposit" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="nfa" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="customer_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="qq_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="mail_address" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="print_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="approved_by" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="sum_of_print" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="first_payment" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="amount_installment" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="tenor" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="is_subsidi_dealer" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="item_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_kind_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_kind_description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_brand_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_brand_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_type_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_series_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="asset_type_description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="year_item" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="print_by" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="company_id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="company_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dealer_code" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dealer_name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dealer_address" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dealer_phone" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

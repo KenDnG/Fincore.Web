@@ -1,0 +1,119 @@
+﻿@model FINCORE.Models.Models.Users.UsersModels
+@using FINCORE.Models.Models.Masters
+@using FINCORE.Services.Helpers.Response;
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="~/lib/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/lib/ladda/ladda-themeless.min.css" rel="stylesheet" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/js/select2/dist/css/select2.min.css">
+
+
+    <title>Fincore - Login</title>
+</head>
+<body>
+    <section class="material-half-bg">
+        <div class="cover"></div>
+    </section>
+    <section class="login-content">
+        <div class="login-box">
+            <form class="login-form" method="post" asp-action="SignIn" asp-controller="Login">
+                <div class="login-head"><img src="~/assets/img/FC.png"></div>
+
+                <div class="input-group" style="margin-top: 10%;">
+                    <div class="input-group-append"><span class="input-group-text"><i class="fa fa-lg fa-fw fa-user"></i></span></div>
+                    <input class="control-label" id="txtUserDomain" type="text" placeholder="Enter your User domain" asp-for="Username" style="width: 100%; margin-left:3px">
+                </div>
+
+                <div class="input-group" style="margin-top: 5%;" color="#000">
+                    <div class="input-group-append"><span class="input-group-text"><i class="fa fa-lg fa-fw fa-lock"></i></span></div>
+                    <input class="control-label" id="txtUserPassword" type="password" asp-for="Password" placeholder="Enter your password" style="width: 100%; margin-left:3px">
+                </div>
+
+                <div class="input-group" style="margin-top: 5%;">
+                    <div class="input-group-append"><span class="input-group-text"><i class="fa fa-lg fa-fw fa-building"></i></span></div>
+                    <input class="control-label" id="txtCompany" value="@Collection.CompanyId.COMPANY_NAME" style="width: 100%; margin-left:3px" readonly>
+                    <input id="selCompany" value="@Collection.CompanyId.COMPANY_ID" hidden>
+                </div><br>
+
+                <div class="form-group btn-container" style="margin-top: 10%;" id="divBtnNext">
+                    <a data-toogle="flip" id="btnNext" onclick="login_load.signin();" class="btn btn-submit btn-block" style="width: 90%"><i id="ibtnNext" class="fa fa-sign-in fa-lg fa-fw"></i>Next</a>
+                </div>
+            </form>
+
+            <form class="forget-form" action="index.html">
+                <div class="login-head">
+                    <img id="imgCompanyLogoMAF" src="~/assets/img/MAF.png">
+                    <img id="imgCompanyLogoMCF" src="~/assets/img/MCF.png">
+                </div>
+                <!-- <p style="text-align: left;">Email</p> -->
+                <div class="input-group">
+                    <div class="input-group-append"><span class="input-group-text"><i class="fa fa-lg fa-fw fa-building"></i></span></div>
+                    <select class="control-label" id="SelBranch" style="width: 100%;">
+                    </select>
+                </div><br><br><br>
+                <div class="form-group btn-container" style="margin-top:15px">
+                    <a onclick="login_load.btnBranchClick();" class="btn btn-submit btn-block" id="btnSignIn" style="margin-top: 3%; width: 90%;"><i class="fa fa-sign-in fa-lg fa-fw"></i>Sign In</a>
+                </div>
+                <div class="form-group mt-3">
+                    <p class="semibold-text mb-0"><a href="#" data-toggle="flip" onclick="btnBackClick();"><i class="fa fa-angle-left fa-fw"></i> Back </a></p>
+                </div>
+            </form>
+
+        </div>
+    </section>
+    <!-- Essential javascripts for application to work-->
+    <script src="~/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="~/js/plugins/pace.min.js"></script>
+    <script type="text/javascript">
+        // Login Page Flipbox control
+        $('.login-content [data-toggle="flip"]').click(function () {
+            $('.login-box').toggleClass('flipped');
+            return false;
+        });
+    </script>
+    <script src="~/lib/ladda/spin.min.js"></script>
+    <script src="~/lib/ladda/ladda.min.js"></script>
+    <script src="~/lib/bootstrap-sweetalert/sweetalert.min.js"></script>
+    <script src="~/Scripts/commons.js"></script>
+    <script src="~/Scripts/login.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="~/js/select2/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var state = "@((string)ViewBag.State)";
+            var msg = "@((string)ViewBag.Message)";
+
+            if (state == "@(Collection.Status.FAILED)") {
+                Common.Alert.Error(msg);
+            }
+            $('#SelBranch').val('0');
+
+        });
+
+        function btnBackClick()
+        {
+            $("#SelBranch").removeAttr('disabled');
+            $('#SelBranch').val('0');
+            $("#ibtnNext").removeClass("fa-spinner fa-spin");
+        }
+    </script>
+</body>
+</html>

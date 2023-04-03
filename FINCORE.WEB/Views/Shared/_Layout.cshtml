@@ -1,0 +1,388 @@
+@using FINCORE.Models.Models.LDAP
+@using FINCORE.Models.Models.Masters
+@using FINCORE.WEB.Controllers
+@using FINCORE.WEB.Helpers
+@using static FINCORE.Services.Helpers.Response.Collection
+@inject IHttpContextAccessor IHttpContextAccessor
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Fincore - @ViewData["Title"]</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/fontsgoogleapis-family-roboto.css">
+		@{
+			var sessionUser = Sessions.GetSessionFromJson<LDAPModels>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.LDAP_KEY_NAME);
+									@if (sessionUser == null)
+			{
+				Url.Action("Login", "Account");
+			}
+		}
+
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/css/fontawesome-all.css" rel="stylesheet" />*@
+    @* <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*@
+    @*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">*@
+	<link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="~/assets/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+
+    <!-- end Google Font -->
+    <link href='~/css/fontsgoogleapis.css' rel='stylesheet' type='text/css'>
+    <link href='~/css/fontsgoogleapis-family-oswald.css' rel='stylesheet' type='text/css'>
+
+    @*<link rel="stylesheet" href="~/assets/css/font-awesome.css">*@
+
+    <link rel="stylesheet" type="text/css" href="~/css/daterangepicker.css" />
+
+    <link href="~/lib/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/lib/ladda/ladda-themeless.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/assets/css/dataTables.bootstrap4.css">
+
+	<!-- end awesome icons -->
+	<script src="~/lib/fontawesome/js/all.min.js"></script>
+	<script src="~/lib/fontawesome/js/fontawesome.min.js"></script>
+
+    <script src="~/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/assets/js/jquery-migrate-3.0.0.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>*@
+    @*<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/jquery.backstretch.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/jquery.waypoints.min.js"></script>
+    <script src="~/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/assets/js/scripts.js"></script>
+
+    <!-- Essential javascripts for application to work-->
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    @*<script src="~/assets/js/plugins/pace.min.js"></script>*@
+    <!-- Page specific javascripts-->
+
+    <script src="~/lib/bootstrap-sweetalert/sweetalert.min.js"></script>
+
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="~/assets/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/select2.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/dropzone.js"></script>
+
+    <!-- Select Date -->
+    @*<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>*@
+    @*<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>*@
+
+    <script src="~/lib/ladda/spin.min.js"></script>
+    <script src="~/lib/ladda/ladda.min.js"></script>
+
+    <script src="~/assets/js/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/dataTables.bootstrap4.js"></script>
+
+    @*<script src="~/Scripts/lookup.js"></script>*@
+    <script src="~/Scripts/commons.js"></script>
+</head>
+
+<!--/HEADER SECTION -->
+<header class="header">
+    <div class="containers" style="margin-top: 10px;">
+		 
+		@{
+			var promText = new List<MsPromotionLineTextModel>();
+			var company_data = new CompanyBranchResponse();
+
+			promText = Sessions.GetSessionFromJson<List<MsPromotionLineTextModel>>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.PROMOTION_LINE_TEXT);
+			company_data = Sessions.GetSessionFromJson<CompanyBranchResponse>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.COMPANY_CREDENTIAL);
+		}
+		<div class="col-lg-12" >
+			<!-- TITLE HEADER FORM -->
+			@if(company_data.company_id == "3"){
+				<div class="text-right"><img src="~/assets/img/MCF.png" ></div>
+			}
+			else if(company_data.company_id == "2"){
+				<div class="text-right"><img src="~/assets/img/MAF.png"></div>
+			}
+			@*<div class="text-center"><h4 style="font-weight: bold;">@ViewData["Title"]</h4></div>*@
+		</div>
+
+		<div class="col-lg-12" style="margin:15px 0 -15px 0;">
+			<p class="text-right" style="font-size: 1.5rem;">
+				Idle Time...
+				<span class="secs"></span>
+			</p>
+		</div>
+
+		<marquee scrolldelay="100" width="100%" onmouseover="this.stop();" onmouseout="this.start();" style="padding:5px 0 5px 0; margin:15px 0 -15px 0;">
+			<p>
+			@foreach(var text in promText)
+			{
+				<font style="color:@text.LineTextColor">@text.LineTextName &emsp;&emsp;&emsp;&emsp;</font>
+			}
+			</p>
+		</marquee>
+
+        <hr> 
+        <!-- END TITLE HEADER FORM -->
+
+    </div>
+</header>
+<!-- end header -->
+
+
+<body>
+
+	<!-- Wrapper -->
+	<div class="wrapper">
+
+		<!-- Sidebar -->
+		<nav class="sidebar">
+
+			<!-- close sidebar menu -->
+			<div class="dismiss">
+				<i class="fas fa-arrow-left"></i>
+			</div>
+
+			<div class="logosidebar">
+				@{
+					var sesAccess = new LDAPModels();
+					var branch_id = "";
+					var branch_name = "";
+					try
+					{
+						sesAccess = Sessions.GetSessionFromJson<LDAPModels>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.LDAP_KEY_NAME);
+						branch_id = Sessions.GetSessionFromJson<string>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.BRANCH_ID);
+						branch_name = Sessions.GetSessionFromJson<string>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.BRANCH_NAME);
+
+						if(company_data.company_id == "3"){
+							<a  href="@Url.Action("Index", "Home")"><img src="~/assets/img/MCF.png"></a>
+						}
+						else if(company_data.company_id == "2"){
+							<a  href="@Url.Action("Index", "Home")"><img src="~/assets/img/MAF.png"></a>
+						}
+
+						<h4>@sesAccess.DisplayName.ToString()</h4>
+
+						<small>@branch_id - @branch_name</small>
+					}
+					catch (Exception ex)
+					{
+						//need improvment
+						LoginController login = new();
+						Sessions.RemoveAllSession(IHttpContextAccessor.HttpContext.Session);
+						login.PageOff();
+					}
+					//sesAccess = Sessions.GetSessionFromJson<LDAPModels>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.LDAP_KEY_NAME);
+					//branch_id = Sessions.GetSessionFromJson<string>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.BRANCH_ID);
+					//branch_name = Sessions.GetSessionFromJson<string>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.BRANCH_NAME);
+					//<h4>@sesAccess.DisplayName.ToString()</h4>
+
+					//<small>@branch_id - @branch_name</small>
+				}
+			</div>
+			@{
+				List<MenuTree> ListMenuTrees = Sessions.GetSessionFromJson<List<MenuTree>>(IHttpContextAccessor.HttpContext.Session, SessionIdentity.USER_MENU_ACCESS);
+				if (ListMenuTrees != null)
+				{
+					int tempModulId = ListMenuTrees[0].module_id;
+					string tempModulName = ListMenuTrees[0].module_name;
+					List<MenuTree> ListMenuTreeTemp = new List<MenuTree>();
+					List<MenuTree> ListMenuNewParent = new List<MenuTree>();
+					<ul class="list-unstyled menu-elements">
+						@if (sesAccess == null)
+						{
+							Url.Action("Login", "Account");
+						}
+
+						@for (int i = 0; i < ListMenuTrees.Count; i++)
+						{
+							tempModulId = ListMenuTrees[i].module_id;
+							tempModulName = ListMenuTrees[i].module_name;
+							ListMenuTreeTemp = ListMenuTrees.Where(x => x.module_id == tempModulId || x.parent_module_id == tempModulId).ToList();
+							for (int j = 0; j < ListMenuTreeTemp.Count; j++)
+							{
+								MenuTree menu = ListMenuTreeTemp[j];
+								if (j == 0)
+								{
+									<li>
+										<a href="#@tempModulName.Replace(" ","")" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="Acquisition"><i class="fas fa-folder-open"></i>@menu.module_name</a>
+									</li>
+									<ul class="collapse list-unstyled" id="@tempModulName.Replace(" ","")">
+										<li>
+											<a href="@Url.Action(menu.menu_action,menu.menu_controller)"><i class="fas fa-file"></i>@menu.menu_title</a>
+										</li>
+									</ul>
+								}
+								else
+								{
+									if (menu.parent_module_id > 0)
+									{
+										ListMenuNewParent = ListMenuTreeTemp.Where(x => x.parent_module_id == tempModulId).ToList();
+										for (int k = 0; k < ListMenuNewParent.Count; k++)
+										{
+											if (k == 0)
+											{
+												<ul class="collapse list-unstyled" id="@tempModulName.Replace(" ","")">
+													<li>
+														<a href="#@menu.module_name.Replace(" ","")" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="Acquisition"><i class="fas fa-folder-open"></i>@menu.module_name</a>
+
+													</li>
+													<ul class="collapse list-unstyled" id="@menu.module_name.Replace(" ","")">
+														<li style="margin-left: 20px;">
+															&nbsp;&nbsp; <a href="@Url.Action(menu.menu_action,menu.menu_controller)"><i class="fas fa-file"></i>@menu.menu_title</a>
+														</li>
+													</ul>
+												</ul>
+											}
+											else
+											{
+												<ul class="collapse list-unstyled" id="@menu.module_name.Replace(" ","")">
+													<li style="margin-left: 20px;">
+														&nbsp;&nbsp; <a href="@Url.Action(menu.menu_action,menu.menu_controller)"><i class="fas fa-file"></i>@menu.menu_title</a>
+													</li>
+												</ul>
+											}
+										}
+									}
+									else
+									{
+										<ul class="collapse list-unstyled" id="@tempModulName.Replace(" ","")">
+											<li>
+												<a href="@Url.Action(menu.menu_action,menu.menu_controller)"><i class="fas fa-file"></i>@menu.menu_title</a>
+											</li>
+										</ul>
+									}
+								}
+
+								tempModulId = menu.module_id;
+							}
+							i = i + ListMenuTreeTemp.Count-1;
+							ListMenuTreeTemp = new List<MenuTree>();
+						}
+						<li>
+							<a href="@Url.Action("Logoff", "Login")"><i class="fas fa-home"></i> Logout</a>
+						</li>
+					</ul>
+				}
+				else
+				{
+					<ul>
+						<li>
+							<a href="@Url.Action("Logoff", "Login")"><i class="fas fa-home"></i> Logout</a>
+
+						</li>
+					</ul>
+				}
+			}
+
+
+		</nav>
+		<!-- End sidebar -->
+		<!-- Dark overlay -->
+		<div class="overlay"></div>
+
+		<!-- Content -->
+		<div class="content">
+
+			<!-- open sidebar menu -->
+			<a class="btn btn-primary btn-customized open-menu" href="#" role="button">
+				<i class="fas fa-align-left"></i> <span>Menu</span>
+			</a>
+
+			<!--/ INPUT CMO -->
+			<section id="contact" class="feature-wrapper">
+				<div class="containers" style="margin-top: -10%;">
+				
+					@*@if (@ViewData["TitlePaging"] == null)
+					{
+						<!-- TITLE HEADER FORM -->
+						<div class="text-center"><h4 style="font-weight: bold;">@ViewData["Title"]</h4></div>
+
+						<hr>
+						<!-- END TITLE HEADER FORM -->
+					}*@
+
+					<!-- render body -->
+					<div >
+						@RenderBody()
+					</div>
+
+				</div>
+			</section>
+			<!-- END INPUT CMO -->
+
+		</div>
+		<!-- End content -->
+
+	</div>
+	<!-- End wrapper -->
+	
+	<!-- Footer -->
+	<footer class="footer-container">
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col">
+					
+					@if(company_data.company_id == "3"){
+						<p class="text-center"> PT Mega Central Finance</p>
+					}
+					else if(company_data.company_id == "2"){
+						<p class="text-center">PT Mega Auto Finance</p>
+					}
+				</div>
+
+			</div>
+		</div>
+
+	</footer>
+	<!-- Javascript -->
+
+	@RenderSection("scripts", required:false)
+
+</body>
+</html>
+
+<script type="text/javascript">
+	// Set the date we're counting down to
+	var countDownDate = new Date().getTime() + (15 * 60000);
+
+	// Update the count down every 1 second
+	var x = setInterval(function () {
+
+		// Get today's date and time
+		var now = new Date().getTime();
+
+		// Find the distance between now and the count down date
+		var distance = countDownDate - now;
+
+		// Time calculations for days, hours, minutes and seconds
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		// Output the result in an element with id="demo"
+		document.querySelector(".secs").textContent = minutes + "m " + seconds + "s ";
+
+		// If the count down is over, write some text
+		if (distance < 0) {
+			clearInterval(x);
+			document.querySelector(".secs").textContent = "EXPIRED";
+			//Common.Alert.ErrorThenRoute("Your Login Session was EXPIRED !!", "/Login/Logoff");
+			window.location.href = "/Login/ExpiredSession";
+		}
+	}, 1000);
+</script>

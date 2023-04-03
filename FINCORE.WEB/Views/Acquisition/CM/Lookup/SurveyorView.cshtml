@@ -1,0 +1,193 @@
+﻿@using FINCORE.Models.Models.Acquisition.CM.Paginations
+@using FINCORE.Services.Helpers.Models.Pagination
+@using FINCORE.WEB.Helpers
+@model PaginationModels<PaginationSurveyorModels>
+
+<div class="top-content" id="dvlookup_surveyor">
+    <div class="container">
+        <div class="form-group row">
+            <table>
+                <tr>
+                    <td>Nama Surveyor:</td>
+                </tr>
+                <tr><td style="padding: 5px"></td></tr>
+                <tr>
+                    @{
+                        var searchTerm = "";
+                        if (Model != null)
+                        {
+                            searchTerm = Model.SearchTerm;
+                        }
+                    }
+                    <td><input class="form-control" id="txsearch_surveyor" placeholder="Cari data ..." type="text" style="height: 30px" value="@searchTerm" /></td>
+                    <td><button class="btn btn-secondary" type="button" id="btnsearch_surveyor" style="margin-left:10px"><i class="fa fa-search"></i> Search</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group row">
+            <table class="table table-striped table-bordered" style="width:100%; font-size: 11px;" id="tblpage_surveyor">
+                <thead>
+                    <tr style="background-color: #ffd951; color: #000;">
+                        <th style="width:10px">No</th>
+                        <th>Nama Surveyor</th>
+                        <th style="width:30px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var mPageSize = 0;
+                        var mPageIndex = 0;
+                        var mTotalRecordCount = 0;
+                        var mTotalPages = 0;
+
+                        if (Model == null)
+                        {
+                                <tr>
+                                    <td colspan="100%"><div class="text-center">Data Not Available</div></td>
+                                </tr>
+                        }
+                        else
+                        {
+                            var dataSurveyor = Model.Model;
+                            mPageSize = Model.PageSize;
+                            mPageIndex = Model.PageIndex;
+                            mTotalRecordCount = Model.RecordCount;
+                            mTotalPages = Model.TotalPages;
+
+                            if (mTotalRecordCount != 0)
+                            {
+                                foreach (var item in dataSurveyor)
+                                {
+                                    var combineSurveyor = $"{item.EmployeeID} - {item.EmployeeName}";
+                                    var SurveyorId = $"'{item.EmployeeID}'";
+                                    var SurveyorName = $"'{item.EmployeeName}'";
+                                        <tr>
+                                            <td>@item.RowNumber</td>
+                                            <td>@combineSurveyor</td>                                        
+                                            <td>
+                                            <button class="btn btn-secondary" type="button" title="Select data" onclick="cm_lookup.SelectedSurveyor(@SurveyorId, @SurveyorName)"><i class="fa fa-hand-pointer"></i> Pilih</button>
+                                            </td>
+                                        </tr>
+                                }
+                            }
+                            else
+                            {
+                                    <tr>
+                                        <td colspan="100%"><div class="text-center">Data Not Available</div></td>
+                                    </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group row">
+            @{
+                var pageSize = mPageSize;
+                var pageIndex = mPageIndex;
+                var recordCount = mTotalRecordCount;
+                var totalPages = mTotalPages;
+            }
+            <div style="padding-right:5px">
+                <button class="btn btn-secondary" type="button" title="Previous Page" id="btnprev_surveyor"><i class="fa fa-arrow-left"></i> Previous</button>
+                <button class="btn btn-secondary" type="button" title="Next Page" id="btnnext_surveyor">Next <i class="fa fa-arrow-right"></i></button>
+                &nbsp;Page
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <input class="form-control" id="txpages_surveyor" title="Current Page. And you can input destination page" style="width: 70px; height:25px" type="number" />
+                    </td>
+                    <td>
+                        <div style="margin-left:6px">of &nbsp; @Commons.ConvertToNominal(@totalPages == 0 ? 1 : @totalPages)</div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-secondary" id="btngo_surveyor" title="Goto selected page" style="margin-left:10px">Go</button>
+                    </td>
+                    <td>
+                        <div style="padding-left:10px">
+                            @Commons.ConvertToNominal(@recordCount) Record(s)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $("#mdlsurveyor").on("hidden.bs.modal", function () {
+            document.getElementById("btnshow_Surveyor").style.display = "block";
+        });   
+    })
+
+//untuk handle button Search, GO, Previous, Next in Paging List pada Partial View
+var cm_paging = {
+    handle_btn: async function (pageIndex, searchTerm, itemid, mKey) {        
+        
+        var mUrl = "";
+        switch (mKey) {
+            case "Surveyor":
+                    mUrl = "../CM/PaginationSurveyor?";
+                break;            
+        }
+        var params = {
+            pageIndex: pageIndex,
+            searchTerm: searchTerm,
+            item_id: itemid            
+        }
+        $.ajax({
+            url: mUrl,
+            type: "POST",
+            data: params,
+            success: function (data) {
+                $("#containerSurveyor").html(data);
+            },
+            error: function (error) {
+                var d = error;
+                    Common.Alert.Error("Failed to show Lookup Surveyor. Error " + d);
+            }
+        });
+    }    
+}
+
+    $(document).ready(function () {
+        var txsearch_surveyor = "";
+
+        var itemid = $("#asset_kind_id").val();      
+
+        $("#btnsearch_surveyor").click(function () {
+            var currentPage = $("#txpages_surveyor").val();
+            txsearch_surveyor = $("#txsearch_surveyor").val(); 
+
+            cm_paging.handle_btn(1, txsearch_surveyor, itemid, 'Surveyor');
+        })
+        $("#btnnext_surveyor").click(function () {
+            txsearch_surveyor = $("#txsearch_surveyor").val();
+            var nextPage = parseInt($("#txpages_surveyor").val()) + 1;
+            if (parseInt(nextPage) > @totalPages) {
+                Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+            } else {
+                cm_paging.handle_btn(nextPage, txsearch_surveyor, itemid, 'Surveyor');
+            }
+        })
+        $("#btnprev_surveyor").click(function () {
+            txsearch_surveyor = $("#txsearch_surveyor").val();
+            var prevPage = parseInt($("#txpages_surveyor").val()) - 1;
+            cm_paging.handle_btn(prevPage, txsearch_surveyor, itemid, 'Surveyor');
+        })
+        $("#btngo_surveyor").click(function () {
+            txsearch_surveyor = $("#txsearch_surveyor").val();
+            var selectedPage = $("#txpages_surveyor").val();
+            if (parseInt(selectedPage) > @totalPages) {
+                Common.Alert.Warning("The number exceeds the total page. Please enter with a lower number.");
+            } else {
+                cm_paging.handle_btn(selectedPage, txsearch_surveyor, itemid, 'Surveyor');
+            }
+        })
+        $("#txpages_surveyor").val(@ViewBag.CurrentPage);
+
+    });
+</script>

@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" id="ReportItemSchemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="BPKBBastReportModel" nillable="true" type="BPKBBastReportModel" />
+  <xs:complexType name="BPKBBastReportModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BPKBNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UserName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BastDetail" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CompanyName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BPKBModels" nillable="true" type="BPKBModels" />
+  <xs:complexType name="BPKBModels">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LastUpdatedBy" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LastUpdatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BpkbNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CompanyId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CarNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InvoiceNo" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="InvoiceDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="BpkbIn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SecquenceNo" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="BpkbOut" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OutCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReceiverCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ApprovedBy" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="BastDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BastBy" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LocationCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BpkbStatus" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsClose" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="BpkbDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsPrintSk" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SumPrintSk" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PrintedFirstBy" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PrintedFirstDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PrintedLastBy" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PrintedLastDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsMb" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsPrintThirdParty" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SumPrintThirdParty" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PrintFirstByThirdParty" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PrintFirstDateThirdParty" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PrintLastByThirdParty" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PrintLastDateThirdParty" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BpkbDifferenceDesc" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DeadlineDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReEntryLocationCode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BPKBSKReportModel" nillable="true" type="BPKBSKReportModel" />
+  <xs:complexType name="BPKBSKReportModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ContactPerson" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PersonPosition" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CompanyName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BPKBNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IdentityNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MachineNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ChassisNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AssetTypeDescription" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CarNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemColor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Month" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SumPrintSK" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BPKBPinjamReportModel" nillable="true" type="BPKBPinjamReportModel" />
+  <xs:complexType name="BPKBPinjamReportModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="UserName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReceiverName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReceiverAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReceiverPhone" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LoanDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BPKBNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BrandName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AssetTypeDesc" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemColor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ChasisNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MachineNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemYear" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="QQName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MoneyReceived" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ContactPerson" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BPKBBASTINReportModel" nillable="true" type="BPKBBASTINReportModel" />
+  <xs:complexType name="BPKBBASTINReportModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="BpkbNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BrandName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemColor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ChasisNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MachineNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="QQName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CustomerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LoginID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BranchAddress" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BPKBThirdPartyReportModel" nillable="true" type="BPKBThirdPartyReportModel" />
+  <xs:complexType name="BPKBThirdPartyReportModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Tanggal" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Bulan" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TahunApprove" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NamaAgent" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NoKTPAgent" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AlamatAgent" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JabatanAgent" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NamaCons" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NoKTPCons" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AlamatCons" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Merk" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Type" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TahunItem" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NoRangka" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NoMesin" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Warna" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NoPolisi" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NoBPKB" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NamaBPKB" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TglHariIni" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

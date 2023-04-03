@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" id="ReportVertelSchemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PrintVertelHeader" nillable="true" type="PrintVertelHeader" />
+  <xs:complexType name="PrintVertelHeader">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="PrintVertelDokumens" type="ArrayOfPrintVertelDokumen" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PrintVertelField" type="ArrayOfPrintVertelModels" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPrintVertelDokumen">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PrintVertelDokumen" nillable="true" type="PrintVertelDokumen" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PrintVertelDokumen">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="No" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DokuemnAplikasiIn" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Fisik" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPrintVertelModels">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PrintVertelModels" nillable="true" type="PrintVertelModels" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PrintVertelModels">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="VerifikasiNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Cmno" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="StatusVerifikasi" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptBisaDiHubungi" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NamaStnk" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NamaPasanganStnk" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TglTerimaTagihan" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TglKonfirmasi" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JamKonfirmasi" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TglApproveNpp" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TglTerimaMotor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptTglTerimaMotor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemTypeName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Installment" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Tenor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="lblTglTerimaMotorYa" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="lblTipeMotorYa" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="lblAngsuranYa" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="lblTenorYa" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptTglTerimaMotorSebenarnya" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptTipeMotor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptTipeMotorSebenarnya" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptAngsuran" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptAngsuranSebenarnya" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptTenor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptTenorSebenarnya" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NamaPenerimaMotor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="HubunganPenerimaMotor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PermintaanJt" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CatatanLain" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CreatedOn" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UpdatedBy" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UpdatedOn" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptPencairanMb" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptPencairanMbsebenarnya" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptDpsetor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OptDpsetorSebenarnya" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BiayaAdminLainnya" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JumlahNominalAdmin" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TanggalBayar" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LokasiMotorDiTerima" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LokasiDiTerima" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NamaPelanggan" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Alamat" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Phone" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AdminNpp" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NamaCA" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NamaKepalaCabang" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Address" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

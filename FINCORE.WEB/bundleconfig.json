@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/Scripts/Acquisition/cas.min.js",
+    "inputFiles": [
+      "wwwroot/Scripts/Acquisition/cas.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Scripts/Acquisition/acquisition.min.js",
+    "inputFiles": [
+      "wwwroot/Scripts/Acquisition/acquisition.js"
+    ]
+  }
+]
